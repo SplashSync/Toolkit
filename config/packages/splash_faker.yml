@@ -1,0 +1,9 @@
+
+splash_faker:
+    
+    objects:    
+        - { id: "short", name: "Fake Short", format: "short" }
+        - { id: "simple", name: "Fake Simple", format: "simple" }
+
+
+

@@ -1,0 +1,9 @@
+
+services:
+#    
+#    splash.explorer.objects.admin:
+#        class: App\ExplorerBundle\Admin\ObjectAdmin
+#        arguments: [~, ~, ~]
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: Explorer, label: Objects, icon: '<span class="fa fa-eye"></span>' }
+#        public: true

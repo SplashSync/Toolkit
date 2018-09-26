@@ -2357,12 +2357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Bundle.git",
-                "reference": "a430207b1e8030f6b8a48d42a7e0447d15a07a65"
+                "reference": "5def66a4ef5cdee44393ea8cddeaee131965fb56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/a430207b1e8030f6b8a48d42a7e0447d15a07a65",
-                "reference": "a430207b1e8030f6b8a48d42a7e0447d15a07a65",
+                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/5def66a4ef5cdee44393ea8cddeaee131965fb56",
+                "reference": "5def66a4ef5cdee44393ea8cddeaee131965fb56",
                 "shasum": ""
             },
             "require": {
@@ -2429,7 +2429,7 @@
                 }
             ],
             "description": "Splash Core Bundle for Symfony Applications",
-            "time": "2018-09-24T20:23:45+00:00"
+            "time": "2018-09-24T23:45:26+00:00"
         },
         {
             "name": "splash/phpcore",

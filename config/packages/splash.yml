@@ -2,12 +2,21 @@
 splash:
     connections:
         
-        standalone:
+        node1:
             id:                 12345678
             key:                12345678901234567890
+            name:               Serveur 1
             config:             
                 param1:       true
                 param2:       false
+
                 
+        node2:
+            id:                 12345678
+            key:                12345678901234567890
+            name:               Serveur 2
+            config:             
+                param1:       true
+                param2:       false                
                 
                 
