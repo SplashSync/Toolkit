@@ -1,24 +1,25 @@
 <?php
 
-namespace Nodes\FakerBundle\Services;
-
-use OpenObject\WsSchemasBundle\Entity\WsSchema;
-use OpenObject\CoreBundle\Document\OpenObjectFieldCore as Field;
+namespace Splash\Connectors\FakerBundle\Services;
 
 use Splash\Components\FieldsFactory;
 
 /**
  * @abstract    Fake Nodes Fields Builder Service
  */
-class FieldsBuilderService 
+class FieldsBuilder
 {
 
-    /*
-     *  Fields Types Counter
-     * @var array
+    /**
+     * @abstract    Fields Types Counter
+     * @var     array
      */
     private $counters = array();
     
+    /**
+     * @abstract    Splash Fields Factory
+     * @var FieldsFactory
+     */
     private $FieldsFactory = Null;
 
     /**
@@ -26,12 +27,11 @@ class FieldsBuilderService
      * 
      * @return self
      */   
-    public function init()
+    public function init(FieldsFactory $Factory)
     {
         //====================================================================//
         // Initialize Splash Field Factory Class
-        $this->FieldsFactory    =   new FieldsFactory();            
-        
+        $this->FieldsFactory    =   $Factory;            
         //====================================================================//
         // Clear Fields Counters
         $this->counters = array();
@@ -49,6 +49,7 @@ class FieldsBuilderService
         return $this->FieldsFactory->Publish();
     }    
 
+    
     
 //====================================================================//
 //  COMMON FUNCTIONS
@@ -98,19 +99,19 @@ class FieldsBuilderService
         
         //==============================================================================
         // Setup Options
-        if ( isset($Options["Required"]) ) {
+        if (in_array("Required", $Options) ) {
             $this->FieldsFactory->isRequired();
         } 
-        if ( isset($Options["Listed"]) ) {
+        if (in_array("Listed", $Options) ) {
             $this->FieldsFactory->isListed();
         } 
-        if ( isset($Options["Logged"]) ) {
+        if (in_array("Logged", $Options) ) {
             $this->FieldsFactory->isLogged();
         } 
-        if ( isset($Options["ReadOnly"]) ) {
+        if (in_array("ReadOnly", $Options) ) {
             $this->FieldsFactory->ReadOnly();
         } 
-        if ( isset($Options["WriteOnly"]) ) {
+        if (in_array("WriteOnly", $Options) ) {
             $this->FieldsFactory->WriteOnly();
         } 
         
@@ -134,23 +135,20 @@ class FieldsBuilderService
 
         //==============================================================================
         // Safety Check - Verify is Meta Type
-        $Tag = md5($MetaType . IDSPLIT . WsSchema::META_URL);
-        if ( !WsSchema::isMetaTag($Tag) ) {
-            return $this;
-        }
+        $Tag = md5($MetaType . IDSPLIT . FieldsFactory::META_URL);
         
         //==============================================================================
         //      Detect Meta Data Field Type  
         switch($MetaType) {
             //==============================================================================
             //      OPENOBJECT => Mongo ObjectId  
-            case WsSchema::META_OBJECTID:
+            case FieldsFactory::META_OBJECTID:
             //==============================================================================
             //      OPENOBJECT => Creation Date  
-            case WsSchema::META_DATECREATED:
+            case FieldsFactory::META_DATECREATED:
             //==============================================================================
             //      OPENOBJECT => Source Node Id  
-            case WsSchema::META_OBJECTID:
+            case FieldsFactory::META_OBJECTID:
                 $FieldType = SPL_T_VARCHAR;
                 break;
             //==============================================================================
@@ -165,14 +163,8 @@ class FieldsBuilderService
                     ->Identifier($Name)
                     ->Name(strtoupper($Name))
                     ->Description("Fake Field - Meta Type " . strtoupper($MetaType) . " Item " . $Count)
-                    ->MicroData(WsSchema::META_URL, $MetaType);
+                    ->MicroData(FieldsFactory::META_URL, $MetaType);
                         
-        //==============================================================================
-        // Setup Options
-        if ( Field::isScalarType($FieldType)) {
-            $this->FieldsFactory->isListed();
-        }
-        
         //==============================================================================
         // No Options   => Exit
         if ( is_null($Options)) {

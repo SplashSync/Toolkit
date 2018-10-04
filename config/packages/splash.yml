@@ -13,7 +13,7 @@ splash:
                 
         node2:
             id:                 12345678
-            key:                12345678901234567890
+            key:                12345678901234567890174171171
             name:               Serveur 2
             config:             
                 param1:       true

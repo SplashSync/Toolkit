@@ -22,6 +22,8 @@ class SplashFakerExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('splash_faker', $config);
+        
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         
@@ -31,7 +33,9 @@ class SplashFakerExtension extends Extension
             $container
                 ->register('splash.connector.faker.object.' . $Object["id"], 'Splash\Connectors\FakerBundle\Objects\Generic')
                 ->addTag('splash.standalone.object')
-                ->addMethodCall('setConfiguration', array($Object))
+                ->addMethodCall('setConfiguration', array($Object["id"], $Object["name"], $Object["format"]))
+                ->setPublic(true)
+                ->setAutowired(true)
                     ;
         }
 

@@ -1,10 +1,20 @@
 services:
 
     ########################################################################
-    # Splash Faker Standalone Objects
-    splash.connector.faker.object.base:
-        class: Splash\Connectors\FakerBundle\Objects\Generic
-        arguments:  []
+    # Splash Faker Standalone Events Listner
+    splash.connector.faker.events:
+        class: Splash\Connectors\FakerBundle\EventSubscriber\FakerEventsSuscriber
+        arguments:  ["@=service('service_container').getParameter('splash_faker')"]
+        tags:       ["kernel.event_subscriber"]
+
+
+    ########################################################################
+    # Splash Faker Field Buidler
+    Splash\Connectors\FakerBundle\Services\FieldsBuilder:
+        class: Splash\Connectors\FakerBundle\Services\FieldsBuilder
+#        alias: splash.connectors.faker.fields.builder
+#        public: true
+#        arguments:  ["@doctrine.orm.entity_manager"]
 #        tags:       {""}
 
 
