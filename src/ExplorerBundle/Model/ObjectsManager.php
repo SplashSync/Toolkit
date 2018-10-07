@@ -39,6 +39,8 @@ use ArrayObject;
 
 use Splash\Core\SplashCore as Splash;
 
+//use Doctrine\ORM\Mapping\ClassMetadata;
+
 class ObjectsManager implements ModelManagerInterface, LockInterface
 {
     
@@ -67,6 +69,7 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
      */
     public function getMetadata($class)
     {
+        return new ClassMetadata("ArrayObject");
         return $this->getEntityManager($class)->getMetadataFactory()->getMetadataFor($class);
     }
 
@@ -159,6 +162,7 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
 
     public function create($object)
     {
+dd($object);        
         try {
             $entityManager = $this->getEntityManager($object);
             $entityManager->persist($object);
@@ -323,6 +327,7 @@ dd($object);
 
     public function createQuery($class, $alias = 'o')
     {
+        return new ProxyQuery();
         $repository = $this->getEntityManager($class)->getRepository($class);
 
         return new ProxyQuery($repository->createQueryBuilder($alias));
@@ -339,6 +344,7 @@ dd($object);
 
     public function getModelIdentifier($class)
     {
+        return ["id"];
         return $this->getMetadata($class)->identifier;
     }
 

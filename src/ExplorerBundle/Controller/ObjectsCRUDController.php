@@ -49,7 +49,6 @@ class ObjectsCRUDController extends CRUDController {
         $ModelManager   =   $this->container->get("sonata.admin.manager.splash");
         $ModelManager->setObjectType($this->ObjectType);
         $this->admin->setModelManager($ModelManager);
-        
     }  
 
     /**
@@ -129,7 +128,11 @@ class ObjectsCRUDController extends CRUDController {
         //====================================================================//
         // Setup Connector
         $Connector  =   $this->setupConnector($request);
-
+        //====================================================================//
+        // Setup Model Manager
+        $this->setupModelManager();
+        
+//        return parent::listAction();
 
         //====================================================================//
         // Read Object List        
@@ -201,7 +204,7 @@ Splash::log()->www("Object Data", $Data);
     }    
     
     /**
-     * Show action.
+     * Edit action.
      *
      * @throws AccessDeniedException If access is not granted
      *
@@ -338,6 +341,23 @@ Splash::log()->www("Object Data", $Data);
         ], null);
     }        
     
-
+    /**
+     * Create action.
+     *
+     * @throws AccessDeniedException If access is not granted
+     *
+     * @return Response
+     */
+    public function createAction()
+    {
+        //====================================================================//
+        // Setup Connector
+        $Connector  =   $this->setupConnector($this->getRequest());
+        //====================================================================//
+        // Setup Model Manager
+        $this->setupModelManager();
+        
+        return parent::createAction();
+    }
     
 }

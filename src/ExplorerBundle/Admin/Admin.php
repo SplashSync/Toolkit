@@ -16,11 +16,14 @@
 
 namespace App\ExplorerBundle\Admin;
 
+use ArrayObject;
+
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\FormMapper;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 use Splash\Core\SplashCore as Splash;
 
@@ -54,8 +57,6 @@ class Admin extends AbstractAdmin
         $this->baseRoutePattern = $connexion . "/" . $section;
         $this->connector    =   $connector;
         $this->connexion    =   $connexion;
-              
-        
         
     }    
 
@@ -94,21 +95,19 @@ class Admin extends AbstractAdmin
 //        $formMapper->ifTrue(false);
         
         $formMapper
-            ->with('General', array('class' => 'col-md-6'))
-                ->add('id', TextType::class )
-                ->add('varchar1', TextType::class )
-//                ->add('IsActive')
-//                ->add('deleted')
-//                ->add('status', ChoiceType::class, array(
-//                    "choices"   =>  Node::getChoices(),
-//                    "choice_translation_domain"   => "NodesCoreBundle",
-//                ))
-//                ->add('connectorName', ChoiceType::class, array(
-//                    "choices"                       =>  Node::getTypesChoices(),
-//                    "choice_translation_domain"     =>  False,
-//                ))
-//                ->add('user', 'sonata_type_model_list')
+            ->tab("Main")    
+//                ->with('General', array('class' => 'col-md-6'))
+                    ->add('id', TextType::class )
+                ->end()
             ->end()
+                
+            ->tab("Main")    
+//                ->with('General', array('class' => 'col-md-6'))
+                    ->add('varchar1', TextType::class )
+                    ->add('bool1', CheckboxType::class )
+//                ->end()
+            ->end()
+                
             ->with('Webservice', array('class' => 'col-md-6'))
 //                ->add('identifier')
 //                ->add('host')
@@ -137,5 +136,21 @@ class Admin extends AbstractAdmin
 //                ))
             ->end()
         ;
+    }    
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function getNewInstance()
+    {
+//        $object = parent::getNewInstance();
+//
+////        $inspection = new Inspection();
+////        $inspection->setDate(new \DateTime());
+////        $inspection->setComment("Initial inspection");
+//
+////        $object->addInspection($inspection);
+//
+        return new ArrayObject(array("id" => null, "varchar1" => null, "bool1" => null), ArrayObject::ARRAY_AS_PROPS);
     }    
 }
