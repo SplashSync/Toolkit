@@ -33,17 +33,43 @@ use Sonata\DoctrineORMAdminBundle\Admin\FieldDescription;
 use Sonata\DoctrineORMAdminBundle\Datagrid\OrderByToSelectWalker;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+
+
 use Symfony\Component\Form\Exception\PropertyAccessDeniedException;
+
+
 
 use ArrayObject;
 
 use Splash\Core\SplashCore as Splash;
+use Splash\Components\FieldsManager;
 
+use Splash\Bundle\Services\ConnectorsManager;
 //use Doctrine\ORM\Mapping\ClassMetadata;
+use Splash\Bundle\Models\ConnectorInterface;
+
 
 class ObjectsManager implements ModelManagerInterface, LockInterface
 {
+    /**
+     * @var ConnectorsManager
+     */
+    private $Manager;    
     
+    /**
+     * @var string
+     */
+    private $connexion;
+    
+    /**
+     * Current Splash Connector Service
+     * @var ConnectorInterface
+     */
+    private $Connector;
+        
+    /**
+     * @var string
+     */
     private $ObjectType = null;
         
     const ID_SEPARATOR = '~';
@@ -57,11 +83,126 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
      */
     protected $cache = [];
 
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ConnectorsManager $manager)
     {
-        $this->registry = $registry;
+        $this->Manager = $manager;
     }
 
+    /**
+     * @abstract    Select Splash Bundle Connection to Use
+     * @param   string   $ServerId
+     * @return  $this
+     */
+    public function setConnection(string $ServerId) 
+    {
+        $this->connexion    =   $ServerId;
+        $this->Connector    =   $this->Manager->get($ServerId);
+        if (!$this->Connector) {
+            throw new \RuntimeException('Unable to Identify linked Connector');
+        }
+        return $this;
+    }    
+
+//    /**
+//     * @abstract    Select Splash Bundle Connection to Use
+//     * @param   string   $ServerId
+//     * @return  $this
+//     */
+//    public function setObjectType(string $ObjectType) 
+//    {
+//        $this->ObjectType    =   $ObjectType;
+//        return $this;
+//    }  
+    
+    /**
+     * @abstract    Get Current Splash Connetor
+     * @return      ConnectorInterface
+     */
+    public function getConnector() 
+    {
+        return $this->Connector;
+    }
+    
+    /**
+     * @abstract    Get Connetor Configuration
+     * @return      array
+     */
+    public function getConfiguration() 
+    {
+        return $this->Manager->getServerConfiguration($this->connexion);
+    }    
+    
+    /**
+     * @abstract    Fetch Connector Available Objects Types
+     * 
+     * @return     ArrayObject|bool
+     */    
+    public function getObjects()
+    {
+        //====================================================================//
+        // Read Objects Type List        
+        return $this->getConnector()->getAvailableObjects(
+            $this->getConfiguration()
+        );
+    }
+    
+    /**
+     * @abstract    Fetch Connector Available Objects List 
+     * 
+     * @return     ArrayObject|bool
+     */    
+    public function getObjectsDefinition()
+    {
+        //====================================================================//
+        // Read Objects Type List        
+        $ObjectTypes =  $this->getConnector()->getAvailableObjects(
+            $this->getConfiguration()
+        );
+        //====================================================================//
+        // Read Description of All Objects        
+        $Objects    =   array();
+        foreach ($ObjectTypes as $ObjectType) {
+            $Objects[$ObjectType]   =   $this->getConnector()->getObjectDescription(
+                $this->getConfiguration(),
+                $ObjectType
+            );
+        }
+        return $Objects;
+    }
+    
+    /**
+     * @param string $class
+     *
+     * @return ClassMetadata
+     */
+    public function getObjectFields()
+    {
+        return $this->getConnector()->getObjectFields(
+                $this->getConfiguration(),
+                $this->ObjectType
+            );
+    }
+    
+    public function getObject($Ids, $Fields )
+    {
+        return $this->getConnector()->getObject(
+                $this->getConfiguration(),
+                $this->ObjectType,
+                $Ids,
+                $Fields
+            );
+    }    
+    
+    public function setObject($Id, $Data )
+    {
+        return $this->getConnector()->setObject(
+                $this->getConfiguration(),
+                $this->ObjectType,
+                $Id,
+                $Data
+            );
+    }        
+    
     /**
      * @param string $class
      *
@@ -70,58 +211,55 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
     public function getMetadata($class)
     {
         return new ClassMetadata("ArrayObject");
-        return $this->getEntityManager($class)->getMetadataFactory()->getMetadataFor($class);
     }
 
-    /**
-     * Returns the model's metadata holding the fully qualified property, and the last
-     * property name.
-     *
-     * @param string $baseClass        The base class of the model holding the fully qualified property
-     * @param string $propertyFullName The name of the fully qualified property (dot ('.') separated
-     *                                 property string)
-     *
-     * @return array(
-     *                \Doctrine\ORM\Mapping\ClassMetadata $parentMetadata,
-     *                string $lastPropertyName,
-     *                array $parentAssociationMappings
-     *                )
-     */
-    public function getParentMetadataForProperty($baseClass, $propertyFullName)
-    {
-        $nameElements = explode('.', $propertyFullName);
-        $lastPropertyName = array_pop($nameElements);
-        $class = $baseClass;
-        $parentAssociationMappings = [];
-
-        foreach ($nameElements as $nameElement) {
-            $metadata = $this->getMetadata($class);
-
-            if (isset($metadata->associationMappings[$nameElement])) {
-                $parentAssociationMappings[] = $metadata->associationMappings[$nameElement];
-                $class = $metadata->getAssociationTargetClass($nameElement);
-
-                continue;
-            }
-
-            break;
-        }
-
-        $properties = array_slice($nameElements, count($parentAssociationMappings));
-        $properties[] = $lastPropertyName;
-
-        return [$this->getMetadata($class), implode('.', $properties), $parentAssociationMappings];
-    }
+//    /**
+//     * Returns the model's metadata holding the fully qualified property, and the last
+//     * property name.
+//     *
+//     * @param string $baseClass        The base class of the model holding the fully qualified property
+//     * @param string $propertyFullName The name of the fully qualified property (dot ('.') separated
+//     *                                 property string)
+//     *
+//     * @return array(
+//     *                \Doctrine\ORM\Mapping\ClassMetadata $parentMetadata,
+//     *                string $lastPropertyName,
+//     *                array $parentAssociationMappings
+//     *                )
+//     */
+//    public function getParentMetadataForProperty($baseClass, $propertyFullName)
+//    {
+//        $nameElements = explode('.', $propertyFullName);
+//        $lastPropertyName = array_pop($nameElements);
+//        $class = $baseClass;
+//        $parentAssociationMappings = [];
+//
+//        foreach ($nameElements as $nameElement) {
+//            $metadata = $this->getMetadata($class);
+//
+//            if (isset($metadata->associationMappings[$nameElement])) {
+//                $parentAssociationMappings[] = $metadata->associationMappings[$nameElement];
+//                $class = $metadata->getAssociationTargetClass($nameElement);
+//
+//                continue;
+//            }
+//
+//            break;
+//        }
+//
+//        $properties = array_slice($nameElements, count($parentAssociationMappings));
+//        $properties[] = $lastPropertyName;
+//
+//        return [$this->getMetadata($class), implode('.', $properties), $parentAssociationMappings];
+//    }
 
     /**
      * @param string $class
-     *
      * @return bool
      */
     public function hasMetadata($class)
     {
         return false;
-        return $this->getEntityManager($class)->getMetadataFactory()->hasMetadataFor($class);
     }
 
     public function getNewFieldDescriptionInstance($class, $name, array $options = [])
@@ -161,12 +299,12 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
     }
 
     public function create($object)
-    {
-dd($object);        
+    {       
+        unset($object->id);
         try {
-            $entityManager = $this->getEntityManager($object);
-            $entityManager->persist($object);
-            $entityManager->flush();
+            //====================================================================//
+            // Write Object Data      
+            $NewId  =   $this->setObject(null, $object->getArrayCopy());   
         } catch (\PDOException $e) {
             throw new ModelManagerException(
                 sprintf('Failed to create object: %s', ClassUtils::getClass($object)),
@@ -180,16 +318,33 @@ dd($object);
                 $e
             );
         }
+        //====================================================================//
+        // Catch Splash Errors      
+        if (!empty(Splash::log()->err)) {
+            throw new ModelManagerException(
+                sprintf('Failed to create object: %s', PHP_EOL . implode(PHP_EOL, Splash::log()->err))
+            );
+        }        
+        
+        $object->id =   $NewId;
     }
 
     public function update($object)
     {
-dd($object);        
-        return;
+        
+dump($object);
+
+        //====================================================================//
+        // Safety Check - Verify Object has Id      
+        if (empty($object->id)) {
+            return;
+        }
+        //====================================================================//
+        // Do Object Update     
         try {
-            $entityManager = $this->getEntityManager($object);
-            $entityManager->persist($object);
-            $entityManager->flush();
+            //====================================================================//
+            // Write Object Data      
+            $this->setObject($object->id, $object->getArrayCopy());        
         } catch (\PDOException $e) {
             throw new ModelManagerException(
                 sprintf('Failed to update object: %s', ClassUtils::getClass($object)),
@@ -201,6 +356,14 @@ dd($object);
                 sprintf('Failed to update object: %s', ClassUtils::getClass($object)),
                 $e->getCode(),
                 $e
+            );
+        }
+        
+        //====================================================================//
+        // Catch Splash Errors      
+        if (!empty(Splash::log()->err)) {
+            throw new ModelManagerException(
+                sprintf('Failed to update object: %s', PHP_EOL . implode(PHP_EOL, Splash::log()->err))
             );
         }
     }
@@ -239,44 +402,43 @@ dd($object);
 
     public function lock($object, $expectedVersion)
     {
-        $metadata = $this->getMetadata(ClassUtils::getClass($object));
-
-        if (!$metadata->isVersioned) {
-            return;
-        }
-
-        try {
-            $entityManager = $this->getEntityManager($object);
-            $entityManager->lock($object, LockMode::OPTIMISTIC, $expectedVersion);
-        } catch (OptimisticLockException $e) {
-            throw new LockException($e->getMessage(), $e->getCode(), $e);
-        }
+//        $metadata = $this->getMetadata(ClassUtils::getClass($object));
+//
+//        if (!$metadata->isVersioned) {
+//            return;
+//        }
+//
+//        try {
+//            $entityManager = $this->getEntityManager($object);
+//            $entityManager->lock($object, LockMode::OPTIMISTIC, $expectedVersion);
+//        } catch (OptimisticLockException $e) {
+//            throw new LockException($e->getMessage(), $e->getCode(), $e);
+//        }
     }
 
-    public function find($class, $id)
+    public function find($class, $Id)
     {
-        if (!isset($id)) {
+        if (!isset($Id)) {
             return;
         }
-
         //====================================================================//
         // Prepare Writable Fields List
-        $Fields = $this->reduceFieldList(
-                Splash::object($this->ObjectType)->fields(), 
+        $Fields = FieldsManager::reduceFieldList(
+                $this->getObjectFields($this->ObjectType), 
                 true, 
                 true
             );
+        
+// dump($Fields); 
+ dump($this->getObject($Id, $Fields));
         //====================================================================//
         // Read Object Data      
-        return new ArrayObject(Splash::object($this->ObjectType)->get($id, $Fields), ArrayObject::ARRAY_AS_PROPS);
-        
-        $values = array_combine($this->getIdentifierFieldNames($class), explode(self::ID_SEPARATOR, $id));
-
-        return $this->getEntityManager($class)->getRepository($class)->find($values);
+        return new ArrayObject($this->getObject($Id, $Fields), ArrayObject::ARRAY_AS_PROPS);
     }
 
     public function findBy($class, array $criteria = [])
     {
+        return $this->getConnector()->object($class)->objectsList();
         return $this->getEntityManager($class)->getRepository($class)->findBy($criteria);
     }
 
@@ -696,5 +858,5 @@ dd($object);
         return $this;
     } 
     
-   
+     
 }

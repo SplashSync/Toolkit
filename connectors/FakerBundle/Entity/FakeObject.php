@@ -7,6 +7,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Nodes\FakerBundle\Entity\FakeNode   as Node;
         
+use Splash\Components\FieldsManager;
+
 /**
  * @abstract    Splash Fake/Testing Objects 
  *

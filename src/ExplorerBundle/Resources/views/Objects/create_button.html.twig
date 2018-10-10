@@ -11,7 +11,7 @@ file that was distributed with this source code.
 
 {% if admin.hasAccess('create') and admin.hasRoute('create') %}
     <li>
-        <a class="sonata-action-element" href="{{ admin.generateUrl('create', {"ObjectType" : ObjectType}) }}">
+        <a class="sonata-action-element" href="{{ admin.generateUrl('create', {"ObjectType" : ObjectType | default(app.request.get('ObjectType'))}) }}">
             <i class="fa fa-plus-circle" aria-hidden="true"></i>
             {{ 'link_action_create'|trans({}, 'SonataAdminBundle') }}
         </a>

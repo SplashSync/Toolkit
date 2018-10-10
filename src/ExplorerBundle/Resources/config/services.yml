@@ -3,7 +3,7 @@ services:
     
     sonata.admin.manager.splash:
         class: App\ExplorerBundle\Model\ObjectsManager
-        arguments: [ '@doctrine' ]
+        arguments: [ '@splash.connectors.manager' ]
         public: true
 
 

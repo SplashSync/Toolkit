@@ -99,6 +99,9 @@ class FieldsBuilder
         
         //==============================================================================
         // Setup Options
+        if ( isset($Options["Group"]) && is_scalar($Options["Group"]) ) {
+            $this->FieldsFactory->group($Options["Group"]);
+        }         
         if (in_array("Required", $Options) ) {
             $this->FieldsFactory->isRequired();
         } 
@@ -171,8 +174,15 @@ class FieldsBuilder
             return $this;
         }
         
+//dump($Options);        
+////dump($this->getObject($Id, $Fields));
+////die();
+////exit;        
         //==============================================================================
         // Setup Options
+        if ( isset($Options["Group"]) && is_scalar($Options["Group"]) ) {
+            $this->FieldsFactory->group($Options["Group"]);
+        } 
         if ( isset($Options["Required"]) ) {
             $this->FieldsFactory->isRequired();
         } 

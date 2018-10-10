@@ -59,6 +59,9 @@ class ObjectsCRUDController extends CRUDController {
      */
     private function setupConnector(Request $request) : ConnectorInterface
     {
+        
+        $this->container->get("splash.connectors.manager");
+        
         //====================================================================//
         // Connect to Connector
         if (!$this->container->has($this->admin->getConnectorName())) {
@@ -114,8 +117,26 @@ class ObjectsCRUDController extends CRUDController {
         }
             
         return $Result;
-    }    
+    }
     
+    /**
+     * Switch Between Object Types
+     *
+     * @return Response
+     */
+    public function switchAction(Request $request = null)
+    {
+        $ObjectType     =   $request->get("ObjectType");
+        $ObjectTypes    =   $this->admin->getModelManager()->getObjects();
+        
+        if ($ObjectType && in_array($ObjectType, $ObjectTypes))  {
+            $request->getSession()->set("ObjectType" , $ObjectType);
+        }
+
+        return $this->redirectToList();
+                
+    }
+        
     /**
      * List action.
      *
@@ -126,29 +147,24 @@ class ObjectsCRUDController extends CRUDController {
     public function listAction(Request $request = null)
     {
         //====================================================================//
-        // Setup Connector
-        $Connector  =   $this->setupConnector($request);
-        //====================================================================//
-        // Setup Model Manager
-        $this->setupModelManager();
-        
-//        return parent::listAction();
-
+        // Detect Current Object Type
+        $ObjectType  =  $this->admin->getObjectType();
+        $this->admin->getModelManager()->setObjectType($ObjectType);   
         //====================================================================//
         // Read Object List        
-        $List   =   Splash::object($this->ObjectType)->objectsList();
+        $List = $this->admin->getModelManager()->findBy($ObjectType);
         $Meta   =   isset($List["meta"]) ? $List["meta"] : array();
         unset($List["meta"]);
-Splash::log()->www("ObjectList", $List); 
+//Splash::log()->www("ObjectList", $List); 
      
         //====================================================================//
         // Render Connector Profile Page
         return $this->render("@AppExplorer/Objects/list.html.twig", array(
             'action'    => 'list',
             'admin'     =>  $this->admin,
-            "ObjectType"=>  $this->ObjectType,
-            "objects"   =>  $this->Objects,
-            "fields"    =>  $this->Objects[$this->ObjectType]->fields(),
+            "ObjectType"=>  $ObjectType,
+            "objects"   =>  $this->admin->getModelManager()->getObjectsDefinition(),
+            "fields"    =>  $this->admin->getModelManager()->getObjectFields($ObjectType),
             "list"      =>  $List,
 //            "infos"     =>  $Informations,
 //            "config"    =>  Splash::configuration(),
@@ -171,6 +187,17 @@ Splash::log()->www("ObjectList", $List);
     public function showAction($id = null, Request $request = null)
     {
         //====================================================================//
+        // Detect Current Object Type
+        $this->admin->getModelManager()->setObjectType($this->admin->getObjectType());           
+        //====================================================================//
+        // Base Admin Action
+        return parent::showAction($id);        
+        
+        //====================================================================//
+        // Detect Current Object Type
+        $ObjectType  =  $this->admin->getObjectType();           
+        
+        //====================================================================//
         // Setup Connector
         $Connector  =   $this->setupConnector($request);
 
@@ -187,7 +214,7 @@ Splash::log()->www("ObjectList", $List);
         // Read Object Data      
         $Data   =   Splash::object($this->ObjectType)->get($id, $Fields);
 
-Splash::log()->www("Object Data", $Data); 
+//Splash::log()->www("Object Data", $Data); 
 
         //====================================================================//
         // Render Connector Profile Page
@@ -213,132 +240,11 @@ Splash::log()->www("Object Data", $Data);
     public function editAction($id = null)
     {
         //====================================================================//
-        // Setup Connector
-        $Connector  =   $this->setupConnector($this->getRequest());
+        // Detect Current Object Type
+        $this->admin->getModelManager()->setObjectType($this->admin->getObjectType());           
         //====================================================================//
-        // Setup Model Manager
-        $this->setupModelManager();
-        
+        // Base Admin Action
         return parent::editAction($id);
-        
-        //====================================================================//
-        // the key used to lookup the template
-        $templateKey = 'edit';
-        //====================================================================//
-        // Prepare Writable Fields List
-        $Fields = $this->reduceFieldList(
-                Splash::object($this->ObjectType)->fields(), 
-                true, 
-                true
-            );
-        //====================================================================//
-        // Read Object Data      
-        $existingObject   =   Splash::object($this->ObjectType)->get($id, $Fields);
-        if (!$existingObject) {
-            throw $this->createNotFoundException(sprintf('unable to find the object with id: %s', $id));
-        }
-        if (is_array($existingObject)) {
-            $existingObject = new ArrayObject($existingObject, ArrayObject::ARRAY_AS_PROPS);
-        }
-        
-        //====================================================================//
-        // Pre Edit Event      
-        $preResponse = $this->preEdit($request, $existingObject);
-        if (null !== $preResponse) {
-            return $preResponse;
-        }
-
-        $this->admin->setSubject($existingObject);
-        
-        $form = $this->admin->getForm();
-        
-
-        if (!\is_array($fields = $this->admin->getForm()->all()) || 0 === \count($fields)) {
-            throw new \RuntimeException(
-                'No editable field defined. Did you forget to implement the "configureFormFields" method?'
-            );
-        }
-
-        $form = $this->admin->getForm();
-        $form->setData( $existingObject);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-            $isFormValid = $form->isValid();
-
-            // persist if the form was valid and if in preview mode the preview was approved
-            if ($isFormValid && (!$this->isInPreviewMode() || $this->isPreviewApproved())) {
-                $submittedObject = $form->getData();
-                $this->admin->setSubject($submittedObject);
-
-                try {
-                    $existingObject = $this->admin->update($submittedObject);
-
-                    if ($this->isXmlHttpRequest()) {
-                        return $this->renderJson([
-                            'result' => 'ok',
-                            'objectId' => $id,
-                            'objectName' => $this->escapeHtml($this->admin->toString($existingObject)),
-                        ], 200, []);
-                    }
-
-                    $this->addFlash(
-                        'sonata_flash_success',
-                        $this->trans(
-                            'flash_edit_success',
-                            ['%name%' => $this->escapeHtml($this->admin->toString($existingObject))],
-                            'SonataAdminBundle'
-                        )
-                    );
-
-                    // redirect to edit mode
-                    return $this->redirectTo($existingObject);
-                } catch (ModelManagerException $e) {
-                    $this->handleModelManagerException($e);
-
-                    $isFormValid = false;
-                } catch (LockException $e) {
-                    $this->addFlash('sonata_flash_error', $this->trans('flash_lock_error', [
-                        '%name%' => $this->escapeHtml($this->admin->toString($existingObject)),
-                        '%link_start%' => '<a href="'.$this->admin->generateObjectUrl('edit', $existingObject).'">',
-                        '%link_end%' => '</a>',
-                    ], 'SonataAdminBundle'));
-                }
-            }
-
-            // show an error message if the form failed validation
-            if (!$isFormValid) {
-                if (!$this->isXmlHttpRequest()) {
-                    $this->addFlash(
-                        'sonata_flash_error',
-                        $this->trans(
-                            'flash_edit_error',
-                            ['%name%' => $this->escapeHtml($this->admin->toString($existingObject))],
-                            'SonataAdminBundle'
-                        )
-                    );
-                }
-            } elseif ($this->isPreviewRequested()) {
-                // enable the preview template if the form was valid and preview was requested
-                $templateKey = 'preview';
-                $this->admin->getShow();
-            }
-        }
-
-        $formView = $form->createView();
-        // set the theme for the current Admin Form
-//        $this->setFormTheme($formView, $this->admin->getFormTheme());
-
-        // NEXT_MAJOR: Remove this line and use commented line below it instead
-        $template = $this->admin->getTemplate($templateKey);
-        // $template = $this->templateRegistry->getTemplate($templateKey);
-
-        return $this->renderWithExtraParams($template, [
-            'action' => 'edit',
-            'form' => $formView,
-            'object' => $existingObject,
-            'objectId' => $id,
-        ], null);
     }        
     
     /**
@@ -351,12 +257,10 @@ Splash::log()->www("Object Data", $Data);
     public function createAction()
     {
         //====================================================================//
-        // Setup Connector
-        $Connector  =   $this->setupConnector($this->getRequest());
+        // Detect Current Object Type
+        $this->admin->getModelManager()->setObjectType($this->admin->getObjectType());           
         //====================================================================//
-        // Setup Model Manager
-        $this->setupModelManager();
-        
+        // Base Admin Action
         return parent::createAction();
     }
     

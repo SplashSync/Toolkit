@@ -1,4 +1,7 @@
 {
+    "burgov/key-value-form-bundle": {
+        "version": "1.4.3"
+    },
     "cocur/slugify": {
         "version": "v3.1"
     },

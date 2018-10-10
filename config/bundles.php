@@ -16,11 +16,13 @@ return [
     Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
+    Burgov\Bundle\KeyValueFormBundle\BurgovKeyValueFormBundle::class => ['all' => true],   
     App\UserBundle\AppUserBundle::class => ['all' => true],
     Splash\Connectors\FakerBundle\SplashFakerBundle::class => ['all' => true],
     Sonata\AdminBundle\SonataAdminBundle::class => ['all' => true],
     Splash\Bundle\SplashBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
-    App\ExplorerBundle\AppExplorerBundle::class => ['all' => true],    
+    App\ExplorerBundle\AppExplorerBundle::class => ['all' => true],   
+    
 ];

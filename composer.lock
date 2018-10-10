@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb76722b15e9b4f8ae8e91de869cf988",
+    "content-hash": "6c452fb28301f0dbc9e488f3a0d9d7dc",
     "packages": [
+        {
+            "name": "burgov/key-value-form-bundle",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Burgov/KeyValueFormBundle.git",
+                "reference": "cbf5c11b797ed10fa937ffc4fed7840a2aa3533f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Burgov/KeyValueFormBundle/zipball/cbf5c11b797ed10fa937ffc4fed7840a2aa3533f",
+                "reference": "cbf5c11b797ed10fa937ffc4fed7840a2aa3533f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/form": "^2.3|^3.0|^4.0"
+            },
+            "conflict": {
+                "symfony/form": "2.8.1"
+            },
+            "type": "bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Burgov\\Bundle\\KeyValueFormBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A form type for managing key-value pairs",
+            "time": "2018-10-03T13:01:10+00:00"
+        },
         {
             "name": "cocur/slugify",
             "version": "v3.1",
@@ -5590,6 +5629,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "burgov/key-value-form-bundle": 0,
         "sonata-project/user-bundle": 20,
         "splash/php-bundle": 20,
         "splash/phpcore": 20

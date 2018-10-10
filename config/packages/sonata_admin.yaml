@@ -2,9 +2,12 @@
 sonata_admin:
     title:      Splash Toolkit
     title_logo: img/Splash-Logo_Ico.png
+    
+    search:     false
+    
     dashboard:
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
+            - { type: sonata.admin.block.admin_list, position: center }
 
 #    templates:
 #        show:       AppBundle:Admin:Display_Client.html.twig        

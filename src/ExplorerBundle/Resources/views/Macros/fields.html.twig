@@ -49,13 +49,13 @@
 {#
     Generate an Html Field Name Block
 #}
-{% macro name(name,isToSync) %}
+{#{% macro name(name,isToSync) %}
     {% if isToSync is defined and isToSync != 0 %}
         <i class="fa fa-exclamation text-danger"></i><b>&nbsp;{{ name | raw }}</b>
     {% else %}                     
         {{ name | raw }}
     {% endif %}     
-{% endmacro %}
+{% endmacro %}#}
 
 {#
     Generate an Html Field Label Block
@@ -71,7 +71,7 @@
 {#
     Generate an Html Field Data Block
 #}
-{% macro data(Format,Data, OpenObject, Node) %}
+{% macro data(Format,Data) %}
     
     <!-- Identify List Fields Types -->
     {% if Format | isListField() == true %}
@@ -97,13 +97,14 @@
         {% endif %}
         
 
-    {% elseif Format == "mvarchar" or Format == "Mtext" %}
+    {% elseif Format == "mvarchar" or Format == "mtext" %}
 
-        <ul>
+        <ul class="list-unstyled">
             {% for key, value in Data %}
                 {% set flag = key|split('_', 2) %}
+                {% set flagUrl = "bundles/appexplorer/flags/1x1/" ~ (flag[1]|default(flag[0]|default("")) | lower) ~ ".svg" %}
                 <li>
-                    <img class="flag flag-{{ flag[1] | default(flag[0] | default("") ) | lower }}"  src="/bundles/theme/img/blank.gif">
+                    <img src="{{ asset(flagUrl) }}" width="15px">
                     {% if value is not iterable %}
                         &nbsp;{{ value | truncate(250) }}       
                     {% else %}
@@ -116,7 +117,9 @@
     {% elseif Format == "country" %}
         
         {% if Data  %}
-            <img class="flag flag-{{ Data | lower }}"  src="/bundles/theme/img/blank.gif">
+            {% set flagUrl = "bundles/appexplorer/flags/1x1/" ~ (Data | lower) ~ ".svg" %}
+                
+            <img src="{{ asset(flagUrl) }}" width="15px">
             &nbsp;{{ Data | truncate(10) }}
         {% endif %}        
         
@@ -127,6 +130,13 @@
     {% elseif Format == "state" %}
         
         <i class="fa fa-flag-o"></i>&nbsp;{{ Data }}
+        
+    {% elseif Format == "lang" %}
+        
+        {% set flag = Data|split('_', 2) %}
+        {% set flagUrl = "bundles/appexplorer/flags/1x1/" ~ (flag[1]|default(flag[0]|default("")) | lower) ~ ".svg" %}
+        <img src="{{ asset(flagUrl) }}" width="15px">
+        &nbsp;{{ Data }}
         
     {% elseif Format == "phone" %}
       
@@ -148,7 +158,7 @@
             </a>
         {% endif %}        
 
-    {% elseif Format == "date" or Format == "Datetime"%}
+    {% elseif Format == "date" or Format == "datetime"%}
       
         {% if Data  %}
             <i class="fa fa-clock-o"></i>&nbsp;{{ Data }}
@@ -338,116 +348,3 @@
     {% endif %}
     <!-- End Objects Fields Flags Block -->
 {% endmacro %}
-
-{#
-    Generate an Html Field Edit Button Block
-#}
-{% macro edit(FieldInfos,OpenObject,NodeId) %}
-
-    {% if   OpenObject is not empty 
-        and NodeId is not empty 
-        and FieldInfos is not empty 
-        and FieldInfos["write"] == 1 
-        and FieldInfos["read"] == 1 
-    %}
-        <a onclick="OOExplorerFieldEditModal('{{OpenObject.id}}','{{NodeId}}','{{FieldInfos["id"]}}');" class="btn-xs profile-link-btn"> 
-            <i class="fa fa-edit"></i>
-        </a>     
-    {% endif %}
-{% endmacro %}
-
-{#
-    Display an OpenObject Field Table Line
-#}
-{% macro row(Node,ObjectType,FieldName,Data,OpenObject,Edit,Index) %}    
-    {% import _self as Macros %}
-
-    {########################################################################### 
-        Object Single Fields Display
-    #}  
-
-    {% set AllowEdit = Edit| default(false) %}   
-    {# Retrieve Field Definition from Node Object #}
-    {% set FieldInfos = Node.getFieldById(ObjectType , FieldName) %}   
-    {# Retrieve Open Object Field from Open Object #}
-    {% if OpenObject != false %}   
-        {% set OpenObjectField = OpenObject.getField(Node , FieldName) %}   
-    {% endif %}     
-
-    {# If Field Definition found => Display Single Field Line #}
-    {% if FieldInfos != false %}   
-        <tr>
-            {# Display Field Type Label #}
-            <td width="45px">
-                {{ Macros.format(FieldInfos["type"],true) }}
-            </td>
-            {# Display Field Name #}
-            <td width="20%" align="right">
-                {{ Macros.name(FieldInfos["name"], OpenObjectField.isToSync | default(false) ) }}
-                {% if AllowEdit %}   
-                    {{ Macros.edit(FieldInfos, OpenObject, Node.id ) }}
-                {% endif %}                 
-            </td>
-            {# Display Field Data #}
-            <td>
-                {{ Macros.data(FieldInfos["type"] | capitalize ,Data, OpenObject, Node) }}
-            </td>
-        </tr>   
-
-    {########################################################################### 
-        Object Single Fields Display
-    #}  
-    {% elseif Data is iterable %}  
-
-            <tr>
-                <td colspan="4" class="bg-color-blueLight"></td>
-            <tr>
-
-                
-            <tr>
-                <td ><h1>{{ Index }}</h1></th>
-                <td colspan="3" class="no-padding" style="padding: 0 0 0 0  !important" >
-                    {# Items List Table #}            
-                    <table class="table table-bordered table-condensed" >
-                        <tbody>
-                        {% for ListFieldName, ListFieldData in Data %}
-                            <tr>
-                                {# Display Field List Item Data#}
-                                <td class="no-padding" style="padding: 0 0 0 0  !important" >
-                                    {# Item Fields Table #}            
-                                    <table class="table table-bordered table-condensed" >
-                                        <tbody>
-                                            {{ Macros.row(Node,ObjectType,ListFieldName  ~"@"~  FieldName,ListFieldData,OpenObject,Edit, loop.index ) }}
-                                        </tbody>
-                                   </table>                                   
-                                </td>
-                            </tr>
-                        {% endfor %}  
-                        </tbody>
-                    </table>                      
-                </td>
-            </tr>
-        
-        
-        
-        
-    {% endif %}     
-    
-{% endmacro %}
-
-{#
-    Display an OpenObject Empty Data Warning
-#}
-{% macro empty(NodeId,ObjectType,ObjectId) %}  
-    {% trans_default_domain "OpenObjectFieldsBundle" %}
-    {% import "OpenObjectExplorerBundle:Macros:objects.html.twig" as OpenObjects %}
-    <div class="alert alert-block alert-warning">
-        <i class="fa fa-fw fa-2x fa-warning"></i>
-        <span class="font-lg">{{ 'view.empty'|trans }}</span>
-        {% if ObjectId is not empty %}
-            <div class="pull-right">
-                {{ OpenObjects.Import_Btn(NodeId, ObjectType, ObjectId) }}
-            </div>
-        {% endif %}
-    </div>
-{% endmacro %}    
