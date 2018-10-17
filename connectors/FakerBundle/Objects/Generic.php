@@ -61,7 +61,7 @@ class Generic extends AbstractObject {
     /**
      *  Object Icon (FontAwesome or Glyph ico tag)
      */
-    protected static $ICO     =  "fa fa-";
+    protected static $ICO     =  "fa fa-magic";
     
     //====================================================================//
     // Private variables

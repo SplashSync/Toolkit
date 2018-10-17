@@ -3,9 +3,10 @@ splash:
     connections:
         
         node1:
-            id:                 12345678
-            key:                12345678901234567890
+            id:                 ff8b964bb4b53ae7
+            key:                NWJjM2MzMDRkODg4MTkuMTUxNTg3MDk1YmMzYzMwNGQ4OWZlNi
             name:               Serveur 1
+            host:               http://dev.splashsync.local/ws/soap
             config:             
                 param1:       true
                 param2:       false

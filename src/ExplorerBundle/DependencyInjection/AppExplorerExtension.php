@@ -33,7 +33,12 @@ use App\ExplorerBundle\Controller\ObjectsCRUDController;
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
 class AppExplorerExtension extends Extension
-{
+{    
+    /**
+     * @var ContainerBuilder 
+     */
+    private $container;
+    
     /**
      * {@inheritdoc}
      */
@@ -60,7 +65,7 @@ class AppExplorerExtension extends Extension
                         "manager_type"  => "orm", 
                         "group"         => $Connection["name"], 
                         "label"         => "Profile", 
-                        "icon"          => '<span class="fa fa-binoculars"></span>' 
+                        "icon"          => '<span class="fa fa-server"></span>' 
                     ))
                     ->setArguments(array(
                         null,
@@ -79,7 +84,7 @@ class AppExplorerExtension extends Extension
                         "manager_type"  => "orm", 
                         "group"         => $Connection["name"], 
                         "label"         => "Objects", 
-                        "icon"          => '<span class="fa fa-binoculars"></span>' 
+                        "icon"          => '<span class="fa fa-server"></span>' 
                     ))
                     ->setArguments(array(
                         null,
@@ -116,6 +121,11 @@ class AppExplorerExtension extends Extension
             
         }        
 
+    }
+    
+    private function addAdminService()
+    {
+        
     }
     
 }

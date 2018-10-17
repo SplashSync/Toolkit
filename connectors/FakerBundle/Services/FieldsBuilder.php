@@ -96,7 +96,6 @@ class FieldsBuilder
         if ( is_null($Options)) {
             return $this;
         }
-        
         //==============================================================================
         // Setup Options
         if ( isset($Options["Group"]) && is_scalar($Options["Group"]) ) {
@@ -172,12 +171,7 @@ class FieldsBuilder
         // No Options   => Exit
         if ( is_null($Options)) {
             return $this;
-        }
-        
-//dump($Options);        
-////dump($this->getObject($Id, $Fields));
-////die();
-////exit;        
+        }      
         //==============================================================================
         // Setup Options
         if ( isset($Options["Group"]) && is_scalar($Options["Group"]) ) {

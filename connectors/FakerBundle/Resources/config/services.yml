@@ -12,21 +12,4 @@ services:
     # Splash Faker Field Buidler
     Splash\Connectors\FakerBundle\Services\FieldsBuilder:
         class: Splash\Connectors\FakerBundle\Services\FieldsBuilder
-#        alias: splash.connectors.faker.fields.builder
-#        public: true
-#        arguments:  ["@doctrine.orm.entity_manager"]
-#        tags:       {""}
-
-
-#    ########################################################################
-#    # Node Faker Test Service
-#    splash.nodes.faker.test.service:
-#        class: Nodes\FakerBundle\Services\FakerService
-#        arguments: ["@doctrine.orm.entity_manager", "@user.document_manager", "@service_container", "@=service('OpenObjectManager').getFormaterService()"]   
-#
-#    ########################################################################
-#    # Node Faker FieldBuilder Service
-#    splash.nodes.faker.fields.builder:
-#        class: Nodes\FakerBundle\Services\FieldsBuilderService
-#        arguments: []   
-  
+ 

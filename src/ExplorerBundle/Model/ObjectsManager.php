@@ -86,6 +86,7 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
     public function __construct(ConnectorsManager $manager)
     {
         $this->Manager = $manager;
+        Splash::setLocalClass($this->Manager);
     }
 
     /**
@@ -97,6 +98,7 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
     {
         $this->connexion    =   $ServerId;
         $this->Connector    =   $this->Manager->get($ServerId);
+        $this->Manager->setCurrent($ServerId);
         if (!$this->Connector) {
             throw new \RuntimeException('Unable to Identify linked Connector');
         }
