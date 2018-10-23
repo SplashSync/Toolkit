@@ -24,6 +24,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 use App\ExplorerBundle\Admin\Admin;
+use App\ExplorerBundle\Admin\Configuration;
+//use App\ExplorerBundle\Admin\Admin;
+use App\ExplorerBundle\Controller\ConfigurationController;
 use App\ExplorerBundle\Controller\ProfileCRUDController;
 use App\ExplorerBundle\Controller\ObjectsCRUDController;
 
@@ -33,7 +36,12 @@ use App\ExplorerBundle\Controller\ObjectsCRUDController;
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
 class AppExplorerExtension extends Extension
-{    
+{
+    const TYPE_CONFIG   =   "configuration";
+    const TYPE_PROFILE  =   "profile";
+    const TYPE_OBJECTS  =   "objects";
+    const TYPE_WIDGETS  =   "widgets";
+    
     /**
      * @var ContainerBuilder 
      */
@@ -44,7 +52,9 @@ class AppExplorerExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        
+        //====================================================================//
+        // Store Container	
+        $this->container    =   $container;
         //====================================================================//
         // Load Bundle Services	
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -57,74 +67,77 @@ class AppExplorerExtension extends Extension
         //====================================================================//
         // Add Availables Connections to Sonata Admin	
         foreach ($config["connections"]  as $Id => $Connection) {
-            //====================================================================//
-            // Connector Profile Sonata Admin Class	
-            $container
-                ->register('splash.admin.' . $Id . '.profile', Admin::class)
-                    ->addTag("sonata.admin", array( 
-                        "manager_type"  => "orm", 
-                        "group"         => $Connection["name"], 
-                        "label"         => "Profile", 
-                        "icon"          => '<span class="fa fa-server"></span>' 
-                    ))
-                    ->setArguments(array(
-                        null,
-                        ArrayObject::class,
-                        ProfileCRUDController::class,
-                        $Connection["connector"],
-                        $Id,
-                        "profile"
-                        ))
-                    ;
-            //====================================================================//
-            // Objects Sonata Admin Class	
-            $container
-                ->register('splash.admin.' . $Id . '.objects', Admin::class)
-                    ->addTag("sonata.admin", array( 
-                        "manager_type"  => "orm", 
-                        "group"         => $Connection["name"], 
-                        "label"         => "Objects", 
-                        "icon"          => '<span class="fa fa-server"></span>' 
-                    ))
-                    ->setArguments(array(
-                        null,
-                        ArrayObject::class,
-                        ObjectsCRUDController::class,
-                        $Connection["connector"],
-                        $Id,
-                        "objects"
-                        ))
-                    ;
-            
-            //====================================================================//
-            // Objects Sonata Admin Class	
-//            $container
-//                ->register('splash.admin.' . $Id . '.objects', Admin::class)
-//                    ->addTag("sonata.admin", array( 
-//                        "manager_type"  => "orm", 
-//                        "group"         => $Connection["name"], 
-//                        "label"         => "Objects Orm", 
-//                        "icon"          => '<span class="fa fa-binoculars"></span>' 
-//                    ))
-//                    ->setArguments(array(
-//                        null,
-//                        ArrayObject::class,
-//                        ObjectsCRUDController::class,
-//                        $Connection["connector"],
-//                        $Id,
-//                        "objects"
-//                        ))
-//                    ->addMethodCall("setModelManager", [ $container->get('sonata.admin.manager.splash') ])
-//                    ;            
-            //====================================================================//
-            // Widgets Sonata Admin Class	
-            
+            $this->addAdminService(self::TYPE_PROFILE, $Id, $Connection["name"], $Connection["connector"]);
+            $this->addAdminService(self::TYPE_CONFIG, $Id, $Connection["name"], $Connection["connector"]);
+            $this->addAdminService(self::TYPE_OBJECTS, $Id, $Connection["name"], $Connection["connector"]);
+            $this->addAdminService(self::TYPE_WIDGETS, $Id, $Connection["name"], $Connection["connector"]);
         }        
 
     }
     
-    private function addAdminService()
+    private function addAdminService(string $Type, string $Id, string $Name, string $Connector)
     {
+        //====================================================================//
+        // Build Service Tags Array
+        $tags   =   array(
+            "manager_type"  => "orm", 
+            "group"         => $Name, 
+            "label"         => ucwords($Type), 
+            "icon"          => '<span class="fa fa-server"></span>' 
+        );  
+        //====================================================================//
+        // Build Service Configurations
+        switch ($Type) {
+            //====================================================================//
+            // Connector Configuration Admin Service	
+            case self::TYPE_CONFIG:
+                $adminClass =   Configuration::class;  
+                $args   =   array(
+                    null, ArrayObject::class,
+                    ConfigurationController::class,
+                    $Connector, $Id, $Type
+                );
+                break;
+            //====================================================================//
+            // Connector Profile Admin Service	
+            case self::TYPE_PROFILE:
+                $adminClass =   Admin::class;  
+                $args   =   array(
+                    null, ArrayObject::class,
+                    ProfileCRUDController::class,
+                    $Connector, $Id, $Type
+                );
+                break;
+            //====================================================================//
+            // Connector Objects Admin Service	
+            case self::TYPE_OBJECTS:
+                $adminClass =   Admin::class;  
+                $args   =   array(
+                    null, ArrayObject::class,
+                    ObjectsCRUDController::class,
+                    $Connector, $Id, $Type
+                );
+                break;
+            //====================================================================//
+            // Connector Widgets Admin Service	
+            case self::TYPE_WIDGETS:
+                $adminClass =   Admin::class;  
+                $args   =   array(
+                    null, ArrayObject::class,
+                    ProfileCRUDController::class,
+                    $Connector, $Id, $Type
+                );
+                break;
+        }
+        
+        
+        //====================================================================//
+        // Create Sonata Admin Service	
+        $this->container
+            ->register('splash.admin.' . $Id . '.' . $Type , $adminClass)
+                ->addTag("sonata.admin", $tags)
+                ->setArguments($args)
+                ;
         
     }
     

@@ -37,8 +37,6 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 use Symfony\Component\Form\Exception\PropertyAccessDeniedException;
 
-
-
 use ArrayObject;
 
 use Splash\Core\SplashCore as Splash;
@@ -55,6 +53,11 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
      * @var ConnectorsManager
      */
     private $Manager;    
+    
+    /**
+     * @var EntityManager
+     */
+    private $Entitymanager;
     
     /**
      * @var string
@@ -83,9 +86,10 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
      */
     protected $cache = [];
 
-    public function __construct(ConnectorsManager $manager)
+    public function __construct(ConnectorsManager $Manager, EntityManager $EntityManager)
     {
-        $this->Manager = $manager;
+        $this->Manager      =   $Manager;
+        $this->Entitymanager=   $EntityManager;
         Splash::setLocalClass($this->Manager);
     }
 
@@ -131,7 +135,18 @@ class ObjectsManager implements ModelManagerInterface, LockInterface
      */
     public function getConfiguration() 
     {
-        return $this->Manager->getServerConfiguration($this->connexion);
+        //====================================================================//
+        // Load Configuration from DataBase if Exists
+        $DbConfig   = $this->Entitymanager->getRepository("AppExplorerBundle:SplashServer")->findOneByIdentifier($this->connexion);
+        //====================================================================//
+        // Load Configuration from Sf Parameters
+        $SfConfig   = $this->Manager->getServerConfiguration($this->connexion);
+        //====================================================================//
+        // Return Configuration
+        if (empty($DbConfig)) {
+            return  $SfConfig;
+        }
+        return array_replace_recursive($SfConfig, $DbConfig->getSettings());
     }    
     
     /**

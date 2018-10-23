@@ -3,11 +3,8 @@ services:
     
     sonata.admin.manager.splash:
         class: App\ExplorerBundle\Model\ObjectsManager
-        arguments: [ '@splash.connectors.manager' ]
+        arguments: [ '@splash.connectors.manager', "@doctrine.orm.entity_manager" ]
         public: true
-
-
-
 
     splash.explorer.twig.extension:
         class: App\ExplorerBundle\Twig\ExplorerExtension

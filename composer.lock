@@ -1637,16 +1637,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.39.0",
+            "version": "3.40.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "09711748fc1c85132ce21b4df4e8d491412314b3"
+                "reference": "0994f416bf85de1f83f9d657f9e578dd1eb0ca81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/09711748fc1c85132ce21b4df4e8d491412314b3",
-                "reference": "09711748fc1c85132ce21b4df4e8d491412314b3",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/0994f416bf85de1f83f9d657f9e578dd1eb0ca81",
+                "reference": "0994f416bf85de1f83f9d657f9e578dd1eb0ca81",
                 "shasum": ""
             },
             "require": {
@@ -1738,7 +1738,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2018-09-09T08:11:09+00:00"
+            "time": "2018-10-17T08:36:10+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -1974,26 +1974,28 @@
         },
         {
             "name": "sonata-project/datagrid-bundle",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "4e53da7f3a027eee10f1f2bf37237b2b7cffaa71"
+                "reference": "aa0923768b705dbdab6b751f667a03ba6c5fd05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/4e53da7f3a027eee10f1f2bf37237b2b7cffaa71",
-                "reference": "4e53da7f3a027eee10f1f2bf37237b2b7cffaa71",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/aa0923768b705dbdab6b751f667a03ba6c5fd05a",
+                "reference": "aa0923768b705dbdab6b751f667a03ba6c5fd05a",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6 || ^7.0",
+                "symfony/config": "^2.8 || ^3.2 || ^4.0",
                 "symfony/dependency-injection": "^2.8 || ^3.2 || ^4.0",
-                "symfony/form": "^2.8 || ^3.2 || ^4.0"
+                "symfony/form": "^2.8 || ^3.2 || ^4.0",
+                "symfony/http-kernel": "^2.8 || ^3.2 || ^4.0"
             },
             "require-dev": {
                 "doctrine/orm": "^2.4",
-                "symfony/phpunit-bridge": "^3.3"
+                "symfony/phpunit-bridge": "^4.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -2027,7 +2029,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2017-12-12T17:04:29+00:00"
+            "time": "2018-10-09T20:50:18+00:00"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2415,12 +2417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Bundle.git",
-                "reference": "45a9560b86e81e218147c7214529b194baf1397f"
+                "reference": "e3f5bf705cdd87928338cb9047fbd1e2010bf1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/45a9560b86e81e218147c7214529b194baf1397f",
-                "reference": "45a9560b86e81e218147c7214529b194baf1397f",
+                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/e3f5bf705cdd87928338cb9047fbd1e2010bf1d3",
+                "reference": "e3f5bf705cdd87928338cb9047fbd1e2010bf1d3",
                 "shasum": ""
             },
             "require": {
@@ -2487,7 +2489,7 @@
                 }
             ],
             "description": "Splash Core Bundle for Symfony Applications",
-            "time": "2018-10-04T16:12:37+00:00"
+            "time": "2018-10-22T14:05:43+00:00"
         },
         {
             "name": "splash/phpcore",
@@ -2495,12 +2497,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Core.git",
-                "reference": "4c96f5ce83a3beb10981229df8c5fabe0b641f18"
+                "reference": "1345b15cf02beb74d31646c0b694a13e0e5265e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/4c96f5ce83a3beb10981229df8c5fabe0b641f18",
-                "reference": "4c96f5ce83a3beb10981229df8c5fabe0b641f18",
+                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/1345b15cf02beb74d31646c0b694a13e0e5265e6",
+                "reference": "1345b15cf02beb74d31646c0b694a13e0e5265e6",
                 "shasum": ""
             },
             "require": {
@@ -2534,7 +2536,7 @@
                 "MIT"
             ],
             "description": "Splash Core Module for Php Applications",
-            "time": "2018-10-04T12:36:34+00:00"
+            "time": "2018-10-17T15:42:43+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
