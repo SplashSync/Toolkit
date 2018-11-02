@@ -26,16 +26,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Sonata\AdminBundle\Controller\CRUDController;
 
-use Splash\Core\SplashCore as Splash;
-
-use App\ExplorerBundle\Model\ConnectorAwareControllerTrait;
 
 /**
  * Sonata Admin CRUD Controller for Splash Connectors Configurations
  */
 class ConfigurationController extends CRUDController {
-    
-    use ConnectorAwareControllerTrait;
     
     /**
      * List action.
@@ -48,13 +43,13 @@ class ConfigurationController extends CRUDController {
     {
         //====================================================================//
         // Setup Connector
-        $Connector  =   $this->setupConnector();
-        //====================================================================//
-        // Load Connector Configuration (Symfony + Database)
-        $Configuration  =   $this->admin->getModelManager()->getConfiguration();
+        $Connector  =   $this->admin->getModelManager()->getConnector();
         //====================================================================//
         // Build Connector Edit Form
-        $form = $this->createForm($Connector->getFormBuilderName(), $Configuration);  
+        $form = $this->createForm(
+                $Connector->getFormBuilderName(), 
+                $Connector->getConfiguration()
+            );  
         //====================================================================//
         // Add Submit Button
         $form->add('submit', SubmitType::class, array(
@@ -87,29 +82,7 @@ class ConfigurationController extends CRUDController {
             "form"          =>  $formView
         ));
     }
-    
-    /**
-     * Show action.
-     *
-     * @throws AccessDeniedException If access is not granted
-     *
-     * @return Response
-     */
-    public function showAction($id = null)
-    {
-        //====================================================================//
-        // Setup Connector
-        $Connector  =   $this->setupConnector();
-
-        //====================================================================//
-        // Render Connector Profile Page
-        return $this->render("@AppExplorer/Profile/show.html.twig", array(
-            'action'    => 'list',
-            "profile"   =>  $Connector->getProfile(),
-            "object"    =>  Splash::object($id),
-            "log"       =>  Splash::log()->GetHtmlLog(true),
-        ));
-    }    
+   
     
     
     /**

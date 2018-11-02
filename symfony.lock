@@ -140,6 +140,9 @@
     "sonata-project/user-bundle": {
         "version": "5.x-dev"
     },
+    "splash/faker": {
+        "version": "dev-master"
+    },
     "splash/php-bundle": {
         "version": "dev-master"
     },

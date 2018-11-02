@@ -17,6 +17,8 @@
 
 namespace App\ExplorerBundle\Controller;
 
+use ArrayObject;
+
 use Symfony\Component\HttpFoundation\Response;
 
 use Sonata\AdminBundle\Controller\CRUDController;
@@ -29,30 +31,7 @@ use Splash\Bundle\Models\ConnectorInterface;
  *
  * @author nanard33
  */
-class ProfileCRUDController extends CRUDController {
-    
-    /**
-     * @abstract    Setup Connactor
-     *
-     * @return ConnectorInterface
-     * @throws Exception    If Connector Init Fails
-     */
-    private function setupConnector() : ConnectorInterface
-    {
-        //====================================================================//
-        // Connect to Connector
-        if (!$this->container->has($this->admin->getConnectorName())) {
-            throw new Exception("Connector Service not Found : " . $this->admin->getClass());
-        } 
-        $Connector  =   $this->container->get($this->admin->getConnectorName());
-        //====================================================================//
-        // Setup Connector
-        $Configuration  =   $this->container->getParameter("splash");
-        $Connector->setConfiguration($Configuration["connections"][$this->admin->getConnectionName()]);
-        Splash::setLocalClass($Connector);
-        
-        return $Connector;
-    }    
+class ProfileController extends CRUDController {
     
     /**
      * List action.
@@ -63,16 +42,10 @@ class ProfileCRUDController extends CRUDController {
      */
     public function listAction()
     {
+        $Results = array();
         //====================================================================//
         // Setup Connector
-        $Connector  =   $this->setupConnector();
-
-        //====================================================================//
-        // Load Connector Profile
-        $Profile    = $Connector->getProfile();
-        
-        $Results = array();
-        
+        $Connector  =   $this->admin->getModelManager()->getConnector();
         //====================================================================//
         // Execute Splash Self-Test
         $Results['selftest'] = $Connector->selfTest();
@@ -80,31 +53,26 @@ class ProfileCRUDController extends CRUDController {
             Splash::log()->msg("Self-Test Passed");
         }
         $SelfTest_Log = Splash::log()->GetHtmlLog(true);
-
         //====================================================================//
         // Execute Splash Ping Test
         $Results['ping']    = $Connector->ping();
         $PingTest_Log       = Splash::log()->GetHtmlLog(true);
-        
         //====================================================================//
         // Execute Splash Connect Test
         $Results['connect'] = $Connector->connect();
         $ConnectTest_Log    = Splash::log()->GetHtmlLog(true);
-
         //====================================================================//
         // Load Connector Informations
         $Informations    = array();
         if ($Results['ping'] && $Results['connect']) {
-            $Informations    = Splash::informations();
+            $Informations    = $Connector->informations(new ArrayObject(array()));
         }
-        
         //====================================================================//
         // Load Objects Informations
         $Objects   =   array();
-        foreach ($Connector->objects() as $ObjectType) {
-            $Objects[$ObjectType]    =   $Connector->object($ObjectType);            
+        foreach ($Connector->getAvailableObjects() as $ObjectType) {
+            $Objects[$ObjectType]    =   $Connector->getObjectDescription($ObjectType);            
         }
-     
         //====================================================================//
         // Render Connector Profile Page
         return $this->render("@AppExplorer/Profile/list.html.twig", array(
@@ -118,7 +86,6 @@ class ProfileCRUDController extends CRUDController {
             "ping"      =>  $PingTest_Log,
             "connect"   =>  $ConnectTest_Log,
             "objects"   =>  $Objects,
-//            "widgets"   =>  Splash::Widgets(),
         ));
     }
     
@@ -133,14 +100,14 @@ class ProfileCRUDController extends CRUDController {
     {
         //====================================================================//
         // Setup Connector
-        $Connector  =   $this->setupConnector();
-
+        $Connector  =   $this->admin->getModelManager()->getConnector();
         //====================================================================//
         // Render Connector Profile Page
         return $this->render("@AppExplorer/Profile/show.html.twig", array(
             'action'    => 'list',
             "profile"   =>  $Connector->getProfile(),
-            "object"    =>  Splash::object($id),
+            "object"    =>  $Connector->getObjectDescription($id),
+            "fields"    =>  $Connector->getObjectFields($id),
             "log"       =>  Splash::log()->GetHtmlLog(true),
         ));
     }    

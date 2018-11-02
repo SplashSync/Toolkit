@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of SplashSync Project.
  *
@@ -15,22 +14,34 @@
  * @author Bernard Paquier <contact@splashsync.com>
  */
 
-namespace App\ExplorerBundle\Model;
+namespace App\ExplorerBundle\Admin;
 
+use ArrayObject;
+
+use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
+//use Sonata\CoreBundle\Form\Type\CollectionType;
+use Sonata\AdminBundle\Form\Type\CollectionType;
+//use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
+use Splash\Core\SplashCore as Splash;
+
+use App\ExplorerBundle\Fields\FormHelper;
+use App\ExplorerBundle\Form\FieldsListType;
+
+use App\ExplorerBundle\Model\ConnectorAwareAdminTrait;
 
 /**
- * Description of ConnectorAwareTrait
- *
- * @author nanard33
+ * @abstract    Base Admin Class for Splash Sonata Admin Bundle
  */
-trait ConnectorAwareAdminTrait {
-    
-    /**
-     * @abstract    Current Connector Type Name
-     * @var string
-     */
-    private $connector;
-    
+abstract class BaseAdmin extends AbstractAdmin
+{
     /**
      * @abstract    Current Server Id
      * @var string
@@ -41,18 +52,34 @@ trait ConnectorAwareAdminTrait {
      * @abstract    Current Object Type
      * @var string
      */
-    private $objectType;
+    private $ObjectType;
     
     /**
-     * @abstract    Objects Type
-     * @var array
+     * @param string $code
+     * @param string $class
+     * @param string $baseControllerName
+     * @param string $ServerId
+     * @param string $Type
      */
-    private $objectTypes;
-
+    public function __construct($code, $class, $baseControllerName, $ServerId, $Type)
+    {
+        parent::__construct($code, $class, $baseControllerName);
+        $this->baseRouteName    = "sonata_admin_" . $code . "_" . $Type;
+        $this->baseRoutePattern = $ServerId . "/" . $Type;
+        $this->setServerId($ServerId);
+    }  
+    
     //====================================================================//
     // Admin Model Manager Managements
     //====================================================================//
 
+    public function configure()
+    {
+        //====================================================================//
+        // Setup Model Manager     
+        $this->configureModelManager();
+    }
+    
     protected function configureModelManager()
     {
         //====================================================================//
@@ -60,7 +87,7 @@ trait ConnectorAwareAdminTrait {
         $ModelManager   =   $this->getConfigurationPool()->getContainer()->get("sonata.admin.manager.splash");
         //====================================================================//
         // Setup Model Manager     
-        $ModelManager->setConnection($this->serverId);      
+        $ModelManager->setServerId($this->serverId);      
         //====================================================================//
         // Override Model Manager
         $this->setModelManager($ModelManager);
@@ -73,41 +100,25 @@ trait ConnectorAwareAdminTrait {
     public function getObjectType()
     {
         //====================================================================//
-        // Detect Object Type from Cache
-        if (!empty($this->objectType)) {
-            return $this->objectType;
-        } 
+        // Load From cache
+        if (!empty($this->ObjectType)) {
+            return $this->ObjectType;
+        }        
         //====================================================================//
         // Detect Object Type from Request
-        $this->objectType =   $this->getRequest()->getSession()->get("ObjectType");
+        $this->ObjectType =   $this->getRequest()->getSession()->get("ObjectType");
         //====================================================================//
         // No Object Type? Take First Available from Connector
-        if (empty($this->objectType)) {
-            $this->objectTypes  =   $this->getModelManager()->getConnector()->objects();
-            $this->objectType   =   array_shift($this->objectTypes);
+        if (empty($this->ObjectType)) {
+            $ObjectTypes  =   $this->getModelManager()->getConnector()->getAvailableObjects();
+            $this->ObjectType   =   array_shift($ObjectTypes);
         }
-        return $this->objectType;
+        return $this->ObjectType;
     }
     
     //====================================================================//
     // Basic Getters & Setters
     //====================================================================//
-    
-    /**
-     * @abstract    Setup Connector Name 
-     * @param   string  $ConnectorName
-     * @return  $this
-     */
-    protected function setConnectorName(string $ConnectorName)
-    {
-        $this->connector    =   $ConnectorName;
-        return $this;
-    }
-    
-    public function getConnectorName()
-    {
-        return $this->connector;
-    }
     
     /**
      * @abstract    Setup Splash Server Id
@@ -124,8 +135,5 @@ trait ConnectorAwareAdminTrait {
     {
         return $this->serverId;
     }    
-    
-
-    
-    
+  
 }

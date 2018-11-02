@@ -18,107 +18,31 @@ namespace App\ExplorerBundle\Admin;
 
 use ArrayObject;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-
-//use Sonata\CoreBundle\Form\Type\CollectionType;
 use Sonata\AdminBundle\Form\Type\CollectionType;
-//use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-
-use Splash\Core\SplashCore as Splash;
 
 use App\ExplorerBundle\Fields\FormHelper;
 use App\ExplorerBundle\Form\FieldsListType;
 
-use App\ExplorerBundle\Model\ConnectorAwareAdminTrait;
-
 /**
- * @abstract    Connectors Configuration Admin Class for Splash Connectors Explorer
+ * @abstract    Objects Admin Class for Splash Connectors Explorer
  */
-class Configuration extends AbstractAdmin
+class ObjectsAdmin extends BaseAdmin
 {
-    use ConnectorAwareAdminTrait;
-    
-    /**
-     * @param string $code
-     * @param string $class
-     * @param string $baseControllerName
-     * @param string $serverId
-     * @param string $section
-     */
-    public function __construct($code, $class, $baseControllerName, $connectorName, $serverId, $section)
-    {
-        parent::__construct($code, $class, $baseControllerName);
-        $this->baseRouteName    = "sonata_admin_" . $code . "_" . $section;
-        $this->baseRoutePattern = $serverId . "/" . $section;
-        
-        $this->setConnectorName($connectorName);
-        $this->setServerId($serverId);
-        
-    }    
-
-    public function configure()
-    {
-        //====================================================================//
-        // Setup Model Manager     
-        $this->configureModelManager();
-    }
-    
-    
-
-    
-//    public function getModelManager()
-//    {
-//        return $this->modelManager;
-//    }    
-    
-//    public function getClass()
-//    {
-//        if ($this->hasRequest()) {
-//            return $this->getObjectType();
-//        } 
-//        return parent::getClass();
-//    }    
-    
-
     
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('batch');
-        $collection->remove('create');
-        $collection->remove('edit');
-        $collection->remove('show');
-        $collection->remove('delete');
-        $collection->remove('export');
+        $collection->add('switch', 'switch');
     }    
-    
-//    public function configureActionButtons($action, $object = null)
-//    {
-//        $list = parent::configureActionButtons($action, $object);
-////dump($list);
-//        unset($list['create']);
-//        $list['create']['template'] = '@AppExplorer/Objects/create_button.html.twig';
-//
-//        return $list;
-//    }
-     
-//    public function getClass()
-//    {
-//        return "array";
-//    }     
     
     /**
      * {@inheritdoc}
      */
     protected function configureShowFields(ShowMapper $showMapper)
     {
-//dump(parent::getFormTheme());        
-//dump(parent::getTemplates());        
         $this->configureFields($showMapper);
     }
             
@@ -232,15 +156,6 @@ class Configuration extends AbstractAdmin
             }
         
         }
-        
-//        $object = parent::getNewInstance();
-//
-////        $inspection = new Inspection();
-////        $inspection->setDate(new \DateTime());
-////        $inspection->setComment("Initial inspection");
-//
-////        $object->addInspection($inspection);
-//
         return $Object;
     }    
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c452fb28301f0dbc9e488f3a0d9d7dc",
+    "content-hash": "da7b66f47a81f217eb88f8b464fbcd9c",
     "packages": [
         {
             "name": "burgov/key-value-form-bundle",
@@ -2101,16 +2101,16 @@
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
-            "version": "3.6.2",
+            "version": "3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "0da4b9afbe4bc831b61589721da9a79d7df36cc1"
+                "reference": "5cd7b12e13ceadeb62edc170b067bc10c26d5896"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/0da4b9afbe4bc831b61589721da9a79d7df36cc1",
-                "reference": "0da4b9afbe4bc831b61589721da9a79d7df36cc1",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/5cd7b12e13ceadeb62edc170b067bc10c26d5896",
+                "reference": "5cd7b12e13ceadeb62edc170b067bc10c26d5896",
                 "shasum": ""
             },
             "require": {
@@ -2181,7 +2181,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2018-10-01T17:08:16+00:00"
+            "time": "2018-10-25T21:59:48+00:00"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -2319,12 +2319,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "eff35d5fd4b8b7c49e13c1edb9594be76a5cf869"
+                "reference": "d6e24be98fb509c7601bdd36d21a279b1c539c88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/eff35d5fd4b8b7c49e13c1edb9594be76a5cf869",
-                "reference": "eff35d5fd4b8b7c49e13c1edb9594be76a5cf869",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/d6e24be98fb509c7601bdd36d21a279b1c539c88",
+                "reference": "d6e24be98fb509c7601bdd36d21a279b1c539c88",
                 "shasum": ""
             },
             "require": {
@@ -2409,7 +2409,67 @@
                 "sonata",
                 "user"
             ],
-            "time": "2018-09-13T00:00:23+00:00"
+            "time": "2018-10-31T01:00:33+00:00"
+        },
+        {
+            "name": "splash/faker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SplashSync/Faker-Bundle.git",
+                "reference": "cb05169b37f4ce76b03963cd5951276eae4f2d8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SplashSync/Faker-Bundle/zipball/cb05169b37f4ce76b03963cd5951276eae4f2d8a",
+                "reference": "cb05169b37f4ce76b03963cd5951276eae4f2d8a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "splash/php-bundle": "*"
+            },
+            "require-dev": {
+                "composer/composer": "^1.5",
+                "doctrine/doctrine-bundle": "^1.9",
+                "doctrine/orm": "^2.4",
+                "j13k/yaml-lint": "^1.1",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "phpmd/phpmd": "^2.6",
+                "phpro/grumphp": "^0.14.0",
+                "phpstan/phpstan-shim": "^0.10",
+                "phpunit/phpunit": ">7",
+                "sclable/xml-lint": "^0.2.4",
+                "sebastian/phpcpd": ">3.0",
+                "seld/jsonlint": "^1.7",
+                "sensiolabs/security-checker": "^4.1",
+                "splash/php-bundle": "dev-master",
+                "squizlabs/php_codesniffer": "^3.2",
+                "symfony/monolog-bundle": ">=2.1",
+                "symfony/symfony": "~3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Splash\\Connectors\\FakerBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Splash Sync",
+                    "email": "contact@splashsync.com"
+                },
+                {
+                    "name": "Bernard Paquier",
+                    "email": "eshop.bpaquier@gmail.com"
+                }
+            ],
+            "description": "Splash Fake Connector for Symfony Applications",
+            "time": "2018-11-02T15:36:13+00:00"
         },
         {
             "name": "splash/php-bundle",
@@ -2417,12 +2477,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Bundle.git",
-                "reference": "e3f5bf705cdd87928338cb9047fbd1e2010bf1d3"
+                "reference": "910a689d921d8133c6efae7e2ac03c910cbd60fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/e3f5bf705cdd87928338cb9047fbd1e2010bf1d3",
-                "reference": "e3f5bf705cdd87928338cb9047fbd1e2010bf1d3",
+                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/910a689d921d8133c6efae7e2ac03c910cbd60fd",
+                "reference": "910a689d921d8133c6efae7e2ac03c910cbd60fd",
                 "shasum": ""
             },
             "require": {
@@ -2430,41 +2490,28 @@
                 "splash/phpcore": "dev-master"
             },
             "require-dev": {
-                "bmatzner/fontawesome-bundle": "~4.7",
                 "composer/composer": "^1.5",
-                "doctrine/doctrine-bundle": "^1.6",
-                "doctrine/doctrine-cache-bundle": "^1.2",
-                "doctrine/orm": "^2.5",
-                "friendsofsymfony/jsrouting-bundle": ">=2.0",
+                "doctrine/doctrine-bundle": "^1.9",
+                "doctrine/orm": "^2.4",
                 "j13k/yaml-lint": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^1.0",
-                "knplabs/knp-menu-bundle": ">=2.0",
-                "knplabs/knp-time-bundle": ">1.5",
-                "mopa/bootstrap-bundle": "~3.0",
                 "phpmd/phpmd": "^2.6",
                 "phpro/grumphp": "^0.14.0",
-                "phpunit/phpunit": ">5",
+                "phpstan/phpstan-shim": "^0.10",
+                "phpunit/phpunit": ">7",
                 "sclable/xml-lint": "^0.2.4",
                 "sebastian/phpcpd": ">3.0",
                 "seld/jsonlint": "^1.7",
                 "sensio/distribution-bundle": ">=5",
                 "sensio/framework-extra-bundle": ">=3",
                 "sensiolabs/security-checker": "^4.1",
-                "sonata-project/block-bundle": ">=3.0",
+                "splash/faker": "dev-master",
                 "squizlabs/php_codesniffer": "^3.2",
-                "symfony/assetic-bundle": ">=2.8",
                 "symfony/monolog-bundle": ">=2.1",
                 "symfony/phpunit-bridge": "^3.0",
-                "symfony/symfony": "~3.0  | ~3.4",
-                "twbs/bootstrap": "~3.3.0"
+                "symfony/symfony": "~3.4"
             },
             "type": "library",
-            "extra": {
-                "symfony-app-dir": "app",
-                "symfony-bin-dir": "bin",
-                "symfony-var-dir": "var",
-                "symfony-web-dir": "web"
-            },
             "autoload": {
                 "psr-4": {
                     "Splash\\Bundle\\": "src/",
@@ -2489,7 +2536,7 @@
                 }
             ],
             "description": "Splash Core Bundle for Symfony Applications",
-            "time": "2018-10-22T14:05:43+00:00"
+            "time": "2018-11-02T15:58:06+00:00"
         },
         {
             "name": "splash/phpcore",
@@ -2497,12 +2544,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Core.git",
-                "reference": "1345b15cf02beb74d31646c0b694a13e0e5265e6"
+                "reference": "ba944416934a9e85fc9bed3ed3c2094762fe0263"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/1345b15cf02beb74d31646c0b694a13e0e5265e6",
-                "reference": "1345b15cf02beb74d31646c0b694a13e0e5265e6",
+                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/ba944416934a9e85fc9bed3ed3c2094762fe0263",
+                "reference": "ba944416934a9e85fc9bed3ed3c2094762fe0263",
                 "shasum": ""
             },
             "require": {
@@ -2536,7 +2583,7 @@
                 "MIT"
             ],
             "description": "Splash Core Module for Php Applications",
-            "time": "2018-10-17T15:42:43+00:00"
+            "time": "2018-11-02T15:46:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3847,7 +3894,7 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
@@ -3905,16 +3952,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -3960,7 +4007,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -4326,16 +4373,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83"
+                "reference": "bd47db86d0b8415f6317c2be149bbacfab11a9cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/7bd5de67552ee3f7e04df89d662d41eba346dc83",
-                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/bd47db86d0b8415f6317c2be149bbacfab11a9cf",
+                "reference": "bd47db86d0b8415f6317c2be149bbacfab11a9cf",
                 "shasum": ""
             },
             "require": {
@@ -4384,7 +4431,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2018-08-29T08:49:17+00:00"
+            "time": "2018-10-27T16:17:38+00:00"
         },
         {
             "name": "symfony/templating",
@@ -5356,16 +5403,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae"
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/95c50420b0baed23852452a7f0c7b527303ed5ae",
-                "reference": "95c50420b0baed23852452a7f0c7b527303ed5ae",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
+                "reference": "9050816e2ca34a8e916c3a0ae8b9c2fccf68b631",
                 "shasum": ""
             },
             "require": {
@@ -5407,7 +5454,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/profiler-pack",
@@ -5634,6 +5681,7 @@
         "burgov/key-value-form-bundle": 0,
         "sonata-project/user-bundle": 20,
         "splash/php-bundle": 20,
+        "splash/faker": 20,
         "splash/phpcore": 20
     },
     "prefer-stable": true,

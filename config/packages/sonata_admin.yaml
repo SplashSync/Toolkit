@@ -2,18 +2,11 @@
 sonata_admin:
     title:      Splash Toolkit
     title_logo: img/Splash-Logo_Ico.png
-    
     search:     false
-    
     dashboard:
         blocks:
             - { type: sonata.admin.block.admin_list, position: center }
-
-#    templates:
-#        show:       AppBundle:Admin:Display_Client.html.twig        
     options:
-#        title_mode:                     "single_image" # One of "single_text"; "single_image"; "both"
-        
     security:
         role_admin:                     ROLE_USER
 

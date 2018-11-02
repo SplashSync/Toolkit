@@ -17,6 +17,7 @@
         "sonata-project/doctrine-orm-admin-bundle": ">=3.0",
         "sonata-project/user-bundle": "dev-master",
         "splash/php-bundle": "dev-master",
+        "splash/faker": "dev-master",
         "splash/phpcore": "dev-master",
         "symfony/console": "*",
         "symfony/flex": "^1.1",
@@ -52,7 +53,10 @@
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
-        }
+        },
+        "files": [ 
+            "vendor/splash/phpcore/inc/Splash.Inc.php"
+        ]        
     },
     
     "replace": {
