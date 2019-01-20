@@ -1,11 +1,12 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
+                        
         fos_userbundle:
             id: fos_user.user_provider.username
         
     encoders:
-        FOS\UserBundle\Model\UserInterface: sha512
+        FOS\UserBundle\Model\UserInterface:         sha512
         
     firewalls:
         dev:
