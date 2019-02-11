@@ -21,3 +21,5 @@
 ###< friendsofphp/php-cs-fixer ###
 
 public/www\.pid
+/.env.test
+/public/tmp/
