@@ -33,4 +33,6 @@ return [
     Splash\Connectors\MailChimp\MailChimpBundle::class => ['all' => true],
     Splash\Connectors\Mailjet\MailjetBundle::class => ['all' => true],
     Splash\Connectors\SendInBlue\SendInBlueBundle::class => ['all' => true],
+    Splash\Connectors\Shopify\ShopifyBundle::class => ['all' => true],
+    KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => ['all' => true],
 ];
