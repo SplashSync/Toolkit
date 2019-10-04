@@ -34,5 +34,7 @@ return [
     Splash\Connectors\Mailjet\MailjetBundle::class => ['all' => true],
     Splash\Connectors\SendInBlue\SendInBlueBundle::class => ['all' => true],
     Splash\Connectors\Shopify\ShopifyBundle::class => ['all' => true],
+    Splash\Connectors\Optilog\OptilogBundle::class => ['all' => true],
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => ['all' => true],
+    Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
 ];

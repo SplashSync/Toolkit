@@ -23,3 +23,9 @@
 public/www\.pid
 /.env.test
 /public/tmp/
+/nbproject/private/
+/nbproject/
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+/config/packages/cache.yaml
