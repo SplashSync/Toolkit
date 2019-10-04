@@ -9,6 +9,9 @@ splash:
 #    cache: 
 #        enabled: false    
 #        lifetime: 10
+
+    # Allow Notifications for Generic Users   
+    notify: ["ROLE_USER"]
     
 ################################################################################    
 # List of Availables Connector Connections
