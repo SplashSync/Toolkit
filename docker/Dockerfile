@@ -32,7 +32,8 @@ COPY config/splash.yml /app/config/packages/splash.yml
 
 RUN php -m
 
-RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update
+#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install
 
 RUN php /app/bin/console assets:install --no-debug
 
