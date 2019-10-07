@@ -48,6 +48,7 @@ return array(
     Splash\Connectors\SendInBlue\SendInBlueBundle::class => array('all' => true),
     Splash\Connectors\Shopify\ShopifyBundle::class => array('all' => true),
     Splash\Connectors\Optilog\OptilogBundle::class => array('all' => true),
+    Splash\Console\ConsoleBundle::class => array('all' => true),
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => array('all' => true),
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => array('dev' => true),
 );
