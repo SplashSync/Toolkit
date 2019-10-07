@@ -1,23 +1,27 @@
 {
-    "name":     "splash/toolkit",
-    "license":  "MIT",
-    "type":     "project",
+    "name":             "splash/toolkit",
+    "license":          "MIT",
+    "type":             "project",
+    "descriptrion":     "Developper Toolkit for All Splash Modules, Bundles & Connectors Developepments",
     
     "minimum-stability": "dev",
     "prefer-stable": true,
     
     "require": {
-        "php":                          "^7.1.3",
+        "php":                          "^7.1",
+        "ext-xml":                      "*",
+        "ext-soap":                     "*",
         "ext-ctype":                    "*",
         "ext-iconv":                    "*",
         
-        "symfony/console":              "*",
-        "symfony/flex":                 "^1.1",
-        "symfony/framework-bundle":     "*",
+        "symfony/console":              "4.2.*",
+        "symfony/flex":                 "^1.4",
+        "symfony/framework-bundle":     "4.2.*",
         "symfony/swiftmailer-bundle":   "^3.2",
         "symfony/templating":           "*",
         "symfony/twig-bundle":          "*",
         "symfony/yaml":                 "*",
+        "symfony/web-server-bundle":    "*",
 
         "doctrine/doctrine-bundle":     "^1.6",
         "doctrine/orm":                 "^2.5",
@@ -30,17 +34,17 @@
         "burgov/key-value-form-bundle": "@stable",
         
         "splash/php-bundle":            "dev-master",
+        "splash/console":               "dev-master",
         "splash/faker":                 "dev-master",
+        "splash/sonata-admin-splash-bundle": "dev-master",
+        "splash/sonata-admin-monolog-bundle": "dev-master",
+        
         "splash/soap":                  "dev-master",
         "splash/mailchimp":             "dev-master",
         "splash/mailjet":               "dev-master",
         "splash/sendinblue":            "dev-master",
         "splash/shopify":               "dev-master",
-        "splash/optilog":               "*",
-        
-        "splash/sonata-admin-splash-bundle": "dev-master",
-        "splash/sonata-admin-monolog-bundle": "dev-master",
-        "symfony/web-server-bundle": "4.2.*"
+        "splash/optilog":               "*"
     },
     
     "require-dev": {

@@ -15,20 +15,19 @@
 #
 ################################################################################
 
-#############################################        
-#   Local Config 
-parameters:
-    
-    # For Building Splash Module
-    mod-enable:     false
-    # For Building Splash Documentation
-    doc-enable:     true
-    doc-src:        '/src/Resources/docs'
-    doc-contents:   ["splash"]    
-    # For Building Splash Manifest
-    yml-enable:     false
-    
-#############################################        
-# Import Config. from Generic Bundle
-imports:
-    - { resource: "./vendor/splash/php-bundle/src/Resources/grumphp/grumphp.base.yml" }
+################################################################################
+# LOCAL DOC CONFIGURATION
+################################################################################
+
+# Title of the Bundle / Module
+title: Splash Dev Toolkit
+# Subtitle of the Site (Generaly DOC)
+subtitle: DOC
+# the subpath of your site, e.g. /blog
+baseurl: "/Toolkit" 
+# Description of the Bundle/Module
+description:    "Developper Toolkit for All Splash Modules, Bundles & Connectors Developepments.
+                A complete developper interface for creating & testing Splash Modules"
+# Package Code on Packagist
+package:    "splash/toolkit"
+

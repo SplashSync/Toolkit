@@ -1,5 +1,18 @@
 <?php
 
+/*
+ *  This file is part of SplashSync Project.
+ *
+ *  Copyright (C) 2015-2019 Splash Sync  <www.splashsync.com>
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ */
+
 use Symfony\Component\Dotenv\Dotenv;
 
 require dirname(__DIR__).'/vendor/autoload.php';
@@ -21,7 +34,7 @@ if ('prod' !== $_SERVER['APP_ENV']) {
     } else {
         // fallback code in case your Dotenv component is not 4.2 or higher (when loadEnv() was added)
 
-        if (file_exists($path) || !file_exists($p = "$path.dist")) {
+        if (file_exists($path) || !file_exists($p = "${path}.dist")) {
             $dotenv->load($path);
         } else {
             $dotenv->load($p);
@@ -31,16 +44,16 @@ if ('prod' !== $_SERVER['APP_ENV']) {
             $dotenv->populate(array('APP_ENV' => $env = 'dev'));
         }
 
-        if ('test' !== $env && file_exists($p = "$path.local")) {
+        if ('test' !== $env && file_exists($p = "${path}.local")) {
             $dotenv->load($p);
             $env = $_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? $env;
         }
 
-        if (file_exists($p = "$path.$env")) {
+        if (file_exists($p = "${path}.${env}")) {
             $dotenv->load($p);
         }
 
-        if (file_exists($p = "$path.$env.local")) {
+        if (file_exists($p = "${path}.${env}.local")) {
             $dotenv->load($p);
         }
     }
