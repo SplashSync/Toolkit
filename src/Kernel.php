@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
 /**
- * Symfony Kernel
+ * Symfony Kernel.
  */
 class Kernel extends BaseKernel
 {
