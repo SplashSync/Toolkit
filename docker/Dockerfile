@@ -46,4 +46,4 @@ EXPOSE 80
 
 WORKDIR /app
 
-CMD ["php", "/app/bin/console", "server:run", "172.169.0.10:80"]
+CMD ["php", "/app/bin/console", "server:run", "127.0.0.1:80"]
