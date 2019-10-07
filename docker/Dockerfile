@@ -28,7 +28,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN git clone https://github.com/SplashSync/Toolkit.git --depth=1 /app
 
 COPY .env /app/.env
-COPY config/splash.yml /app/config/splash.yml
+COPY config/splash.yml /app/config/packages/splash.yml
 
 RUN php -m
 
@@ -39,7 +39,7 @@ RUN php /app/bin/console assets:install --no-debug
 RUN php /app/bin/console doctrine:schema:update --force
 RUN php /app/bin/console debug:config splash
 RUN php /app/bin/console cache:clear
-RUN php /app/bin/console fos:user:create admin contact@splashsync.com admin --super-admin
+RUN php /app/bin/console fos:user:create admin contact@exemple.com admin --super-admin
 
 EXPOSE 80
 
