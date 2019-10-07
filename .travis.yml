@@ -45,7 +45,7 @@ script:
     # Execute Grump Travis Testsuite 
     - php vendor/bin/grumphp run --testsuite=travis
     # With PHP 7 => Execute Grump CsFixer Testsuite 
-    - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.0" ]]; then php vendor/bin/grumphp run --testsuite=csfixer; fi  
+#    - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.0" ]]; then php vendor/bin/grumphp run --testsuite=csfixer; fi  
     # Configure Symfony 
     - cp .env.dist .env
     - php bin/console doctrine:schema:update --force
