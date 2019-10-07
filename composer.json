@@ -2,7 +2,7 @@
     "name":             "splash/toolkit",
     "license":          "MIT",
     "type":             "project",
-    "descriptrion":     "Developper Toolkit for All Splash Modules, Bundles & Connectors Developepments",
+    "description":      "Developper Toolkit for All Splash Modules, Bundles & Connectors Developepments",
     
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -12,46 +12,45 @@
         "ext-xml":                      "*",
         "ext-soap":                     "*",
         "ext-ctype":                    "*",
-        "ext-iconv":                    "*",
-        
-        "symfony/console":              "4.2.*",
-        "symfony/flex":                 "^1.4",
-        "symfony/framework-bundle":     "4.2.*",
-        "symfony/swiftmailer-bundle":   "^3.2",
-        "symfony/templating":           "*",
-        "symfony/twig-bundle":          "*",
-        "symfony/yaml":                 "*",
-        "symfony/web-server-bundle":    "*",
-
-        "doctrine/doctrine-bundle":     "^1.6",
-        "doctrine/orm":                 "^2.5",
-
-        "sonata-project/admin-bundle":  ">=3.0",
-        "sonata-project/doctrine-orm-admin-bundle": ">=3.0",
-        "sonata-project/user-bundle":   ">=3.0",
-     
-        
-        "burgov/key-value-form-bundle": "@stable",
-        
-        "splash/php-bundle":            "dev-master",
-        "splash/console":               "dev-master",
-        "splash/faker":                 "dev-master",
-        "splash/sonata-admin-splash-bundle": "dev-master",
-        "splash/sonata-admin-monolog-bundle": "dev-master",
-        
-        "splash/soap":                  "dev-master",
-        "splash/mailchimp":             "dev-master",
-        "splash/mailjet":               "dev-master",
-        "splash/sendinblue":            "dev-master",
-        "splash/shopify":               "dev-master",
-        "splash/optilog":               "*"
+        "ext-iconv":                    "*"
     },
     
     "require-dev": {
-        "symfony/debug-pack":           "^1.0",
-        "symfony/dotenv":               "*",
-        "symfony/profiler-pack":        "^1.0",
-        "symfony/var-dumper":           "*",
+        
+        "symfony/console":                              "4.2.*",
+        "symfony/flex":                                 "^1.4",
+        "symfony/framework-bundle":                     "4.2.*",
+        "symfony/swiftmailer-bundle":                   "^3.2",
+        "symfony/templating":                           "*",
+        "symfony/twig-bundle":                          "*",
+        "symfony/yaml":                                 "*",
+        "symfony/web-server-bundle":                    "*",
+        "symfony/debug-pack":                           "^1.0",
+        "symfony/dotenv":                               "*",
+        "symfony/profiler-pack":                        "^1.0",
+        "symfony/var-dumper":                           "*",
+
+        "doctrine/doctrine-bundle":                     "^1.6",
+        "doctrine/orm":                                 "^2.5",
+
+        "sonata-project/admin-bundle":                  ">=3.0",
+        "sonata-project/doctrine-orm-admin-bundle":     ">=3.0",
+        "sonata-project/user-bundle":                   ">=3.0",
+        
+        "burgov/key-value-form-bundle":                 "@stable",
+        
+        "splash/php-bundle":                            "dev-master",
+        "splash/console":                               "dev-master",
+        "splash/faker":                                 "dev-master",
+        "splash/sonata-admin-splash-bundle":            "dev-master",
+        "splash/sonata-admin-monolog-bundle":           "dev-master",
+        
+        "splash/soap":                                  "dev-master",
+        "splash/mailchimp":                             "dev-master",
+        "splash/mailjet":                               "dev-master",
+        "splash/sendinblue":                            "dev-master",
+        "splash/shopify":                               "dev-master",
+        "splash/optilog":                               "dev-master",
         
         "phpunit/phpunit":                              ">6",
         
