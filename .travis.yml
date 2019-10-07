@@ -1,0 +1,54 @@
+################################################################################
+# Project language
+language: php
+# Allows use container-based infrastructure
+sudo: false
+#sudo: required
+dist: trusty
+
+################################################################################
+# Start mysql service
+services:
+  - mysql
+
+################################################################################
+# Cache composer packages so "composer install" is faster
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+################################################################################
+# Define an environment variable
+env:
+    global:
+        - SYMFONY_DEPRECATIONS_HELPER=disabled
+        - COMPOSER_MEMORY_LIMIT: -1
+        
+################################################################################
+# Versions of PHP to test against
+php:
+    - "7.3"
+    - "7.2"      
+
+################################################################################
+# Install composer dependencies,
+# Create database, schema and fixtures
+install:   
+    # Update composer
+    - composer self-update
+    # Build Dependencies
+    - composer update  --prefer-dist --no-interaction  
+
+################################################################################
+# Run script
+script:
+    # Execute Grump Travis Testsuite 
+    - php vendor/bin/grumphp run --testsuite=travis
+    # With PHP 7 => Execute Grump CsFixer Testsuite 
+    - if [[ ${TRAVIS_PHP_VERSION:0:3} > "7.0" ]]; then php vendor/bin/grumphp run --testsuite=csfixer; fi  
+    
+# After a build, send email notification with the build results
+notifications:
+  email:         
+    on_success: never # default: change
+    on_failure: never # default: always

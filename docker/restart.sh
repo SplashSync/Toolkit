@@ -16,10 +16,11 @@
 ################################################################################
 
 echo "*************************************************************************"
-echo "** Build Toolkit Docker ..."
+echo "** Restart Toolkit Docker ..."
 echo "*************************************************************************"
 
-docker-compose up -d --build
+docker-compose stop
+docker-compose up -d
 
 echo "*************************************************************************"
 echo "** Configure the ToolKit ..."
@@ -28,4 +29,3 @@ echo "*************************************************************************"
 docker-compose exec symfony php /app/bin/console doctrine:schema:update --force
 docker-compose exec symfony php /app/bin/console debug:config splash
 docker-compose exec symfony php /app/bin/console cache:clear
-docker-compose exec symfony php /app/bin/console fos:user:create admin contact@splashsync.com admin --super-admin
