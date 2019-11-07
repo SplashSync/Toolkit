@@ -31,3 +31,5 @@ public/www\.pid
 /config/packages/cache.yaml
 /.gh-pages/
 /tmp/
+/splash.json
+/splash.yml

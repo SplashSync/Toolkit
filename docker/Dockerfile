@@ -60,3 +60,4 @@ RUN chmod 777 /app/var/data.db
 EXPOSE 80
 
 WORKDIR /app
+CMD ["apache2-foreground"]
