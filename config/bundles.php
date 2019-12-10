@@ -34,8 +34,6 @@ return array(
     Symfony\Bundle\MonologBundle\MonologBundle::class => array('all' => true),
     Symfony\Bundle\DebugBundle\DebugBundle::class => array('dev' => true, 'test' => true),
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => array('all' => true),
-    Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle::class => array('all' => true),
-    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => array('all' => true),
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => array('all' => true),
     Splash\Bundle\SplashBundle::class => array('all' => true),
     Splash\Widgets\SplashWidgetsBundle::class => array('all' => true),
@@ -51,4 +49,5 @@ return array(
     Splash\Console\ConsoleBundle::class => array('all' => true),
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => array('all' => true),
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => array('dev' => true),
+    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => array('all' => true),
 );
