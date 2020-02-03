@@ -56,8 +56,14 @@ RUN php /app/bin/console debug:config splash
 RUN php /app/bin/console cache:clear
 RUN php /app/bin/console fos:user:create admin contact@exemple.com admin --super-admin
 RUN chmod 777 /app/var/data.db
+################################################################################
+# Setup Entrypoint
+COPY entrypoint.sh /
+RUN set -ex; \
+    chmod 755 /entrypoint.sh
 
 EXPOSE 80
-
 WORKDIR /app
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 CMD ["apache2-foreground"]

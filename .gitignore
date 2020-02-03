@@ -41,3 +41,4 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 /symfony.lock
 /yarn.lock
+/reconnect.sh

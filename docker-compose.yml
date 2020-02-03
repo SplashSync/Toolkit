@@ -21,8 +21,6 @@
 # This Docker File intend to Create a Complete Toolkit Envirenement 
 # for Developpement of Splash Modules
 #
-# To us different PS Version coinfigured, you need to add hosts to /etc/hosts
-# 
 # 172.169.0.10        toolkit.splashsync.local
 #
 ################################################################################
@@ -48,7 +46,6 @@ services:
             # Shared Composer Cache
             - ~/.composer:/home/docker/.composer
         hostname: toolkit.splashsync.local
-        command:            ["php", "/app/bin/console", "server:run", "172.169.0.10:80"]
         networks:
             toolkit:        { ipv4_address: 172.169.0.10 }
             splashsync:     { aliases: [ toolkit.splashsync.local ] }
