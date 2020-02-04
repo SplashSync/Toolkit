@@ -38,6 +38,9 @@
         <server name="SERVER_NAME" value="http://localhost:8000"/>        
         <const  name="SPLASH_DEBUG" value="true" />
         <server name="SPLASH_TRAVIS" value="true" />
+                
+        <!--<const  name="SPLASH_TYPES" value="Product" />-->
+        <!--<const  name="SPLASH_FIELDS" value="image@images" />-->
     </php>
     
 </phpunit>
