@@ -29,7 +29,7 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 ################################################################################
 # Install Required Libs
 RUN apt-get update
-RUN apt-get install -y git nano curl libxml2-dev libzip-dev zlib1g-dev
+RUN apt-get install -y git nano curl libxml2-dev libzip-dev zlib1g-dev unzip
 ################################################################################
 # Install Required PHP Extensions
 RUN docker-php-ext-install pdo_mysql soap zip
@@ -47,8 +47,9 @@ COPY .env /app/.env
 COPY config/splash.yml /app/splash.yml
 ################################################################################
 # Run Composer
-RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install
-#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update
+RUN rm -Rf /app/var/cache/* 
+#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update
 ################################################################################
 # Install Splash Toolkit
 RUN php /app/bin/console doctrine:schema:update --force

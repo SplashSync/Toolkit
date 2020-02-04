@@ -169,16 +169,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.9.2",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb"
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
-                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
+                "url": "https://api.github.com/repos/composer/composer/zipball/1291a16ce3f48bfdeca39d64fca4875098af4d7b",
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +245,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2020-01-14T15:30:32+00:00"
+            "time": "2020-02-04T11:58:49+00:00"
         },
         {
             "name": "composer/semver",
@@ -6423,12 +6423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Mailjet-Bundle.git",
-                "reference": "f6acee17c0d553ade635f44ba09682e0536c4658"
+                "reference": "8258a2308e05579e1cd3f4e7f17691b2989af09e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Mailjet-Bundle/zipball/f6acee17c0d553ade635f44ba09682e0536c4658",
-                "reference": "f6acee17c0d553ade635f44ba09682e0536c4658",
+                "url": "https://api.github.com/repos/SplashSync/Mailjet-Bundle/zipball/8258a2308e05579e1cd3f4e7f17691b2989af09e",
+                "reference": "8258a2308e05579e1cd3f4e7f17691b2989af09e",
                 "shasum": ""
             },
             "require": {
@@ -6445,7 +6445,7 @@
                 "j13k/yaml-lint": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "monolog/monolog": "^1.0",
-                "phpmd/phpmd": "^2.6",
+                "phpmd/phpmd": "~2.7.0",
                 "phpro/grumphp": "^0.16",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-doctrine": "^0.12",
@@ -6485,7 +6485,7 @@
                 }
             ],
             "description": "Splash Mailjet API Connector (Embedded)",
-            "time": "2019-12-10T00:42:08+00:00"
+            "time": "2020-02-04T21:16:57+00:00"
         },
         {
             "name": "splash/optilog",
@@ -6564,12 +6564,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Bundle.git",
-                "reference": "66bd5aacdc400d962bdb6a55c38a7c7b0b8ee02f"
+                "reference": "0f8b67b29ff34a2907a7ad98a2ca8ba736d73151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/66bd5aacdc400d962bdb6a55c38a7c7b0b8ee02f",
-                "reference": "66bd5aacdc400d962bdb6a55c38a7c7b0b8ee02f",
+                "url": "https://api.github.com/repos/SplashSync/Php-Bundle/zipball/0f8b67b29ff34a2907a7ad98a2ca8ba736d73151",
+                "reference": "0f8b67b29ff34a2907a7ad98a2ca8ba736d73151",
                 "shasum": ""
             },
             "require": {
@@ -6629,7 +6629,7 @@
                 }
             ],
             "description": "Splash Core Bundle for Symfony Applications",
-            "time": "2020-01-26T17:38:43+00:00"
+            "time": "2020-02-04T01:59:24+00:00"
         },
         {
             "name": "splash/phpcore",
@@ -6637,12 +6637,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Core.git",
-                "reference": "2d4189531bae7904d31848c0dc03fcc19d3a0789"
+                "reference": "75cd95efb7a75294304f0535fb5bdfcf699b2151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/2d4189531bae7904d31848c0dc03fcc19d3a0789",
-                "reference": "2d4189531bae7904d31848c0dc03fcc19d3a0789",
+                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/75cd95efb7a75294304f0535fb5bdfcf699b2151",
+                "reference": "75cd95efb7a75294304f0535fb5bdfcf699b2151",
                 "shasum": ""
             },
             "require": {
@@ -6693,7 +6693,7 @@
                 }
             ],
             "description": "Splash Fundation Module for All Php Applications",
-            "time": "2020-01-31T13:58:15+00:00"
+            "time": "2020-02-04T03:31:13+00:00"
         },
         {
             "name": "splash/sendinblue",
@@ -6771,12 +6771,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Shopify.git",
-                "reference": "f5e3c23cdf6ddd9d7de6dae7f90c8dec8240b063"
+                "reference": "88086979767edb516dad4696c5ebc56e074fccab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Shopify/zipball/f5e3c23cdf6ddd9d7de6dae7f90c8dec8240b063",
-                "reference": "f5e3c23cdf6ddd9d7de6dae7f90c8dec8240b063",
+                "url": "https://api.github.com/repos/SplashSync/Shopify/zipball/88086979767edb516dad4696c5ebc56e074fccab",
+                "reference": "88086979767edb516dad4696c5ebc56e074fccab",
                 "shasum": ""
             },
             "require": {
@@ -6837,7 +6837,7 @@
                 }
             ],
             "description": "Splash Shopify API Connector (Embedded)",
-            "time": "2020-01-27T01:38:14+00:00"
+            "time": "2020-02-04T19:52:42+00:00"
         },
         {
             "name": "splash/soap",
