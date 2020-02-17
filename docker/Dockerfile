@@ -28,10 +28,12 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 ################################################################################
 # Install Required Libs
-RUN apt-get update
+RUN apt-get update --fix-missing
 RUN apt-get install -y git nano curl libxml2-dev libzip-dev zlib1g-dev unzip
 ################################################################################
 # Install Required PHP Extensions
+RUN yes '' | pecl install -f apcu
+RUN docker-php-ext-enable apcu
 RUN docker-php-ext-install pdo_mysql soap zip
 ################################################################################
 # Install Composer
