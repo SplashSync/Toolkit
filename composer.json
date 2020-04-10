@@ -107,10 +107,12 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "php vendor/bin/grumphp git:deinit"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "php vendor/bin/grumphp git:deinit"
         ]
     },
     
