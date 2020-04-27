@@ -3412,23 +3412,20 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a"
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/63a995caa1ca9e5590304cd845c15ad6d482a62a",
-                "reference": "63a995caa1ca9e5590304cd845c15ad6d482a62a",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
+                "reference": "6568f4687e5b41b054365f9ae03fcb1ed5f2069b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~6"
             },
             "type": "library",
             "extra": {
@@ -3460,7 +3457,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2018-08-07T13:53:10+00:00"
+            "time": "2020-04-27T09:25:28+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -7012,12 +7009,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/SonataAdminSplashBundle.git",
-                "reference": "c33981d284ebe820767175295f248d6612729972"
+                "reference": "a9c1272343609ed4afcc1de7dcbfca503bebc0b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/SonataAdminSplashBundle/zipball/c33981d284ebe820767175295f248d6612729972",
-                "reference": "c33981d284ebe820767175295f248d6612729972",
+                "url": "https://api.github.com/repos/SplashSync/SonataAdminSplashBundle/zipball/a9c1272343609ed4afcc1de7dcbfca503bebc0b1",
+                "reference": "a9c1272343609ed4afcc1de7dcbfca503bebc0b1",
                 "shasum": ""
             },
             "require": {
@@ -7081,7 +7078,7 @@
                 "sync",
                 "synchronization"
             ],
-            "time": "2020-04-24T17:11:19+00:00"
+            "time": "2020-04-27T11:24:45+00:00"
         },
         {
             "name": "splash/widgets-bundle",
