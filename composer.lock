@@ -6643,12 +6643,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Core.git",
-                "reference": "84bc3a57f7ea04978a98d0327759867a0071eaf3"
+                "reference": "03f27c05b56a50848f8b099a6cb785c299f0af7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/84bc3a57f7ea04978a98d0327759867a0071eaf3",
-                "reference": "84bc3a57f7ea04978a98d0327759867a0071eaf3",
+                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/03f27c05b56a50848f8b099a6cb785c299f0af7b",
+                "reference": "03f27c05b56a50848f8b099a6cb785c299f0af7b",
                 "shasum": ""
             },
             "require": {
@@ -6699,7 +6699,7 @@
                 }
             ],
             "description": "Splash Fundation Module for All Php Applications",
-            "time": "2020-04-22T14:12:31+00:00"
+            "time": "2020-04-28T13:56:44+00:00"
         },
         {
             "name": "splash/sendinblue",
