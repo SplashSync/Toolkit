@@ -66,7 +66,7 @@ RUN set -ex; \
     chmod 755 /entrypoint.sh
 ################################################################################
 # Show Composer Status
-RUN php /usr/bin/composer info
+RUN cd /app && php /usr/bin/composer info
 
 EXPOSE 80
 WORKDIR /app
