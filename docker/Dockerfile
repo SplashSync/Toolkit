@@ -64,6 +64,9 @@ RUN chmod 777 /app/var/data.db
 COPY entrypoint.sh /
 RUN set -ex; \
     chmod 755 /entrypoint.sh
+################################################################################
+# Show Composer Status
+RUN php /usr/bin/composer info
 
 EXPOSE 80
 WORKDIR /app
