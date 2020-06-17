@@ -12,11 +12,8 @@
         "ext-xml":                      "*",
         "ext-soap":                     "*",
         "ext-ctype":                    "*",
-        "ext-iconv":                    "*"
-    },
-    
-    "require-dev": {
-        
+        "ext-iconv":                    "*",
+
         "symfony/console":                              "4.2.*",
         "symfony/flex":                                 "^1.4",
         "symfony/framework-bundle":                     "4.2.*",
@@ -28,7 +25,8 @@
         "symfony/debug-pack":                           "^1.0",
         "symfony/dotenv":                               "*",
         "symfony/profiler-pack":                        "^1.0",
-        "symfony/var-dumper":                           "*",
+        "symfony/var-dumper":                           ">4",
+        "sensiolabs/security-checker":                  ">6.0",
 
         "doctrine/doctrine-bundle":                     "^1.6",
         "doctrine/orm":                                 "^2.5",
@@ -36,24 +34,26 @@
         "sonata-project/admin-bundle":                  ">=3.0",
         "sonata-project/doctrine-orm-admin-bundle":     ">=3.0",
         "sonata-project/user-bundle":                   ">=3.0",
-        
+
         "burgov/key-value-form-bundle":                 "@stable",
-        
+
         "splash/php-bundle":                            "dev-master",
         "splash/console":                               "dev-master",
         "splash/faker":                                 "dev-master",
         "splash/sonata-admin-splash-bundle":            "dev-master",
         "splash/sonata-admin-monolog-bundle":           "dev-master",
-        
+
         "splash/soap":                                  "dev-master",
         "splash/mailchimp":                             "dev-master",
         "splash/mailjet":                               "dev-master",
         "splash/sendinblue":                            "dev-master",
         "splash/shopify":                               "dev-master",
         "splash/optilog":                               "dev-master",
-        
-        "phpunit/phpunit":                              ">6",
-        
+
+        "phpunit/phpunit":                              ">6"
+    },
+    
+    "require-dev": {
         "composer/composer":                            "^1.5",
         "j13k/yaml-lint":                               "^1.1",
         "jakub-onderka/php-parallel-lint":              "^1.0",
@@ -62,11 +62,10 @@
         "sclable/xml-lint":                             "^0.2.4",
         "sebastian/phpcpd":                             ">3.0",
         "seld/jsonlint":                                "^1.7",
-        "sensiolabs/security-checker":                  "*",
+        "sensiolabs/security-checker":                  ">6.0",
         "squizlabs/php_codesniffer":                    "^3.2",
         "escapestudios/symfony2-coding-standard":       "^3.4",
-        "friendsofphp/php-cs-fixer":                    "*"
-        
+        "friendsofphp/php-cs-fixer":                    ">2.0"
     },
     
     "config": {
