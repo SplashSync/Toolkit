@@ -54,6 +54,7 @@ RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --
 #RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
 ################################################################################
 # Install Splash Toolkit
+RUN rm -Rf /app/var/cache/*
 RUN php /app/bin/console doctrine:schema:update --force
 RUN php /app/bin/console debug:config splash
 RUN php /app/bin/console cache:clear
