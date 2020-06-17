@@ -40,9 +40,11 @@ services:
             COMPOSER_MEMORY_LIMIT: -1
             COMPOSER_HOME: '/home/docker/.composer' 
         volumes:
+            # Use Local Sources
+#            - ./:/app
             # Specify Local Configuration File
-            - './docker/config/splash.yml:/app/config/packages/splash.yml:ro'
-            - './composer.json:/app/composer.json'
+            - ./docker/config/splash.yml:/app/config/packages/splash.yml:ro
+            - ./composer.json:/app/composer.json
             # Shared Composer Cache
             - ~/.composer:/home/docker/.composer             
         hostname: toolkit.splashsync.local
