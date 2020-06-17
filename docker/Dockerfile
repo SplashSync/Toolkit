@@ -50,8 +50,8 @@ COPY config/splash.yml /app/splash.yml
 ################################################################################
 # Run Composer
 RUN rm -Rf /app/var/cache/* 
-#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install
-RUN cd /app && COMPOSER_MEMORY_LIMIT=-1 composer install
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install
+#RUN cd /app && COMPOSER_MEMORY_LIMIT=-1 composer install
 ################################################################################
 # Install Splash Toolkit
 RUN php /app/bin/console doctrine:schema:update --force
