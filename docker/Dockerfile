@@ -35,6 +35,10 @@ RUN apt-get install -y git nano curl libxml2-dev libzip-dev zlib1g-dev unzip
 RUN yes '' | pecl install -f apcu
 RUN docker-php-ext-enable apcu
 RUN docker-php-ext-install pdo_mysql soap zip
+#################################################################
+# Configure Php
+ADD conf.d /etc/php/7.3/mods-available
+ADD conf.d /usr/local/etc/php/conf.d/
 ################################################################################
 # Install Composer
 ENV COMPOSER_MEMORY_LIMIT: -1
@@ -50,8 +54,8 @@ COPY config/splash.yml /app/splash.yml
 ################################################################################
 # Run Composer
 RUN rm -Rf /app/var/cache/* 
-RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction
-#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
+#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
 ################################################################################
 # Install Splash Toolkit
 RUN rm -Rf /app/var/cache/*
