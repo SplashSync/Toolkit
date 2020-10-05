@@ -14,18 +14,11 @@
         "ext-ctype":                    "*",
         "ext-iconv":                    "*",
 
-        "symfony/console":                              "4.2.*",
-        "symfony/flex":                                 "^1.4",
+        "symfony/symfony":                              "^4.2",
         "symfony/framework-bundle":                     "4.2.*",
         "symfony/swiftmailer-bundle":                   "^3.2",
-        "symfony/templating":                           "*",
         "symfony/twig-bundle":                          "*",
-        "symfony/yaml":                                 "*",
         "symfony/web-server-bundle":                    "*",
-        "symfony/debug-pack":                           "^1.0",
-        "symfony/dotenv":                               "*",
-        "symfony/profiler-pack":                        "^1.0",
-        "symfony/var-dumper":                           ">4",
         "sensiolabs/security-checker":                  ">6.0",
 
         "doctrine/doctrine-bundle":                     "^1.6",
@@ -101,9 +94,10 @@
     },
     
     "scripts": {
-        "auto-scripts": {
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        },
+        "auto-scripts": [
+            "php bin/console cache:clear",
+            "php bin/console assets:install web --relative"
+        ],
         "post-install-cmd": [
             "@auto-scripts",
             "php vendor/bin/grumphp git:deinit"
@@ -112,16 +106,5 @@
             "@auto-scripts",
             "php vendor/bin/grumphp git:deinit"
         ]
-    },
-    
-    "conflict": {
-        "symfony/symfony": "*"
-    },
-    
-    "extra": {
-        "symfony": {
-            "allow-contrib": true,
-            "require": "4.2.*"
-        }
     }
 }
