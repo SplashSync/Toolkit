@@ -96,7 +96,7 @@
     "scripts": {
         "auto-scripts": [
             "php bin/console cache:clear",
-            "php bin/console assets:install web --relative"
+            "php bin/console assets:install --relative"
         ],
         "post-install-cmd": [
             "@auto-scripts",
