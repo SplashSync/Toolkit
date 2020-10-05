@@ -33,11 +33,13 @@ php:
 ################################################################################
 # Install composer dependencies,
 # Create database, schema and fixtures
-install:   
+install:
+    # Configure Symfony
+    - cp .env.dist .env
     # Update composer
     - composer self-update
     # Build Dependencies
-    - composer update  --prefer-dist --no-interaction  
+    - composer update  --prefer-dist --no-interaction
 
 ################################################################################
 # Run script
