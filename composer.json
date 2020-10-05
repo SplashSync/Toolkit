@@ -14,8 +14,8 @@
         "ext-ctype":                    "*",
         "ext-iconv":                    "*",
 
-        "symfony/symfony":                              "^4.2",
-        "symfony/framework-bundle":                     "4.2.*",
+        "symfony/symfony":                              "~4.2.0",
+        "symfony/framework-bundle":                     "~4.2.0",
         "symfony/swiftmailer-bundle":                   "^3.2",
         "symfony/twig-bundle":                          "*",
         "symfony/web-server-bundle":                    "*",
