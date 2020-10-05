@@ -53,9 +53,9 @@ COPY .env /app/.env
 COPY config/splash.yml /app/splash.yml
 ################################################################################
 # Run Composer
-RUN rm -Rf /app/var/cache/* 
-#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction
-RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
+RUN rm -Rf /app/var/cache/*
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction
+#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
 ################################################################################
 # Install Splash Toolkit
 RUN rm -Rf /app/var/cache/*
@@ -69,9 +69,9 @@ RUN chmod 777 /app/var/data.db
 COPY entrypoint.sh /
 RUN set -ex; \
     chmod 755 /entrypoint.sh
-################################################################################
-# Show Composer Status
-RUN cd /app && php /usr/bin/composer info
+#################################################################################
+## Show Composer Status
+#RUN cd /app && php /usr/bin/composer info
 
 EXPOSE 80
 WORKDIR /app
