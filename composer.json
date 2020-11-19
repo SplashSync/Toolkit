@@ -2,20 +2,20 @@
     "name":             "splash/toolkit",
     "license":          "MIT",
     "type":             "project",
-    "description":      "Developper Toolkit for All Splash Modules, Bundles & Connectors Developepments",
+    "description":      "Developer Toolkit for All Splash Modules, Bundles & Connectors Developments",
     
     "minimum-stability": "dev",
-    "prefer-stable": true,
+    "prefer-stable":    true,
     
     "require": {
-        "php":                          "^7.1",
+        "php":                          "^7.2",
         "ext-xml":                      "*",
         "ext-soap":                     "*",
         "ext-ctype":                    "*",
         "ext-iconv":                    "*",
 
-        "symfony/symfony":                              "~4.2.0",
-        "symfony/framework-bundle":                     "~4.2.0",
+        "symfony/symfony":                              "~4.4",
+        "symfony/framework-bundle":                     "~4.4",
         "symfony/swiftmailer-bundle":                   "^3.2",
         "symfony/twig-bundle":                          "*",
         "symfony/web-server-bundle":                    "*",
@@ -44,22 +44,11 @@
         "splash/shopify":                               "dev-master",
         "splash/optilog":                               "dev-master",
 
-        "phpunit/phpunit":                              ">6"
+        "phpunit/phpunit":                              ">7"
     },
     
     "require-dev": {
-        "composer/composer":                            "^1.5",
-        "j13k/yaml-lint":                               "^1.1",
-        "jakub-onderka/php-parallel-lint":              "^1.0",
-        "phpmd/phpmd":                                  "~2.7.0",
-        "phpro/grumphp":                                "^0.16",
-        "sclable/xml-lint":                             "^0.2.4",
-        "sebastian/phpcpd":                             ">3.0",
-        "seld/jsonlint":                                "^1.7",
-        "sensiolabs/security-checker":                  ">6.0",
-        "squizlabs/php_codesniffer":                    "^3.2",
-        "escapestudios/symfony2-coding-standard":       "^3.4",
-        "friendsofphp/php-cs-fixer":                    ">2.0"
+        "badpixxel/php-sdk":                            "dev-main"
     },
     
     "config": {
@@ -100,12 +89,10 @@
             "php bin/console assets:install --relative"
         ],
         "post-install-cmd": [
-            "@auto-scripts",
-            "php vendor/bin/grumphp git:deinit"
+            "@auto-scripts"
         ],
         "post-update-cmd": [
-            "@auto-scripts",
-            "php vendor/bin/grumphp git:deinit"
+            "@auto-scripts"
         ]
     }
 }
