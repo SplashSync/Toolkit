@@ -54,8 +54,8 @@ COPY config/splash.yml /app/splash.yml
 ################################################################################
 # Run Composer
 RUN rm -Rf /app/var/cache/*
-#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction
-RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction
+#RUN cd /app && php -d memory_limit=-1 /usr/bin/composer install --prefer-dist --no-interaction --no-progress
+RUN cd /app && php -d memory_limit=-1 /usr/bin/composer update --prefer-dist --no-interaction --no-progress
 ################################################################################
 # Install Splash Toolkit
 RUN rm -Rf /app/var/cache/*
