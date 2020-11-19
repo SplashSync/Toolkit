@@ -24,6 +24,7 @@ variables:
 # Defined Pipeline Stages
 stages:
   - tests
+  - deploy
 
 ################################################################
 # Functional Tests
@@ -52,3 +53,25 @@ tests:
     # Run After Script
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
+
+#################################################################
+## Build Documentation
+#################################################################
+pages:
+  image:      registry.gitlab.com/splashsync/php-console:pages
+  stage:      deploy
+  tags:       ['Dedicated']
+  retry:      2
+  services:
+    - docker:dind
+  ################################################################################
+  # Run Test Script
+  script:
+    # Run Composer to Build deps
+    - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
+    - rm -Rf public
+    # Build Documentation
+    - php splash/vendor/bin/grumphp run --tasks=build-docs
+  artifacts:
+    paths:
+      - public
