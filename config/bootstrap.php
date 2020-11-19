@@ -3,7 +3,7 @@
 /*
  *  This file is part of SplashSync Project.
  *
- *  Copyright (C) 2015-2019 Splash Sync  <www.splashsync.com>
+ *  Copyright (C) 2015-2020 Splash Sync  <www.splashsync.com>
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -23,7 +23,10 @@ if (!array_key_exists('APP_ENV', $_SERVER)) {
 
 if ('prod' !== $_SERVER['APP_ENV']) {
     if (!class_exists(Dotenv::class)) {
-        throw new RuntimeException('The "APP_ENV" environment variable is not set to "prod". Please run "composer require symfony/dotenv" to load the ".env" files configuring the application.');
+        throw new RuntimeException(
+            'The "APP_ENV" environment variable is not set to "prod". 
+            Please run "composer require symfony/dotenv" to load the ".env" files configuring the application.'
+        );
     }
 
     $path = dirname(__DIR__).'/.env';
@@ -61,4 +64,7 @@ if ('prod' !== $_SERVER['APP_ENV']) {
 
 $_SERVER['APP_ENV'] = $_ENV['APP_ENV'] = $_SERVER['APP_ENV'] ?: $_ENV['APP_ENV'] ?: 'dev';
 $_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];
-$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = (int) $_SERVER['APP_DEBUG'] || filter_var($_SERVER['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN) ? '1' : '0';
+$_SERVER['APP_DEBUG'] = $_ENV['APP_DEBUG'] = (int) $_SERVER['APP_DEBUG'] || filter_var(
+    $_SERVER['APP_DEBUG'],
+    FILTER_VALIDATE_BOOLEAN
+) ? '1' : '0';
