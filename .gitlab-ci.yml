@@ -76,3 +76,29 @@ pages:
   artifacts:
       paths:
         - public
+
+################################################################
+# Build Docker Images for Testing
+################################################################
+docker:
+    stage:      deploy
+    image:      docker:stable
+    tags:       ['Dedicated-Docker']
+    services:
+      - docker:dind
+    before_script:
+      - docker info
+    script:
+      - echo "Build & Upload Docker Image"
+      # Build & Upload Splash All Docker Images
+      - docker build -t splashsync/toolkit:latest docker
+      # Connect Docker to DockerHub
+      - docker login -u splashsync
+      - cat $DOCKER_HUB_TOKEN | docker login --username splashsync --password-stdin
+      - docker push splashsync/toolkit:latest
+    except:
+      - schedules
+    only:
+      changes:
+        - docker/**/*
+        - .gitlab-ci.yml
