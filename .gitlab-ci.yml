@@ -30,7 +30,7 @@ stages:
 # Functional Tests
 ################################################################
 tests:
-    when:       manual
+#    when:       manual
     image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.3
     stage:      tests
     tags:       ['Dedicated']
@@ -59,7 +59,7 @@ tests:
 ## Build Documentation
 #################################################################
 pages:
-    when:       manual
+#    when:       manual
     image:      registry.gitlab.com/splashsync/php-console:pages
     stage:      deploy
     tags:       ['Dedicated']
@@ -85,7 +85,7 @@ pages:
 # Build Docker Images for Testing
 ################################################################
 docker:
-#    when:       manual
+    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
