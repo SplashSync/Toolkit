@@ -41,7 +41,7 @@ services:
             COMPOSER_HOME: '/home/docker/.composer' 
         volumes:
             # Use Local Sources
-#            - ./:/app
+            - ./:/app
             # Specify Local Configuration File
             - ./docker/config/splash.yml:/app/config/packages/splash.yml:ro
             - ./composer.json:/app/composer.json
