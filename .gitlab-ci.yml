@@ -95,11 +95,10 @@ docker:
         - docker info
     script:
         - echo "Build & Upload Docker Image"
-        - docker login -u splashsync -p $DOCKER_HUB_TOKEN
         # Build & Upload Splash All Docker Images
         - docker build -t splashsync/toolkit:latest docker
         # Connect Docker to DockerHub
-        - cat $DOCKER_HUB_TOKEN | docker login --username splashsync --password-stdin
+        - docker login -u splashsync -p $DOCKER_HUB_TOKEN
         - docker push splashsync/toolkit:latest
     except:
         - schedules
