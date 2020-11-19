@@ -30,6 +30,7 @@ stages:
 # Functional Tests
 ################################################################
 tests:
+    when:       manual
     image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.3
     stage:      tests
     tags:       ['Dedicated']
@@ -58,49 +59,51 @@ tests:
 ## Build Documentation
 #################################################################
 pages:
-  image:      registry.gitlab.com/splashsync/php-console:pages
-  stage:      deploy
-  tags:       ['Dedicated']
-  retry:      2
-  services:
-    - docker:dind
-  ################################################################################
-  # Run Test Script
-  script:
-      # Deploy Symfony Files
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
-      # Run Composer to Build deps
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
-      # Build Documentation
-      - php vendor/bin/grumphp run --tasks=build-docs
-      - rm -Rf public
-      - cp -Rf ./docs ./public
-  artifacts:
-      paths:
-        - public
+    when:       manual
+    image:      registry.gitlab.com/splashsync/php-console:pages
+    stage:      deploy
+    tags:       ['Dedicated']
+    retry:      2
+    services:
+        - docker:dind
+    ################################################################################
+    # Run Test Script
+    script:
+        # Deploy Symfony Files
+        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
+        # Run Composer to Build deps
+        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
+        # Build Documentation
+        - php vendor/bin/grumphp run --tasks=build-docs
+        - rm -Rf public
+        - cp -Rf ./docs ./public
+    artifacts:
+        paths:
+          - public
 
 ################################################################
 # Build Docker Images for Testing
 ################################################################
 docker:
+#    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
-      - docker:dind
+        - docker:dind
     before_script:
-      - docker info
+        - docker info
     script:
-      - echo "Build & Upload Docker Image"
-      # Build & Upload Splash All Docker Images
-      - docker build -t splashsync/toolkit:latest docker
-      # Connect Docker to DockerHub
-      - docker login -u splashsync
-      - cat $DOCKER_HUB_TOKEN | docker login --username splashsync --password-stdin
-      - docker push splashsync/toolkit:latest
+        - echo "Build & Upload Docker Image"
+        - cat $DOCKER_HUB_TOKEN | docker login --username splashsync --password-stdin
+        # Build & Upload Splash All Docker Images
+        - docker build -t splashsync/toolkit:latest docker
+        # Connect Docker to DockerHub
+        - cat $DOCKER_HUB_TOKEN | docker login --username splashsync --password-stdin
+        - docker push splashsync/toolkit:latest
     except:
-      - schedules
+        - schedules
     only:
-      changes:
-        - docker/**/*
-        - .gitlab-ci.yml
+        changes:
+            - docker/**/*
+            - .gitlab-ci.yml
