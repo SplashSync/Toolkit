@@ -75,8 +75,6 @@ pages:
         - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
         # Build Documentation
         - php vendor/bin/grumphp run --tasks=build-docs
-        - rm -Rf public
-        - cp -Rf ./docs ./public
     artifacts:
         paths:
           - public
