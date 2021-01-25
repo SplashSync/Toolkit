@@ -63,4 +63,5 @@ return array(
     Splash\Connectors\SendInBlue\SendInBlueBundle::class => array('all' => true),
     Splash\Connectors\Shopify\ShopifyBundle::class => array('all' => true),
     Splash\Connectors\Optilog\OptilogBundle::class => array('all' => true),
+    Splash\Connectors\ReCommerce\ReCommerceBundle::class => array('all' => true),
 );

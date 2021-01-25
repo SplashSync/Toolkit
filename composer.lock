@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6a7696fea09319b5f3b5b6dbf3d17c0",
+    "content-hash": "4315cb76e8929bde5d35d896698e4b66",
     "packages": [
         {
             "name": "burgov/key-value-form-bundle",
@@ -6198,6 +6198,59 @@
             "time": "2020-12-20T19:13:47+00:00"
         },
         {
+            "name": "splash/openapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SplashSync/OpenApi.git",
+                "reference": "1c34302a499eca1c8fd57319bf3cd4af9eb6ad8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SplashSync/OpenApi/zipball/1c34302a499eca1c8fd57319bf3cd4af9eb6ad8c",
+                "reference": "1c34302a499eca1c8fd57319bf3cd4af9eb6ad8c",
+                "shasum": ""
+            },
+            "require": {
+                "nategood/httpful": "^0.2|^0.3",
+                "php": "^7.2",
+                "splash/php-bundle": "dev-master"
+            },
+            "require-dev": {
+                "badpixxel/php-sdk": "dev-main",
+                "symfony/monolog-bundle": "*",
+                "symfony/phpunit-bridge": "*",
+                "symfony/symfony": "^3.4|^4.4"
+            },
+            "default-branch": true,
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Splash\\OpenApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Splash Sync",
+                    "email": "contact@splashsync.com"
+                },
+                {
+                    "name": "BadPixxel",
+                    "email": "eshop.bpaquier@gmail.com"
+                }
+            ],
+            "description": "A Collection of tools for OpenAPI Connectors",
+            "support": {
+                "issues": "https://github.com/SplashSync/OpenApi/issues",
+                "source": "https://github.com/SplashSync/OpenApi/tree/master"
+            },
+            "time": "2021-01-25T20:27:57+00:00"
+        },
+        {
             "name": "splash/optilog",
             "version": "dev-master",
             "source": {
@@ -6370,6 +6423,63 @@
                 "source": "https://github.com/SplashSync/Php-Core/tree/master"
             },
             "time": "2021-01-05T11:11:06+00:00"
+        },
+        {
+            "name": "splash/recommerce",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SplashSync/ReCommerce-Bundle.git",
+                "reference": "5d23d6fa962e2cb8b545ff4cd9e5c56135ddd75b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SplashSync/ReCommerce-Bundle/zipball/5d23d6fa962e2cb8b545ff4cd9e5c56135ddd75b",
+                "reference": "5d23d6fa962e2cb8b545ff4cd9e5c56135ddd75b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2",
+                "splash/openapi": "dev-master",
+                "splash/php-bundle": "dev-master"
+            },
+            "require-dev": {
+                "badpixxel/php-sdk": "dev-main",
+                "doctrine/doctrine-bundle": "^1.6",
+                "doctrine/orm": "^2.5",
+                "monolog/monolog": "^1.0",
+                "splash/console": "dev-master",
+                "symfony/monolog-bundle": "*",
+                "symfony/phpunit-bridge": "*",
+                "symfony/symfony": "^3.4|^4.4"
+            },
+            "default-branch": true,
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Splash\\Connectors\\ReCommerce\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Splash Sync",
+                    "email": "contact@splashsync.com"
+                },
+                {
+                    "name": "BadPixxel",
+                    "email": "eshop.bpaquier@gmail.com"
+                }
+            ],
+            "description": "Splash ReCommerce OpenAPI Connector (Embedded)",
+            "support": {
+                "issues": "https://github.com/SplashSync/ReCommerce-Bundle/issues",
+                "source": "https://github.com/SplashSync/ReCommerce-Bundle/tree/master"
+            },
+            "time": "2021-01-25T20:49:52+00:00"
         },
         {
             "name": "splash/sendinblue",
@@ -11002,6 +11112,7 @@
         "splash/sendinblue": 20,
         "splash/shopify": 20,
         "splash/optilog": 20,
+        "splash/recommerce": 20,
         "badpixxel/php-sdk": 20
     },
     "prefer-stable": true,
