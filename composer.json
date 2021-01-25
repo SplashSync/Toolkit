@@ -43,6 +43,7 @@
         "splash/sendinblue":                            "dev-master",
         "splash/shopify":                               "dev-master",
         "splash/optilog":                               "dev-master",
+        "splash/recommerce":                            "dev-master",
 
         "phpunit/phpunit":                              ">7"
     },
