@@ -100,7 +100,7 @@ docker:
         - docker push splashsync/toolkit:latest
     except:
         - schedules
-    only:
-        changes:
-            - docker/**/*
-            - .gitlab-ci.yml
+#    only:
+#        changes:
+#            - docker/**/*
+#            - .gitlab-ci.yml
