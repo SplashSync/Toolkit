@@ -54,6 +54,7 @@ return array(
     Splash\Admin\SplashAdminBundle::class => array('all' => true),
     Splash\SonataAdminMonologBundle\SplashSonataAdminMonologBundle::class => array('all' => true),
     Splash\Widgets\SplashWidgetsBundle::class => array('all' => true),
+    Splash\OpenApi\Bundle\SplashOpenApiBundle::class => array('all' => true),
 
     // Splash Connectors
     Splash\Connectors\Faker\FakerBundle::class => array('all' => true),

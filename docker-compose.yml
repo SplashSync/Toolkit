@@ -18,8 +18,8 @@
 ################################################################################
 # Docker Compose File
 #
-# This Docker File intend to Create a Complete Toolkit Envirenement 
-# for Developpement of Splash Modules
+# This Docker File intend to Create a Complete Toolkit Environment
+# for Development of Splash Modules
 #
 # 172.169.0.10        toolkit.splashsync.local
 #

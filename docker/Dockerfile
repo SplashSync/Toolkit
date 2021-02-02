@@ -15,7 +15,7 @@
 #
 ################################################################################
 
-FROM php:7.3-apache-stretch
+FROM php:7.4-apache
 
 ################################################################################
 # Setup Apache
@@ -37,7 +37,7 @@ RUN docker-php-ext-enable apcu
 RUN docker-php-ext-install pdo_mysql soap zip
 #################################################################
 # Configure Php
-ADD conf.d /etc/php/7.3/mods-available
+ADD conf.d /etc/php/7.4/mods-available
 ADD conf.d /usr/local/etc/php/conf.d/
 ################################################################################
 # Install Composer
