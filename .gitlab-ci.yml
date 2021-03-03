@@ -83,7 +83,7 @@ pages:
 # Build Docker Images for Testing
 ################################################################
 docker:
-    when:       manual
+#    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
