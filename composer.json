@@ -19,7 +19,6 @@
         "symfony/swiftmailer-bundle":                   "^3.2",
         "symfony/twig-bundle":                          "*",
         "symfony/web-server-bundle":                    "*",
-        "sensiolabs/security-checker":                  ">6.0",
 
         "doctrine/doctrine-bundle":                     "^1.6",
         "doctrine/dbal":                                "<2.11",
