@@ -62,7 +62,7 @@ RUN rm -Rf /app/var/cache/*
 RUN php /app/bin/console doctrine:schema:update --force
 RUN php /app/bin/console debug:config splash
 RUN php /app/bin/console cache:clear
-RUN php /app/bin/console fos:user:create admin contact@exemple.com admin --super-admin
+RUN php /app/bin/console fos:user:create toolkit@splashsync.com toolkit@splashsync.com toolkit --super-admin
 RUN chmod 777 /app/var/data.db
 ################################################################################
 # Setup Entrypoint
