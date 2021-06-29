@@ -42,6 +42,7 @@ services:
         volumes:
             # Use Local Sources
             - ./:/app
+            - /mnt/data/WebDesign/GitHub/Splash/Php-SonataAdminSplashBundle:/app/vendor/splash/sonata-admin-splash-bundle:ro
             # Specify Local Configuration File
             - ./docker/config/splash.yml:/app/config/packages/splash.yml:ro
             - ./composer.json:/app/composer.json
