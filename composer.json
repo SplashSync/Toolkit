@@ -19,6 +19,7 @@
         "symfony/swiftmailer-bundle":                   "^3.2",
         "symfony/twig-bundle":                          "*",
         "symfony/web-server-bundle":                    "*",
+        "symfony/webpack-encore-bundle":                "^1.12",
 
         "sonata-project/user-bundle":                   ">=4.0",
 
