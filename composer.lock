@@ -7,6 +7,83 @@
     "content-hash": "dbcfa380388fa013d10bb88401eff930",
     "packages": [
         {
+            "name": "badpixxel/widgets-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BadPixxel/Widgets-Bundle.git",
+                "reference": "e963bec3505426b367984661abf015c262df9871"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BadPixxel/Widgets-Bundle/zipball/e963bec3505426b367984661abf015c262df9871",
+                "reference": "e963bec3505426b367984661abf015c262df9871",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^1.6|^2.0",
+                "doctrine/orm": "^2.5",
+                "ext-json": "*",
+                "knplabs/knp-menu-bundle": "~2.0|~3.0",
+                "knplabs/knp-time-bundle": "~1.6",
+                "php": "^7.2|^8.0",
+                "sonata-project/block-bundle": "~3.0|~4.0",
+                "symfony/monolog-bundle": "^2.0|^3.0"
+            },
+            "require-dev": {
+                "badpixxel/php-sdk": "dev-main",
+                "sonata-project/admin-bundle": ">=3.0",
+                "splash/console": "dev-master",
+                "splash/php-bundle": "dev-master",
+                "symfony/phpunit-bridge": "^3.0",
+                "symfony/symfony": "~3.4|~4.4",
+                "symfony/webpack-encore-bundle": "^1.7",
+                "twig/twig": "~2.6"
+            },
+            "default-branch": true,
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony-app-dir": "app",
+                "symfony-bin-dir": "bin",
+                "symfony-var-dir": "var",
+                "symfony-web-dir": "web"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Splash\\Widgets\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Splash Sync",
+                    "email": "contact@splashsync.com"
+                },
+                {
+                    "name": "Bernard Paquier",
+                    "email": "eshop.bpaquier@gmail.com"
+                }
+            ],
+            "description": "Easy Widgets & Information boxes for Symfony Applications",
+            "homepage": "https://www.badpixxel.com",
+            "keywords": [
+                "Simple",
+                "bootstrap",
+                "bundle",
+                "php",
+                "symfony",
+                "widget"
+            ],
+            "support": {
+                "issues": "https://github.com/BadPixxel/Widgets-Bundle/issues",
+                "source": "https://github.com/BadPixxel/Widgets-Bundle/tree/1.2.0"
+            },
+            "time": "2021-10-31T20:24:57+00:00"
+        },
+        {
             "name": "burgov/key-value-form-bundle",
             "version": "1.6.1",
             "source": {
@@ -7115,15 +7192,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/SonataAdminSplashBundle.git",
-                "reference": "0facd618de6343efe98fd1c84e81d505f750f3f5"
+                "reference": "9342c89328e9ca5d181b95c1d6fd4360f7fec8ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/SonataAdminSplashBundle/zipball/0facd618de6343efe98fd1c84e81d505f750f3f5",
-                "reference": "0facd618de6343efe98fd1c84e81d505f750f3f5",
+                "url": "https://api.github.com/repos/SplashSync/SonataAdminSplashBundle/zipball/9342c89328e9ca5d181b95c1d6fd4360f7fec8ae",
+                "reference": "9342c89328e9ca5d181b95c1d6fd4360f7fec8ae",
                 "shasum": ""
             },
             "require": {
+                "badpixxel/widgets-bundle": "dev-master",
                 "burgov/key-value-form-bundle": "@stable",
                 "doctrine/doctrine-bundle": "^1.12",
                 "doctrine/orm": "^2.7",
@@ -7133,9 +7211,7 @@
                 "sonata-project/doctrine-orm-admin-bundle": ">=3.0",
                 "splash/console": "dev-master",
                 "splash/php-bundle": "dev-master",
-                "splash/widgets-bundle": "dev-master",
                 "symfony/cache": "^4.0",
-                "twig/extensions": "^1.5",
                 "twig/twig": "^2.0"
             },
             "require-dev": {
@@ -7179,85 +7255,7 @@
                 "issues": "https://github.com/SplashSync/SonataAdminSplashBundle/issues",
                 "source": "https://github.com/SplashSync/SonataAdminSplashBundle/tree/master"
             },
-            "time": "2021-11-15T12:41:27+00:00"
-        },
-        {
-            "name": "splash/widgets-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/BadPixxel/Widgets-Bundle.git",
-                "reference": "e963bec3505426b367984661abf015c262df9871"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/BadPixxel/Widgets-Bundle/zipball/e963bec3505426b367984661abf015c262df9871",
-                "reference": "e963bec3505426b367984661abf015c262df9871",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "^1.6|^2.0",
-                "doctrine/orm": "^2.5",
-                "ext-json": "*",
-                "knplabs/knp-menu-bundle": "~2.0|~3.0",
-                "knplabs/knp-time-bundle": "~1.6",
-                "php": "^7.2|^8.0",
-                "sonata-project/block-bundle": "~3.0|~4.0",
-                "symfony/monolog-bundle": "^2.0|^3.0"
-            },
-            "require-dev": {
-                "badpixxel/php-sdk": "dev-main",
-                "sonata-project/admin-bundle": ">=3.0",
-                "splash/console": "dev-master",
-                "splash/php-bundle": "dev-master",
-                "symfony/phpunit-bridge": "^3.0",
-                "symfony/symfony": "~3.4|~4.4",
-                "symfony/webpack-encore-bundle": "^1.7",
-                "twig/twig": "~2.6"
-            },
-            "default-branch": true,
-            "type": "symfony-bundle",
-            "extra": {
-                "symfony-app-dir": "app",
-                "symfony-bin-dir": "bin",
-                "symfony-var-dir": "var",
-                "symfony-web-dir": "web"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Splash\\Widgets\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Splash Sync",
-                    "email": "contact@splashsync.com"
-                },
-                {
-                    "name": "Bernard Paquier",
-                    "email": "eshop.bpaquier@gmail.com"
-                }
-            ],
-            "description": "Easy Widgets & Information boxes for Symfony Applications",
-            "homepage": "https://www.badpixxel.com",
-            "keywords": [
-                "Simple",
-                "bootstrap",
-                "bundle",
-                "php",
-                "symfony",
-                "widget"
-            ],
-            "support": {
-                "issues": "https://github.com/BadPixxel/Widgets-Bundle/issues",
-                "source": "https://github.com/BadPixxel/Widgets-Bundle/tree/1.2.0"
-            },
-            "abandoned": "badpixxel/widgets-bundle",
-            "time": "2021-10-31T20:24:57+00:00"
+            "time": "2021-11-15T13:14:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8884,66 +8882,6 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
-        },
-        {
-            "name": "twig/extensions",
-            "version": "v1.5.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/twigphp/Twig-extensions.git",
-                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/57873c8b0c1be51caa47df2cdb824490beb16202",
-                "reference": "57873c8b0c1be51caa47df2cdb824490beb16202",
-                "shasum": ""
-            },
-            "require": {
-                "twig/twig": "^1.27|^2.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^3.4",
-                "symfony/translation": "^2.7|^3.4"
-            },
-            "suggest": {
-                "symfony/translation": "Allow the time_diff output to be translated"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Twig_Extensions_": "lib/"
-                },
-                "psr-4": {
-                    "Twig\\Extensions\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Common additional features for Twig that do not directly belong in core",
-            "keywords": [
-                "i18n",
-                "text"
-            ],
-            "support": {
-                "issues": "https://github.com/twigphp/Twig-extensions/issues",
-                "source": "https://github.com/twigphp/Twig-extensions/tree/master"
-            },
-            "abandoned": true,
-            "time": "2018-12-05T18:34:18+00:00"
         },
         {
             "name": "twig/string-extra",
