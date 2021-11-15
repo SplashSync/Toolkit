@@ -26,6 +26,7 @@ return array(
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => array('all' => true),
     Symfony\Bundle\WebServerBundle\WebServerBundle::class => array('dev' => true),
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => array('all' => true),
+    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => array('all' => true),
 
     // Doctrine ORM
     Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle::class => array('all' => true),
