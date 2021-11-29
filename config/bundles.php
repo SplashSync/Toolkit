@@ -29,7 +29,6 @@ return array(
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => array('all' => true),
 
     // Doctrine ORM
-    Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle::class => array('all' => true),
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => array('all' => true),
 
     // Sonata Project Bundles
@@ -53,7 +52,6 @@ return array(
     Splash\Bundle\SplashBundle::class => array('all' => true),
     Splash\Console\ConsoleBundle::class => array('all' => true),
     Splash\Admin\SplashAdminBundle::class => array('all' => true),
-    Splash\SonataAdminMonologBundle\SplashSonataAdminMonologBundle::class => array('all' => true),
     Splash\Widgets\SplashWidgetsBundle::class => array('all' => true),
     Splash\OpenApi\Bundle\SplashOpenApiBundle::class => array('all' => true),
 

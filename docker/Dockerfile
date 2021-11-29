@@ -15,7 +15,7 @@
 #
 ################################################################################
 
-FROM php:7.4-apache
+FROM php:8.0-apache
 
 ################################################################################
 # Setup Apache
@@ -30,14 +30,18 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 # Install Required Libs
 RUN apt-get update --fix-missing
 RUN apt-get install -y git nano curl libxml2-dev libzip-dev zlib1g-dev unzip
+################################################################
+# Apcu
+RUN mkdir -p /usr/src/php/ext/apcu \
+    && curl -fsSL https://pecl.php.net/get/apcu | tar xvz -C "/usr/src/php/ext/apcu" --strip 1 \
+    && docker-php-ext-install apcu
+
 ################################################################################
-# Install Required PHP Extensions
-RUN yes '' | pecl install -f apcu
-RUN docker-php-ext-enable apcu
-RUN docker-php-ext-install pdo_mysql soap zip
+# Install Other PHP Extensions
+RUN docker-php-ext-install pdo_mysql soap zip bcmath pcntl intl exif sockets
 #################################################################
 # Configure Php
-ADD conf.d /etc/php/7.4/mods-available
+ADD conf.d /etc/php/8.0/mods-available
 ADD conf.d /usr/local/etc/php/conf.d/
 ################################################################################
 # Install Composer
@@ -71,7 +75,7 @@ RUN set -ex; \
     chmod 755 /entrypoint.sh
 #################################################################################
 ## Show Composer Status
-#RUN cd /app && php /usr/bin/composer info
+RUN cd /app && php /usr/bin/composer info
 
 EXPOSE 80
 WORKDIR /app
