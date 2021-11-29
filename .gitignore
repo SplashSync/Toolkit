@@ -54,3 +54,4 @@ public/www\.pid
 ###> splash ###
 /docs/
 /public/
+/.php-cs-fixer.cache
