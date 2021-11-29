@@ -8,7 +8,7 @@
     "prefer-stable":    true,
 
     "require": {
-        "php":                          "^7.2",
+        "php":                          "^8.0",
         "ext-xml":                      "*",
         "ext-soap":                     "*",
         "ext-ctype":                    "*",
@@ -40,7 +40,7 @@
         "splash/optilog":                               "dev-master",
         "splash/recommerce":                            "dev-master",
 
-        "phpunit/phpunit":                              ">7"
+        "phpunit/phpunit":                              ">8"
     },
     
     "require-dev": {
