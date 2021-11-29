@@ -8,7 +8,7 @@
     "prefer-stable":    true,
 
     "require": {
-        "php":                          "^8.0",
+        "php":                          "^7.4|^8.0",
         "ext-xml":                      "*",
         "ext-soap":                     "*",
         "ext-ctype":                    "*",
@@ -30,7 +30,6 @@
         "splash/openapi":                               "dev-master",
         "splash/faker":                                 "dev-master",
         "splash/sonata-admin-splash-bundle":            "dev-master",
-        "splash/sonata-admin-monolog-bundle":           "dev-master",
 
         "splash/soap":                                  "dev-master",
         "splash/mailchimp":                             "dev-master",

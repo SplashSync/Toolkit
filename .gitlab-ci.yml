@@ -31,7 +31,7 @@ stages:
 ################################################################
 tests:
 #    when:       manual
-    image: registry.gitlab.com/badpixxel-projects/php-sdk:php-7.3
+    image:      registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
     stage:      tests
     tags:       ['Dedicated']
     retry:      2
