@@ -52,6 +52,10 @@
         "minimum-stability" :   "dev",
         "preferred-install": {
             "*": "dist"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpro/grumphp": true
         }
     },
     

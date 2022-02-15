@@ -38,7 +38,7 @@ RUN mkdir -p /usr/src/php/ext/apcu \
 
 ################################################################################
 # Install Other PHP Extensions
-RUN docker-php-ext-install pdo_mysql soap zip bcmath pcntl intl exif sockets
+RUN docker-php-ext-install pdo_mysql soap zip bcmath pcntl intl exif
 #################################################################
 # Configure Php
 ADD conf.d /etc/php/8.0/mods-available
