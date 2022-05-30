@@ -50,7 +50,7 @@ ENV COMPOSER_HOME: '/home/docker/.composer'
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer 
 ################################################################################
 # Clone Splash Toolkit
-RUN git clone https://github.com/SplashSync/Toolkit.git --depth=1 /app
+RUN git clone https://github.com/SplashSync/Toolkit.git --depth=1 --branch=1.0 /app
 ################################################################################
 # Configure Splash Toolkit
 COPY .env /app/.env
