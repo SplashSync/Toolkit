@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bb70c812be650d658794e255ee276e5",
+    "content-hash": "7d9975ca3e51e2f8f52c4c8818ba6c2e",
     "packages": [
         {
             "name": "badpixxel/widgets-bundle",
@@ -6346,64 +6346,6 @@
             "time": "2021-09-06T16:09:39+00:00"
         },
         {
-            "name": "splash/flat",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SplashSync/Flat-Bundle.git",
-                "reference": "ff021eec502daedc654c2a8f0895cd2e27be08ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Flat-Bundle/zipball/ff021eec502daedc654c2a8f0895cd2e27be08ba",
-                "reference": "ff021eec502daedc654c2a8f0895cd2e27be08ba",
-                "shasum": ""
-            },
-            "require": {
-                "burgov/key-value-form-bundle": "@stable",
-                "ext-json": "*",
-                "php": "^7.4|^8.0",
-                "splash/php-bundle": "dev-master"
-            },
-            "require-dev": {
-                "badpixxel/php-sdk": "dev-main",
-                "doctrine/doctrine-bundle": "^2.5",
-                "doctrine/orm": "^2.6",
-                "monolog/monolog": "^1.0",
-                "splash/console": "dev-master",
-                "symfony/monolog-bundle": "*",
-                "symfony/phpunit-bridge": "*",
-                "symfony/symfony": "^3.4|^4.4"
-            },
-            "default-branch": true,
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "Splash\\Connectors\\Flat\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Splash Sync",
-                    "email": "contact@splashsync.com"
-                },
-                {
-                    "name": "BadPixxel",
-                    "email": "eshop.bpaquier@gmail.com"
-                }
-            ],
-            "description": "Splash Flat Files Connector (Embedded)",
-            "support": {
-                "issues": "https://github.com/SplashSync/Flat-Bundle/issues",
-                "source": "https://github.com/SplashSync/Flat-Bundle/tree/master"
-            },
-            "time": "2021-12-26T16:25:35+00:00"
-        },
-        {
             "name": "splash/mailchimp",
             "version": "dev-master",
             "source": {
@@ -7779,7 +7721,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.24.0",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -7811,12 +7753,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7842,7 +7784,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.24.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.25.0"
             },
             "funding": [
                 {
@@ -7862,7 +7804,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.24.0",
+            "version": "v1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
@@ -7888,12 +7830,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -7918,7 +7860,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php72/tree/v1.24.0"
+                "source": "https://github.com/symfony/polyfill-php72/tree/v1.25.0"
             },
             "funding": [
                 {
@@ -8973,16 +8915,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.14.10",
+            "version": "v2.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "95fb194cd4dd6ac373a27af2bde2bad5d3f27aba"
+                "reference": "3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/95fb194cd4dd6ac373a27af2bde2bad5d3f27aba",
-                "reference": "95fb194cd4dd6ac373a27af2bde2bad5d3f27aba",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4",
+                "reference": "3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4",
                 "shasum": ""
             },
             "require": {
@@ -8998,7 +8940,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.14-dev"
+                    "dev-master": "2.15-dev"
                 }
             },
             "autoload": {
@@ -9037,7 +8979,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v2.14.10"
+                "source": "https://github.com/twigphp/Twig/tree/v2.15.1"
             },
             "funding": [
                 {
@@ -9049,7 +8991,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-03T21:13:26+00:00"
+            "time": "2022-05-17T05:46:24+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -11766,7 +11708,6 @@
         "splash/optilog": 20,
         "splash/recommerce": 20,
         "splash/shippingbo": 20,
-        "splash/flat": 20,
         "badpixxel/php-sdk": 20
     },
     "prefer-stable": true,
@@ -11779,5 +11720,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
