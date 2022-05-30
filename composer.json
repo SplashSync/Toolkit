@@ -38,7 +38,6 @@
         "splash/shopify":                               "~1.0",
         "splash/optilog":                               "~1.0",
         "splash/recommerce":                            "~1.0",
-        "splash/shippingbo":                            "dev-main",
 
         "phpunit/phpunit":                              ">8"
     },
