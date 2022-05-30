@@ -13,7 +13,7 @@
  *  file that was distributed with this source code.
  */
 
-return array(
+$coreBundles = array(
     App\UserBundle\AppUserBundle::class => array('all' => true),
 
     // Symfony Bundles
@@ -47,14 +47,18 @@ return array(
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => array('all' => true),
     FOS\UserBundle\FOSUserBundle::class => array('all' => true),
     Burgov\Bundle\KeyValueFormBundle\BurgovKeyValueFormBundle::class => array('all' => true),
+);
 
+$splashBundles = array(
     // Splash Bundles
     Splash\Bundle\SplashBundle::class => array('all' => true),
     Splash\Console\ConsoleBundle::class => array('all' => true),
     Splash\Admin\SplashAdminBundle::class => array('all' => true),
     Splash\Widgets\SplashWidgetsBundle::class => array('all' => true),
     Splash\OpenApi\Bundle\SplashOpenApiBundle::class => array('all' => true),
+);
 
+$connectorsBundles = array(
     // Splash Connectors
     Splash\Connectors\Faker\FakerBundle::class => array('all' => true),
     Splash\Connectors\Soap\SoapBundle::class => array('all' => true),
@@ -64,6 +68,8 @@ return array(
     Splash\Connectors\Shopify\ShopifyBundle::class => array('all' => true),
     Splash\Connectors\Optilog\OptilogBundle::class => array('all' => true),
     Splash\Connectors\ReCommerce\ReCommerceBundle::class => array('all' => true),
-    Splash\Connectors\ShippingBo\ShippingBoBundle::class => array('all' => true),
-    Splash\Connectors\Flat\FlatBundle::class => array('all' => true),
+//    Splash\Connectors\ShippingBo\ShippingBoBundle::class => array('all' => true),
+//    Splash\Connectors\Flat\FlatBundle::class => array('all' => true),
 );
+
+return array_merge($coreBundles, $splashBundles, $connectorsBundles);
