@@ -55,30 +55,6 @@ tests:
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
-#################################################################
-## Build Documentation
-#################################################################
-pages:
-#    when:       manual
-    image:      registry.gitlab.com/splashsync/php-console:pages
-    stage:      deploy
-    tags:       ['Dedicated']
-    retry:      2
-    services:
-        - docker:dind
-    ################################################################################
-    # Run Test Script
-    script:
-        # Deploy Symfony Files
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
-        # Run Composer to Build deps
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
-        # Build Documentation
-        - php vendor/bin/grumphp run --tasks=build-docs
-    artifacts:
-        paths:
-          - public
-
 ################################################################
 # Build Docker Images for Testing
 ################################################################
