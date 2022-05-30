@@ -32,3 +32,58 @@ splash:
                 WsEncryptionKey:    ThisIsYourEncryptionKeyForSplash                
                 WsHost:             http://localhost
                 WsPath:             /local/path/to/your/application/vendor/splash/phpcore/soap.php  
+
+        ########################################################################
+        # Flat Connection
+        flat:
+            id:                 ThisIsFlatWsId
+            key:                ThisIsNotASecretKeyForFlat
+            name:               Flat Server
+            host:               false
+            connector:          flat
+#             config:
+#                 WsHost:         api-connector.myshopify.com
+#                 LocationId:     5734826037
+#                 Token:          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
+#                 LogisticMode:   false
+
+
+        vetco:
+            id:                 ThisIsSplashWsId
+            key:                ThisIsYourEncryptionKeyForSplash
+            name:               VETCO Dolibarr
+            host:               false
+            connector:          soap
+            config:
+                WsIdentifier:       f99ae52170879571
+                WsEncryptionKey:    NWQxM2QwMjhjYTJjMzIuMzQ3ODM0MzA1ZDEzZDAyOGNhNDRhOC
+                WsHost:             compta.cheval-energy.com
+                WsPath:             /custom/splash/vendor/splash/phpcore/soap.php
+
+        ########################################################################
+        # Shopify Connection
+#         shopify:
+#             id:                 ThisIsShopifyWsId
+#             key:                ThisIsNotASecretKeyForShopify
+#             name:               Shopify Server
+#             host:               false
+#             connector:          shopify
+#             config:
+#                 WsHost:         api-connector.myshopify.com
+#                 LocationId:     5734826037
+#                 Token:          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
+#                 LogisticMode:   false
+
+        ########################################################################
+        # Magento Latest
+#         latest:
+#             id:                 ThisIsMagento2Key
+#             key:                ThisTokenIsNotSoSecretChangeIt
+#             name:               Magento 2 Latests
+#             host:               false
+#             connector:          soap
+#             config:
+#                 WsIdentifier:       ThisIsMagento2Key
+#                 WsEncryptionKey:    ThisTokenIsNotSoSecretChangeIt
+#                 WsHost:             http://latest.magento2.local
+#                 WsPath:             /splash/ws/soap
