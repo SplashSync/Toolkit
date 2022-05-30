@@ -25,27 +25,26 @@
 
         "burgov/key-value-form-bundle":                 "@stable",
 
-        "splash/php-bundle":                            "dev-master",
+        "splash/php-bundle":                            "~1.0",
         "splash/console":                               "dev-master",
-        "splash/openapi":                               "dev-master",
-        "splash/faker":                                 "dev-master",
-        "splash/sonata-admin-splash-bundle":            "dev-master",
+        "splash/openapi":                               "~1.0",
+        "splash/faker":                                 "~1.0",
+        "splash/sonata-admin-splash-bundle":            "1.0.x-dev",
 
-        "splash/soap":                                  "dev-master",
-        "splash/mailchimp":                             "dev-master",
-        "splash/mailjet":                               "dev-master",
-        "splash/sendinblue":                            "dev-master",
-        "splash/shopify":                               "dev-master",
-        "splash/optilog":                               "dev-master",
-        "splash/recommerce":                            "dev-master",
+        "splash/soap":                                  "~1.0",
+        "splash/mailchimp":                             "~1.0",
+        "splash/mailjet":                               "~1.0",
+        "splash/sendinblue":                            "~1.0",
+        "splash/shopify":                               "~1.0",
+        "splash/optilog":                               "~1.0",
+        "splash/recommerce":                            "~1.0",
         "splash/shippingbo":                            "dev-main",
-        "splash/flat":                                  "dev-master",
 
         "phpunit/phpunit":                              ">8"
     },
     
     "require-dev": {
-        "badpixxel/php-sdk":                            "dev-main"
+        "badpixxel/php-sdk":                            "~1.0"
     },
     
     "config": {
