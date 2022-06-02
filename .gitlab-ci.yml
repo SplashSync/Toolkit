@@ -19,6 +19,7 @@
 # Set any variables we need
 variables:
   COMPOSER_MEMORY_LIMIT:  -1
+  SHOPIFY_API_SECRET:     ThisTokenIsNotUsed
 
 ################################################################
 # Defined Pipeline Stages
