@@ -38,6 +38,7 @@
         "splash/shopify":                               "dev-master",
         "splash/optilog":                               "dev-master",
         "splash/recommerce":                            "dev-master",
+        "splash/shippingbo":                            "dev-master",
 
         "phpunit/phpunit":                              ">8"
     },
