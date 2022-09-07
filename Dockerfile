@@ -66,12 +66,19 @@ RUN set -eux; \
 	composer clear-cache;
 
 ################################################################################
+# Install Symfony CLI
+RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+# Remove PHP CGI
+RUN rm /usr/local/bin/php-cgi
+
+################################################################################
 # Copy only specifically what we need
 COPY bin bin/
 COPY config config/
 COPY public public/
 COPY src src/
 COPY translations translations/
+COPY tests tests/
 
 ################################################################################
 # Configure Project before Run
@@ -82,14 +89,13 @@ RUN set -eux; \
     bin/console doctrine:database:create --no-interaction; \
     bin/console doctrine:schema:update --force; \
     bin/console fos:user:create toolkit@splashsync.com toolkit@splashsync.com toolkit --super-admin;
-
 VOLUME /app/var
 
 ################################################################################
-# Install Symfony CLI
-RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
-# Remove PHP CGI
-RUN rm /usr/local/bin/php-cgi
+# Setup Dockerr Entrypoint
+COPY docker/alpine/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+ENTRYPOINT ["docker-entrypoint"]
 
 ################################################################################
 # Start Symfony WebServer
