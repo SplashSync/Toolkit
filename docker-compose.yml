@@ -38,7 +38,8 @@ services:
         container_name: toolkit
         volumes:
             # Use Local Sources
-#            - ./:/app
+            - ./config:/app/config
+            - ./src:/app/src
 #            # - /mnt/data/WebDesign/GitHub/Splash/Php-SonataAdminSplashBundle:/app/vendor/splash/sonata-admin-splash-bundle:ro
             # Specify Local Configuration File
             - ./docker/config/splash.yml:/app/config/packages/splash.yml:ro
