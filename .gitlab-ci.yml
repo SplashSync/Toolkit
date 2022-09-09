@@ -84,7 +84,7 @@ pages:
 # Build Docker Images for Testing
 ################################################################
 docker:
-#    when:       manual
+    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
@@ -101,3 +101,53 @@ docker:
         - docker push splashsync/toolkit:latest
     except:
         - schedules
+
+################################################################
+# Build Docker Alpine Image for Gitlab
+################################################################
+docker-alpine-gitlab:
+    stage:      deploy
+    image:      docker:stable
+    tags:       ['Dedicated-Docker']
+    services:
+      - docker:dind
+    before_script:
+      - docker info
+    script:
+      - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
+      ################################################################
+      # Connect Docker to GitLab Registry
+      - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+      ################################################################
+      # Build Docker Image
+      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
+      ################################################################
+      # Push to GitLab Registry
+      - docker push registry.gitlab.com/splashsync/toolkit:alpine
+    except:
+      - schedules
+
+################################################################
+# Build Docker Alpine Image for Docker Hub
+################################################################
+docker-alpine-docker-hub:
+  stage:      deploy
+  image:      docker:stable
+  tags:       ['Dedicated-Docker']
+  services:
+    - docker:dind
+  before_script:
+    - docker info
+  script:
+    - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
+    ################################################################
+    # Connect Docker to DockerHub
+    - docker login -u splashsync -p $DOCKER_HUB_TOKEN
+    ################################################################
+    # Build Docker Image
+    - docker build --no-cache -t splashsync/toolkit:alpine  ./
+    ################################################################
+    # Push to GitLab Registry
+    - docker push splashsync/toolkit:alpine
+  except:
+    - schedules

@@ -19,6 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 
@@ -56,7 +57,8 @@ class Kernel extends BaseKernel
     public function registerBundles()
     {
         $contents = require $this->getProjectDir().'/config/bundles.php';
-        foreach ($contents as $class => $envs) {
+        $dynamics = $this->getDynamicBundles();
+        foreach (array_merge($contents, $dynamics) as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
                 /** @phpstan-ignore-next-line  */
                 yield new $class();
@@ -97,5 +99,43 @@ class Kernel extends BaseKernel
         $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, '/', 'glob');
         $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS, '/', 'glob');
+    }
+
+    /**
+     * Register App Bundles
+     *
+     * @retrun void
+     */
+    private function getDynamicBundles(): array
+    {
+        $bundles = array();
+        //==============================================================================
+        // Search for Bundles in Connectors Dir
+        $finder = new Finder();
+        $files = $finder
+            ->files()
+            ->in(dirname(__DIR__)."/connectors")
+            ->ignoreVCS(true)
+            ->depth(array(0,1))
+            ->name('*Bundle.php')
+        ;
+        //==============================================================================
+        // Walk on Dynamic Connectors
+        foreach ($files as $file) {
+            //==============================================================================
+            // Build Class Name
+            $className = sprintf(
+                "Splash\\Connectors\\%s\\%s",
+                $file->getRelativePath(),
+                $file->getFilenameWithoutExtension()
+            );
+            //==============================================================================
+            // Register Bundle
+            if (class_exists($className)) {
+                $bundles[$className] = array('all' => true);
+            }
+        }
+
+        return $bundles;
     }
 }
