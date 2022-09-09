@@ -125,7 +125,7 @@ class Kernel extends BaseKernel
             //==============================================================================
             // Build Class Name
             $className = sprintf(
-                "Splash\Connectors\%s\%s",
+                "Splash\\Connectors\\%s\\%s",
                 $file->getRelativePath(),
                 $file->getFilenameWithoutExtension()
             );

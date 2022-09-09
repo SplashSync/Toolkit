@@ -20,7 +20,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 require __DIR__.'/../vendor/autoload.php';
 
-
 //exit;
 
 // The check is to ensure we don't use .env in production
