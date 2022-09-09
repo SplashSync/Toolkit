@@ -20,7 +20,7 @@ set -e
 
 ################################################################################
 echo "Flush Symfony cache"
-rm -Rf var/cache/*
+rm -Rf var/cache
 
 echo "Serving Splash Toolkit..."
 exec "$@"

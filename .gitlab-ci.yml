@@ -106,7 +106,7 @@ docker:
 # Build Docker Alpine Image for Gitlab
 ################################################################
 docker-alpine-gitlab:
-    when:       manual
+#    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
@@ -127,3 +127,29 @@ docker-alpine-gitlab:
       - docker push registry.gitlab.com/splashsync/toolkit:alpine
     except:
       - schedules
+
+################################################################
+# Build Docker Alpine Image for Docker Hub
+################################################################
+docker-alpine-docker-hub:
+  when:       manual
+  stage:      deploy
+  image:      docker:stable
+  tags:       ['Dedicated-Docker']
+  services:
+    - docker:dind
+  before_script:
+    - docker info
+  script:
+    - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
+    ################################################################
+    # Connect Docker to DockerHub
+    - docker login -u splashsync -p $DOCKER_HUB_TOKEN
+    ################################################################
+    # Build Docker Image
+    - docker build --no-cache -t splashsync/toolkit:alpine  ./
+    ################################################################
+    # Push to GitLab Registry
+    - docker push splashsync/toolkit:alpine
+  except:
+    - schedules
