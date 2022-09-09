@@ -106,7 +106,6 @@ docker:
 # Build Docker Alpine Image for Gitlab
 ################################################################
 docker-alpine-gitlab:
-#    when:       manual
     stage:      deploy
     image:      docker:stable
     tags:       ['Dedicated-Docker']
@@ -132,7 +131,6 @@ docker-alpine-gitlab:
 # Build Docker Alpine Image for Docker Hub
 ################################################################
 docker-alpine-docker-hub:
-  when:       manual
   stage:      deploy
   image:      docker:stable
   tags:       ['Dedicated-Docker']

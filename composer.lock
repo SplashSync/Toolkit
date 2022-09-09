@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BadPixxel/Widgets-Bundle.git",
-                "reference": "10f1c2a0721fbc811646732623a397e878042e09"
+                "reference": "dd2151a9cc6c51ecec5a5a8ab3bfe58e2bfa3743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BadPixxel/Widgets-Bundle/zipball/10f1c2a0721fbc811646732623a397e878042e09",
-                "reference": "10f1c2a0721fbc811646732623a397e878042e09",
+                "url": "https://api.github.com/repos/BadPixxel/Widgets-Bundle/zipball/dd2151a9cc6c51ecec5a5a8ab3bfe58e2bfa3743",
+                "reference": "dd2151a9cc6c51ecec5a5a8ab3bfe58e2bfa3743",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
                 "ext-json": "*",
                 "knplabs/knp-menu-bundle": "~2.0|~3.0",
                 "knplabs/knp-time-bundle": "~1.6",
-                "php": "^7.2|^8.0",
+                "php": "^7.4|^8.0",
                 "sonata-project/block-bundle": "~3.0|~4.0",
                 "symfony/monolog-bundle": "^2.0|^3.0"
             },
@@ -36,7 +36,7 @@
                 "splash/console": "dev-master",
                 "splash/php-bundle": "dev-master",
                 "symfony/phpunit-bridge": "^3.0",
-                "symfony/symfony": "~3.4|~4.4",
+                "symfony/symfony": "~4.4",
                 "symfony/webpack-encore-bundle": "^1.7",
                 "twig/twig": "~2.6"
             },
@@ -81,7 +81,7 @@
                 "issues": "https://github.com/BadPixxel/Widgets-Bundle/issues",
                 "source": "https://github.com/BadPixxel/Widgets-Bundle/tree/master"
             },
-            "time": "2022-01-04T12:43:38+00:00"
+            "time": "2022-09-09T14:19:19+00:00"
         },
         {
             "name": "burgov/key-value-form-bundle",
@@ -6105,12 +6105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Faker-Bundle.git",
-                "reference": "57e3b1219e62118c3a8d5ce612f9ec1a842b55bd"
+                "reference": "57ad8230da7d9ba1e6f61605d6b1ed1c4f819416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Faker-Bundle/zipball/57e3b1219e62118c3a8d5ce612f9ec1a842b55bd",
-                "reference": "57e3b1219e62118c3a8d5ce612f9ec1a842b55bd",
+                "url": "https://api.github.com/repos/SplashSync/Faker-Bundle/zipball/57ad8230da7d9ba1e6f61605d6b1ed1c4f819416",
+                "reference": "57ad8230da7d9ba1e6f61605d6b1ed1c4f819416",
                 "shasum": ""
             },
             "require": {
@@ -6151,7 +6151,7 @@
                 "issues": "https://github.com/SplashSync/Faker-Bundle/issues",
                 "source": "https://github.com/SplashSync/Faker-Bundle/tree/master"
             },
-            "time": "2022-05-24T14:13:39+00:00"
+            "time": "2022-09-09T12:52:45+00:00"
         },
         {
             "name": "splash/mailchimp",
