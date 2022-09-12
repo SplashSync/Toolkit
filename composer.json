@@ -62,17 +62,17 @@
         "psr-4": {
             "App\\": "src/",
             "Splash\\Connectors\\":     "connectors/"
-        }
+        },
+        "files": [
+            "vendor/splash/phpcore/inc/Splash.Inc.php",
+            "vendor/splash/php-bundle/src/Tests/KernelTestCase.php"
+        ]
     },
     
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
-        },
-        "files": [ 
-            "vendor/splash/phpcore/inc/Splash.Inc.php",
-            "vendor/splash/php-bundle/src/Tests/KernelTestCase.php" 
-        ]
+        }
     },
     
     "replace": {
