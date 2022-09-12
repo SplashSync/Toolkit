@@ -60,7 +60,7 @@ WORKDIR /app
 ################################################################################
 # Prevent the reinstallation of vendors at every changes in the source code
 COPY .env.dist ./.env
-COPY composer.json composer.lock ./
+COPY composer.json composer.lock phpunit.xml.dist ./
 RUN set -eux; \
 	composer update --prefer-dist --no-dev --no-scripts --no-progress --no-plugins; \
 	composer clear-cache;
