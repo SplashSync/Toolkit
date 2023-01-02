@@ -95,7 +95,7 @@ docker:
     script:
         - echo "Build & Upload Docker Image"
         # Build & Upload Splash All Docker Images
-        - docker build -t splashsync/toolkit:latest docker
+        - docker build -t splashsync/toolkit:latest
         # Connect Docker to DockerHub
         - docker login -u splashsync -p $DOCKER_HUB_TOKEN
         - docker push splashsync/toolkit:latest
