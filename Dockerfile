@@ -20,9 +20,6 @@
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
 ARG PHP_VERSION=8.0
 ARG APP_ENV=dev
-################################################################################
-# Default Enveironment Variables
-ENV SHOPIFY_API_SECRET=ThisTokenIsNotUsed
 
 ################################################################################
 # "php" stage
@@ -99,6 +96,10 @@ VOLUME /app/var
 COPY docker/alpine/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 ENTRYPOINT ["docker-entrypoint"]
+
+################################################################################
+# Default Enveironment Variables
+ENV SHOPIFY_API_SECRET=ThisTokenIsNotUsed
 
 ################################################################################
 # Start Symfony WebServer

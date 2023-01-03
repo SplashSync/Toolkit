@@ -11,7 +11,7 @@ docker push registry.gitlab.com/splashsync/toolkit:alpine
 
 ########################################################
 # Build Splash Toolkit Docker Image
-#docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
+docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:latest  ./
 ########################################################
 # Upload Docker Image to GitLab
-#docker push registry.gitlab.com/splashsync/toolkit
+docker push registry.gitlab.com/splashsync/toolkit:latest
