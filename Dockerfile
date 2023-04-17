@@ -98,10 +98,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint
 ENTRYPOINT ["docker-entrypoint"]
 
 ################################################################################
-# Default Enveironment Variables
-ENV SHOPIFY_API_SECRET=ThisTokenIsNotUsed
-
-################################################################################
 # Start Symfony WebServer
 EXPOSE 80
 CMD ["/usr/local/bin/symfony", "serve", "--no-tls", "--port=80"]
