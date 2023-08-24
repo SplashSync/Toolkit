@@ -22,5 +22,8 @@ set -e
 echo "Flush Symfony cache"
 rm -Rf var/cache
 
+echo "Stop Symfony Server"
+/usr/local/bin/symfony server:stop
+
 echo "Serving Splash Toolkit..."
 exec "$@"
