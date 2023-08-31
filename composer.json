@@ -39,6 +39,7 @@
         "splash/optilog":                               "dev-master",
         "splash/recommerce":                            "dev-master",
         "splash/shippingbo":                            "dev-main",
+        "splash/flat":                                  "dev-master",
 
         "phpunit/phpunit":                              ">8"
     },

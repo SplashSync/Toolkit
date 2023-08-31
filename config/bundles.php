@@ -69,7 +69,7 @@ $connectorsBundles = array(
     Splash\Connectors\Optilog\OptilogBundle::class => array('all' => true),
     Splash\Connectors\ReCommerce\ReCommerceBundle::class => array('all' => true),
     Splash\Connectors\ShippingBo\ShippingBoBundle::class => array('all' => true),
-    //    Splash\Connectors\Flat\FlatBundle::class => array('all' => true),
+    Splash\Connectors\Flat\FlatBundle::class => array('all' => true),
 );
 
 return array_merge($coreBundles, $splashBundles, $connectorsBundles);
