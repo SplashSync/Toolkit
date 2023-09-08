@@ -15,9 +15,9 @@
 
 use Splash\Toolkit\Kernel;
 
-require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+require_once Kernel::getProjectDirStatic().'/vendor/autoload_runtime.php';
 
-require_once dirname(__DIR__).'/vendor/splash/php-bundle/src/Tests/KernelTestCase.php';
+require_once Kernel::getProjectDirStatic().'/vendor/splash/php-bundle/src/Tests/KernelTestCase.php';
 
 return function (array $context): Kernel {
     return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
