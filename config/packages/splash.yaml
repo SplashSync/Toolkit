@@ -1,19 +1,8 @@
 
 splash:
-
-################################################################################    
-# Configure Splash Bundle Parameters Cache    
-# Cache is Enabled by Default to Store Custom Connectors Configuration
-# If disabled, configuration must be store in Static, on connections section
-################################################################################    
-#    cache: 
-#        enabled: false    
-#        lifetime: 10
-    
-################################################################################    
-# List of Availables Connector Connections
-################################################################################    
-
+    ################################################################################
+    # List of Availables Connector Connections
+    ################################################################################
     connections:
 
         ########################################################################
@@ -58,67 +47,3 @@ splash:
                             file:///vendor/splash/flat/src/Resources/samples/Basic/basic.json: auto
                         model: Splash\Connectors\Flat\OpenApi\Models\Samples\Basic
                         ttl: "-1 hour"
-
-########################################################################
-# Generic Soap Connection (Test & Debug your Generic Splash Servers) 
-#        generic:
-#            id:                 ThisIsSplashWsId
-#            key:                ThisIsYourEncryptionKeyForSplash
-#            name:               My Generic Server
-#            host:               false
-#            connector:          soap
-#            config:  
-#                WsIdentifier:       ThisIsSplashWsId
-#                WsEncryptionKey:    ThisIsYourEncryptionKeyForSplash                
-#                WsHost:             http://localhost
-#                WsPath:             /local/path/to/your/application/vendor/splash/phpcore/soap.php  
-                
-########################################################################
-# MailChimp Connection
-#        mailchimp:
-#            id:                 ThisIsMailChimpWsId
-#            key:                ThisIsNotASecretKeyForMailChimp
-#            name:               MailChimp Server
-#            host:               false
-#            connector:          mailchimp
-#            config:  
-#                ApiKey:         ThisIsSecretApiKey
-#                ApiList:        ThisIsSecretApiList            
-
-########################################################################
-# MailJet Connection
-#        mailjet:
-#            id:                 ThisIsMailjetWsId
-#            key:                ThisIsNotASecretKeyForMailjet
-#            name:               Mailjet Server
-#            host:               false
-#            connector:          mailjet
-#            config:  
-#                ApiKey:         ThisIsSecretApiKey
-#                SecretKey:      ThisIsSecretApiPwd
-#                ApiList:        ThisIsSecretApiList            
-                
-########################################################################
-# SendInBlue Connection
-#        sendinblue:
-#            id:                 ThisIsSendInBlueWsId
-#            key:                ThisIsNotASecretKeyForSendInBlue
-#            name:               SendInBlue Server
-#            host:               false
-#            connector:          sendinblue
-#            config:  
-#                ApiKey:         ThisIsSecretApiKey
-#                ApiList:        ThisIsSecretApiList
-         
-########################################################################
-# Shopify Connection
-#        shopify:
-#            id:                 ThisIsShopifyWsId
-#            key:                ThisIsNotASecretKeyForShopify
-#            name:               Shopify Server
-#            host:               false
-#            connector:          shopify
-#            config:  
-#                WsHost:         yourShopUrl.myshopify.com
-#                LocationId:     ThisIsShopifyLocationId
-#                Token:          ThisIsYourPublicShopifyToken   
