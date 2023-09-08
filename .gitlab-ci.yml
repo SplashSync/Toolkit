@@ -25,6 +25,7 @@ variables:
 # Defined Pipeline Stages
 stages:
   - tests
+  - docker
   - deploy
 
 ################################################################
@@ -56,36 +57,12 @@ tests:
     after_script:
       - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
-#################################################################
-## Build Documentation
-#################################################################
-pages:
-#    when:       manual
-    image:      registry.gitlab.com/badpixxel-projects/php-sdk:jekyll
-    stage:      deploy
-    tags:       ['Dedicated']
-    retry:      2
-    services:
-        - docker:dind
-    ################################################################################
-    # Run Test Script
-    script:
-        # Deploy Symfony Files
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
-        # Run Composer to Build deps
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
-        # Build Documentation
-        - php vendor/bin/grumphp run --tasks=build-docs
-    artifacts:
-        paths:
-          - public
-
 ################################################################
 # Build Docker Images for Testing
 ################################################################
 docker:
 #     when:       manual
-    stage:      deploy
+    stage:      docker
     image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
@@ -106,7 +83,7 @@ docker:
 # Build Docker Alpine Image for Gitlab
 ################################################################
 docker-alpine-gitlab:
-    stage:      deploy
+    stage:      docker
     image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
@@ -131,23 +108,47 @@ docker-alpine-gitlab:
 # Build Docker Alpine Image for Docker Hub
 ################################################################
 docker-alpine-docker-hub:
-  stage:      deploy
-  image:      docker:stable
-  tags:       ['Dedicated-Docker']
-  services:
-    - docker:dind
-  before_script:
-    - docker info
-  script:
-    - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
-    ################################################################
-    # Connect Docker to DockerHub
-    - docker login -u splashsync -p $DOCKER_HUB_TOKEN
-    ################################################################
-    # Build Docker Image
-    - docker build --no-cache -t splashsync/toolkit:alpine  ./
-    ################################################################
-    # Push to GitLab Registry
-    - docker push splashsync/toolkit:alpine
-  except:
-    - schedules
+    stage:      docker
+    image:      docker:stable
+    tags:       ['Dedicated-Docker']
+    services:
+        - docker:dind
+    before_script:
+        - docker info
+    script:
+        - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
+        ################################################################
+        # Connect Docker to DockerHub
+        - docker login -u splashsync -p $DOCKER_HUB_TOKEN
+        ################################################################
+        # Build Docker Image
+        - docker build --no-cache -t splashsync/toolkit:alpine  ./
+        ################################################################
+        # Push to GitLab Registry
+        - docker push splashsync/toolkit:alpine
+    except:
+        - schedules
+
+#################################################################
+## Build Documentation
+#################################################################
+pages:
+    #    when:       manual
+    image:      registry.gitlab.com/badpixxel-projects/php-sdk:jekyll
+    stage:      deploy
+    tags:       ['Dedicated']
+    retry:      2
+    services:
+        - docker:dind
+    ################################################################################
+    # Run Test Script
+    script:
+        # Deploy Symfony Files
+        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
+        # Run Composer to Build deps
+        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
+        # Build Documentation
+        - php vendor/bin/grumphp run --tasks=build-docs
+    artifacts:
+        paths:
+          - public
