@@ -1,0 +1,11 @@
+sonata_user:
+    security_acl: false
+    manager_type: orm
+    
+    class:
+        user:   Splash\Toolkit\Entity\User
+
+    resetting:
+        email:
+            address: toolkit@localhost
+            sender_name: Splash Toolkit

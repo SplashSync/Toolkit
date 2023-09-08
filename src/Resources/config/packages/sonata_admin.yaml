@@ -10,6 +10,14 @@ sonata_admin:
     security:
         role_admin:                     ROLE_USER
 
+    assets:
+        extra_stylesheets:
+            # Sonata Admin BadPixxel Widgets Integration
+            - bundles/splashadmin/js/admin.css
+        extra_javascripts:
+            # Sonata Admin BadPixxel Widgets Integration
+            - bundles/splashadmin/js/admin.js
+
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:
