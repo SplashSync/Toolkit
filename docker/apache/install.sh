@@ -28,4 +28,4 @@ echo "*************************************************************************"
 docker-compose exec symfony php /app/bin/console doctrine:schema:update --force
 docker-compose exec symfony php /app/bin/console debug:config splash
 docker-compose exec symfony php /app/bin/console cache:clear
-docker-compose exec symfony php /app/bin/console fos:user:create admin contact@exemple.com admin --super-admin
+docker-compose exec symfony php /app/bin/console sonata:user:create Toolkit toolkit@splashsync.com toolkit --super-admin
