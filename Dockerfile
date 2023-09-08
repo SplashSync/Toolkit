@@ -62,7 +62,7 @@ WORKDIR /app
 COPY .env.dist ./.env
 COPY composer.json composer.lock phpunit.xml.dist ./
 RUN set -eux; \
-	composer update --prefer-dist --no-dev --no-scripts --no-progress --no-plugins; \
+	composer update --prefer-dist --no-dev --no-scripts --no-progress; \
 	composer clear-cache;
 
 ################################################################################
@@ -88,7 +88,7 @@ RUN set -eux; \
 	composer run-script --no-dev post-install-cmd; \
     bin/console doctrine:database:create --no-interaction; \
     bin/console doctrine:schema:update --force; \
-    bin/console fos:user:create toolkit@splashsync.com toolkit@splashsync.com toolkit --super-admin;
+    bin/console sonata:user:create Toolkit toolkit@splashsync.com toolkit --super-admin;
 VOLUME /app/var
 
 ################################################################################

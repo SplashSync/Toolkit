@@ -15,14 +15,14 @@
         "ext-iconv":                                    "*",
 
         "symfony/http-kernel":                          "~5.4",
+        "symfony/dependency-injection":                 "~5.4",
         "symfony/framework-bundle":                     "~5.4",
         "symfony/mailer":                               "~5.4|^6.0",
         "symfony/routing":                              "~5.4",
         "symfony/runtime":                              "~5.4",
         "symfony/debug-pack":                           "^1.0",
         "symfony/twig-bundle":                          "*",
-        "symfony/web-server-bundle":                    "*",
-        "symfony/webpack-encore-bundle":                "^1.12",
+        "symfony/yaml":                                 "*",
 
         "sonata-project/user-bundle":                   ">=4.0",
 
