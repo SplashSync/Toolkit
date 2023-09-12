@@ -1,7 +1,7 @@
 # Sonata Admin        
 sonata_admin:
     title:      Splash Toolkit
-    title_logo: img/Splash-Logo_Ico.png
+    title_logo: bundles/toolkit/img/Splash-Logo_Ico.png
     search:     false
     dashboard:
         blocks:
