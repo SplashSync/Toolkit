@@ -20,6 +20,9 @@
 echo "Flush Symfony cache"
 rm -Rf var/cache
 
+echo "Install Assets"
+php bin/console assets:install --symlink
+
 echo "Stop Symfony Server"
 /usr/local/bin/symfony server:stop
 
