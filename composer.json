@@ -82,5 +82,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ]
-    }
+    },
+
+    "bin": ["bin/console"]
 }
