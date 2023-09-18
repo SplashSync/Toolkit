@@ -33,29 +33,24 @@ stages:
 ################################################################
 tests:
 #    when:       manual
-    image:      registry.gitlab.com/badpixxel-projects/php-sdk:php-8.0
+    image:      registry.gitlab.com/badpixxel-projects/php-sdk:php-8.1
     stage:      tests
     tags:       ['Dedicated']
     retry:      2
+    before_script:
+        ################################################################################
+        # Install Symfony
+        - composer update
     ################################################################################
     # Run Test Script
     script:
-      ################################################################
-      # Setup Travis
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/configure.sh  | sh
-      # Deploy Symfony Files
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
-      # Setup Symfony Version & Create Database
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/configure.sh | sh
-      # Install Symfony
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/install.sh | sh
-      ################################################################
-      # Execute Code Quality Analyze
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/grumphp.sh | sh
+        # Execute Grumphp Testsuite
+        - wall-e grumphp:quality
+        - wall-e grumphp:stan
     ################################################################################
     # Run After Script
     after_script:
-      - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
+        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
 
 ################################################################
 # Build Docker Images for Testing
@@ -129,26 +124,17 @@ docker-alpine-docker-hub:
     except:
         - schedules
 
-#################################################################
-## Build Documentation
-#################################################################
+################################################################
+# Build Documentation
+################################################################
 pages:
-    #    when:       manual
-    image:      registry.gitlab.com/badpixxel-projects/php-sdk:jekyll
+    image:      jekyll/minimal:latest
     stage:      deploy
-    tags:       ['Dedicated']
-    retry:      2
-    services:
-        - docker:dind
+    tags:       [ Dedicated ]
     ################################################################################
     # Run Test Script
     script:
-        # Deploy Symfony Files
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/symfony/deploy.sh | sh
-        # Run Composer to Build deps
-        - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/composer.sh  | bash
-        # Build Documentation
-        - php vendor/bin/grumphp run --tasks=build-docs
+        - wget -qO - https://gitlab.com/badpixxel-robo/jekyll/-/raw/main/scripts/gitlab-pages.sh | sh
     artifacts:
         paths:
           - public
