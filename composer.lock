@@ -2509,16 +2509,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.28",
+            "version": "9.2.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "7134a5ccaaf0f1c92a4f5501a6c9f98ac4dcc0ef"
+                "reference": "6a3a87ac2bbe33b25042753df8195ba4aa534c76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/7134a5ccaaf0f1c92a4f5501a6c9f98ac4dcc0ef",
-                "reference": "7134a5ccaaf0f1c92a4f5501a6c9f98ac4dcc0ef",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6a3a87ac2bbe33b25042753df8195ba4aa534c76",
+                "reference": "6a3a87ac2bbe33b25042753df8195ba4aa534c76",
                 "shasum": ""
             },
             "require": {
@@ -2575,7 +2575,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.28"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.29"
             },
             "funding": [
                 {
@@ -2583,7 +2583,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-09-12T14:36:20+00:00"
+            "time": "2023-09-19T04:57:46+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2828,16 +2828,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.12",
+            "version": "9.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a122c2ebd469b751d774aa0f613dc0d67697653f"
+                "reference": "f3d767f7f9e191eab4189abe41ab37797e30b1be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a122c2ebd469b751d774aa0f613dc0d67697653f",
-                "reference": "a122c2ebd469b751d774aa0f613dc0d67697653f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f3d767f7f9e191eab4189abe41ab37797e30b1be",
+                "reference": "f3d767f7f9e191eab4189abe41ab37797e30b1be",
                 "shasum": ""
             },
             "require": {
@@ -2911,7 +2911,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.12"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.13"
             },
             "funding": [
                 {
@@ -2927,7 +2927,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-12T14:39:31+00:00"
+            "time": "2023-09-19T05:39:22+00:00"
         },
         {
             "name": "psr/cache",
@@ -5563,32 +5563,28 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BadPixxel/Soap-Bundle.git",
-                "reference": "09fddec47b0ac9f2339e366f928810bbe8d8feca"
+                "reference": "d8d09366062390e50ea2de35713a6ae591e525f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BadPixxel/Soap-Bundle/zipball/09fddec47b0ac9f2339e366f928810bbe8d8feca",
-                "reference": "09fddec47b0ac9f2339e366f928810bbe8d8feca",
+                "url": "https://api.github.com/repos/BadPixxel/Soap-Bundle/zipball/d8d09366062390e50ea2de35713a6ae591e525f8",
+                "reference": "d8d09366062390e50ea2de35713a6ae591e525f8",
                 "shasum": ""
             },
             "require": {
                 "ext-soap": "*",
-                "php": "^7.3|^8.0",
+                "php": "^8.0",
                 "splash/php-bundle": "dev-master"
             },
             "require-dev": {
                 "badpixxel/php-sdk": "~2.0",
-                "doctrine/doctrine-bundle": "^2.4",
-                "doctrine/orm": "^2.6",
-                "monolog/monolog": "^1.0",
-                "splash/console": "dev-master",
-                "splash/faker": "dev-master",
-                "symfony/monolog-bundle": "*",
-                "symfony/phpunit-bridge": "*",
-                "symfony/symfony": "^3.4|^4.4"
+                "splash/toolkit": "dev-master"
             },
             "default-branch": true,
             "type": "symfony-bundle",
+            "extra": {
+                "public-dir": "tests"
+            },
             "autoload": {
                 "psr-4": {
                     "Splash\\Connectors\\Soap\\": "src/"
@@ -5613,7 +5609,7 @@
                 "issues": "https://github.com/BadPixxel/Soap-Bundle/issues",
                 "source": "https://github.com/BadPixxel/Soap-Bundle/tree/master"
             },
-            "time": "2023-01-06T14:24:18+00:00"
+            "time": "2023-09-18T15:19:13+00:00"
         },
         {
             "name": "splash/sonata-admin",
@@ -11966,12 +11962,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BadPixxel/Php-Sdk.git",
-                "reference": "285d05785e4fb6eabd39b786cc5c95400feab15a"
+                "reference": "81cf7c539d63671cb99f456a1552711eae7e7b82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BadPixxel/Php-Sdk/zipball/285d05785e4fb6eabd39b786cc5c95400feab15a",
-                "reference": "285d05785e4fb6eabd39b786cc5c95400feab15a",
+                "url": "https://api.github.com/repos/BadPixxel/Php-Sdk/zipball/81cf7c539d63671cb99f456a1552711eae7e7b82",
+                "reference": "81cf7c539d63671cb99f456a1552711eae7e7b82",
                 "shasum": ""
             },
             "require": {
@@ -12023,9 +12019,9 @@
             "description": "Development Kit for Php Packages",
             "support": {
                 "issues": "https://github.com/BadPixxel/Php-Sdk/issues",
-                "source": "https://github.com/BadPixxel/Php-Sdk/tree/2.1.0"
+                "source": "https://github.com/BadPixxel/Php-Sdk/tree/main"
             },
-            "time": "2023-09-18T21:15:54+00:00"
+            "time": "2023-09-18T23:43:36+00:00"
         },
         {
             "name": "composer/ca-bundle",
