@@ -6,6 +6,7 @@ parameters:
 framework:
     secret:             '%env(APP_SECRET)%'
     form:               ~
+    property_access:    ~
     default_locale:     '%locale%'
     translator:
         default_path:   '%kernel.project_dir%/translations'
