@@ -35,6 +35,8 @@ return array(
     Splash\Connectors\Mailjet\MailjetBundle::class => Kernel::BUNDLE_ALL,
     /** @phpstan-ignore-next-line  */
     Splash\Connectors\SendInBlue\SendInBlueBundle::class => Kernel::BUNDLE_ALL,
+    /** @phpstan-ignore-next-line  */
+    Splash\Connectors\Brevo\BrevoBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
     // Logistics Connectors
     /** @phpstan-ignore-next-line  */
