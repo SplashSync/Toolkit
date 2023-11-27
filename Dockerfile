@@ -23,7 +23,7 @@ ARG APP_ENV=dev
 
 ################################################################################
 # "php" stage
-FROM php:${PHP_VERSION}-cli-alpine AS splash-toolkit-alpine
+FROM php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
 
 ################################################################################
 # Install Dependencies
@@ -68,8 +68,6 @@ RUN set -eux; \
 ################################################################################
 # Install Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
-# Remove PHP CGI
-RUN rm /usr/local/bin/php-cgi
 
 ################################################################################
 # Copy only specifically what we need

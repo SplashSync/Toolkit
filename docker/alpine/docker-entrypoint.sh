@@ -18,6 +18,7 @@
 
 ################################################################################
 echo "Flush Symfony cache"
+chown www-data:www-data -Rf  var/
 rm -Rf var/cache
 
 echo "Install Assets"
