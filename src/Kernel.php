@@ -102,6 +102,7 @@ class Kernel extends BaseKernel
             $this->getSplashBundles(),
             require $this->getToolkitResourcesPath()."/bundles/splash.php",
             $this->getConnectorsBundles(),
+            $this->getLocalBundles(),
             $this->getDynamicBundles(),
         );
 
@@ -204,6 +205,20 @@ class Kernel extends BaseKernel
     private function getConnectorsBundles(): array
     {
         return self::filterBundles(require $this->getToolkitResourcesPath()."/bundles/connectors.php");
+    }
+
+    /**
+     * Register Available Local Bundles
+     *
+     * @retrun void
+     */
+    private function getLocalBundles(): array
+    {
+        if (file_exists(self::getProjectDir()."/config/bundles.php")) {
+            return require self::getProjectDir()."/config/bundles.php";
+        }
+
+        return array();
     }
 
     /**
