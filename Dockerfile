@@ -23,7 +23,9 @@ ARG APP_ENV=dev
 
 ################################################################################
 # "php" stage
-FROM php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
+# FROM php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
+FROM --platform=linux/arm64 php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
+
 
 ################################################################################
 # Install Dependencies
