@@ -118,7 +118,8 @@ docker-alpine-docker-hub:
         - docker login -u splashsync -p $DOCKER_HUB_TOKEN
         ################################################################
         # Build Docker Image
-        - docker build --no-cache -t splashsync/toolkit:alpine  ./
+        - docker build --no-cache -t splashsync/toolkit:alpine  ./ --platform linux/amd64
+        - docker build --no-cache -t splashsync/toolkit:alpine  ./ --platform linux/arm64
         ################################################################
         # Push to GitLab Registry
         - docker push splashsync/toolkit:alpine
