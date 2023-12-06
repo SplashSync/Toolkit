@@ -29,8 +29,8 @@ variables:
 ################################################################
 # Defined Pipeline Stages
 stages:
-  - tests
-  - docker
+  - Tests
+  - Docker
   - Builds
 
 ################################################################
@@ -39,7 +39,7 @@ stages:
 tests:
 #    when:       manual
     image:      registry.gitlab.com/badpixxel-projects/php-sdk:php-8.1
-    stage:      tests
+    stage:      Tests
     tags:       ['Dedicated']
     retry:      2
     before_script:
@@ -61,7 +61,7 @@ tests:
 # Build Docker Alpine Image for Docker Hub
 ################################################################
 docker-alpine-docker-hub:
-    stage:      docker
+    stage:      Docker
     image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
     services:
@@ -85,7 +85,7 @@ docker-alpine-docker-hub:
 ################################################################
 docker:
 #     when:       manual
-    stage:      docker
+    stage:      Docker
     image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
@@ -106,7 +106,7 @@ docker:
 # Build Docker Alpine Image for Gitlab
 ################################################################
 docker-alpine-gitlab:
-    stage:      docker
+    stage:      Docker
     image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
@@ -126,18 +126,3 @@ docker-alpine-gitlab:
       - docker push registry.gitlab.com/splashsync/toolkit:alpine
     except:
       - schedules
-
-#################################################################
-## Build Documentation
-#################################################################
-#pages:
-#    image:      jekyll/minimal:latest
-#    stage:      deploy
-#    tags:       [ Dedicated ]
-#    ################################################################################
-#    # Run Test Script
-#    script:
-#        - wget -qO - https://gitlab.com/badpixxel-robo/jekyll/-/raw/main/scripts/gitlab-pages.sh | sh
-#    artifacts:
-#        paths:
-#          - public
