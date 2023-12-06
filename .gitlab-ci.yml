@@ -107,7 +107,7 @@ docker:
 ################################################################
 docker-alpine-gitlab:
     stage:      Docker
-    image:      jdrouet/docker-with-buildx
+    image:      docker:stable
     tags:       ['Dedicated-Docker']
     services:
       - docker:dind
@@ -120,13 +120,9 @@ docker-alpine-gitlab:
       - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       ################################################################
       # Build Docker Image
-      - docker buildx create --use
-      - docker buildx build ./ -t registry.gitlab.com/splashsync/toolkit:alpine --platform linux/amd64,linux/arm64 --push
-#      ################################################################
-#      # Build Docker Image
-#      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
-#      ################################################################
-#      # Push to GitLab Registry
-#      - docker push registry.gitlab.com/splashsync/toolkit:alpine
+      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
+      ################################################################
+      # Push to GitLab Registry
+      - docker push registry.gitlab.com/splashsync/toolkit:alpine
     except:
       - schedules
