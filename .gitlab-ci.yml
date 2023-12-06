@@ -107,7 +107,7 @@ docker:
 ################################################################
 docker-alpine-gitlab:
     stage:      Docker
-    image:      docker:stable
+    image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
     services:
       - docker:dind
