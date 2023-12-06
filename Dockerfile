@@ -20,10 +20,11 @@
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
 ARG PHP_VERSION=8.1
 ARG APP_ENV=dev
+ARG TARGETPLATFORM
 
 ################################################################################
 # "php" stage
-FROM php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
+FROM --platform=$BUILDPLATFORM php:${PHP_VERSION}-fpm-alpine AS splash-toolkit-alpine
 
 ################################################################################
 # Install Dependencies

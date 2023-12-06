@@ -16,6 +16,11 @@
 ################################################################################
 
 ################################################################
+# Include Pipeline Templates
+include:
+  - remote: 'https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/gitlab/pages.yaml'
+
+################################################################
 # Set any variables we need
 variables:
   COMPOSER_MEMORY_LIMIT:  -1
@@ -26,7 +31,7 @@ variables:
 stages:
   - tests
   - docker
-  - deploy
+  - Builds
 
 ################################################################
 # Functional Tests
@@ -51,6 +56,29 @@ tests:
     # Run After Script
     after_script:
         - curl -s https://raw.githubusercontent.com/BadPixxel/Php-Sdk/main/ci/after.sh | sh
+
+################################################################
+# Build Docker Alpine Image for Docker Hub
+################################################################
+docker-alpine-docker-hub:
+    stage:      docker
+    image:      docker:stable
+    tags:       ['Dedicated-Docker']
+    services:
+        - docker:dind
+    before_script:
+        - docker info
+    script:
+        - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
+        ################################################################
+        # Connect Docker to DockerHub
+        - docker login -u splashsync -p $DOCKER_HUB_TOKEN
+        ################################################################
+        # Build Docker Image
+        - docker buildx create --use --platform linux/amd64,linux/arm64
+        - docker buildx build ./ -t splashsync/toolkit:alpine --push
+    except:
+        - schedules
 
 ################################################################
 # Build Docker Images for Testing
@@ -92,51 +120,24 @@ docker-alpine-gitlab:
       - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       ################################################################
       # Build Docker Image
-      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./ --platform linux/amd64
-      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./ --platform linux/arm64
+      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
       ################################################################
       # Push to GitLab Registry
       - docker push registry.gitlab.com/splashsync/toolkit:alpine
     except:
       - schedules
 
-################################################################
-# Build Docker Alpine Image for Docker Hub
-################################################################
-docker-alpine-docker-hub:
-    stage:      docker
-    image:      docker:stable
-    tags:       ['Dedicated-Docker']
-    services:
-        - docker:dind
-    before_script:
-        - docker info
-    script:
-        - echo "[$CI_JOB_NAME] Build & Upload Docker Alpine Image"
-        ################################################################
-        # Connect Docker to DockerHub
-        - docker login -u splashsync -p $DOCKER_HUB_TOKEN
-        ################################################################
-        # Build Docker Image
-        - docker build --no-cache -t splashsync/toolkit:alpine  ./ --platform linux/amd64
-        - docker build --no-cache -t splashsync/toolkit:alpine  ./ --platform linux/arm64
-        ################################################################
-        # Push to GitLab Registry
-        - docker push splashsync/toolkit:alpine
-    except:
-        - schedules
-
-################################################################
-# Build Documentation
-################################################################
-pages:
-    image:      jekyll/minimal:latest
-    stage:      deploy
-    tags:       [ Dedicated ]
-    ################################################################################
-    # Run Test Script
-    script:
-        - wget -qO - https://gitlab.com/badpixxel-robo/jekyll/-/raw/main/scripts/gitlab-pages.sh | sh
-    artifacts:
-        paths:
-          - public
+#################################################################
+## Build Documentation
+#################################################################
+#pages:
+#    image:      jekyll/minimal:latest
+#    stage:      deploy
+#    tags:       [ Dedicated ]
+#    ################################################################################
+#    # Run Test Script
+#    script:
+#        - wget -qO - https://gitlab.com/badpixxel-robo/jekyll/-/raw/main/scripts/gitlab-pages.sh | sh
+#    artifacts:
+#        paths:
+#          - public
