@@ -64,6 +64,8 @@ docker-alpine-docker-hub:
     stage:      Docker
     image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
+    services:
+        - docker:dind
     before_script:
         - docker info
     script:
@@ -86,6 +88,8 @@ docker-latest-docker-hub:
     stage:      Docker
     image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
+    services:
+        - docker:dind
     before_script:
         - docker info
     script:
