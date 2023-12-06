@@ -64,8 +64,6 @@ docker-alpine-docker-hub:
     stage:      Docker
     image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
-    services:
-        - docker:dind
     before_script:
         - docker info
     script:
@@ -83,22 +81,22 @@ docker-alpine-docker-hub:
 ################################################################
 # Build Docker Images for Testing
 ################################################################
-docker:
+docker-latest-docker-hub:
 #     when:       manual
     stage:      Docker
-    image:      docker:stable
+    image:      jdrouet/docker-with-buildx
     tags:       ['Dedicated-Docker']
-    services:
-        - docker:dind
     before_script:
         - docker info
     script:
         - echo "Build & Upload Docker Image"
-        # Build & Upload Splash All Docker Images
-        - docker build --no-cache -t splashsync/toolkit:latest  ./
+        ################################################################
         # Connect Docker to DockerHub
         - docker login -u splashsync -p $DOCKER_HUB_TOKEN
-        - docker push splashsync/toolkit:latest
+        ################################################################
+        # Build Docker Image
+        - docker buildx create --use
+        - docker buildx build ./ -t splashsync/toolkit:latest --platform linux/amd64,linux/arm64 --push
     except:
         - schedules
 
