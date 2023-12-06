@@ -92,7 +92,8 @@ docker-alpine-gitlab:
       - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       ################################################################
       # Build Docker Image
-      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
+      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./ --platform linux/amd64
+      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./ --platform linux/arm64
       ################################################################
       # Push to GitLab Registry
       - docker push registry.gitlab.com/splashsync/toolkit:alpine
