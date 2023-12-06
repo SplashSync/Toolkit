@@ -75,8 +75,8 @@ docker-alpine-docker-hub:
         - docker login -u splashsync -p $DOCKER_HUB_TOKEN
         ################################################################
         # Build Docker Image
-        - docker buildx create --use --platform linux/amd64,linux/arm64
-        - docker buildx build ./ -t splashsync/toolkit:alpine --push
+        - docker buildx create --use
+        - docker buildx build ./ -t splashsync/toolkit:alpine --platform linux/amd64,linux/arm64 --push
     except:
         - schedules
 
@@ -120,8 +120,8 @@ docker-alpine-gitlab:
       - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       ################################################################
       # Build Docker Image
-      - docker buildx create --use --platform linux/amd64,linux/arm64
-      - docker buildx build ./ -t registry.gitlab.com/splashsync/toolkit:alpine --push
+      - docker buildx create --use
+      - docker buildx build ./ -t registry.gitlab.com/splashsync/toolkit:alpine --platform linux/amd64,linux/arm64 --push
 #      ################################################################
 #      # Build Docker Image
 #      - docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:alpine  ./
