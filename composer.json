@@ -34,6 +34,7 @@
         "splash/php-bundle":                            "dev-master",
         "splash/console":                               "dev-master",
         "splash/openapi":                               "dev-master",
+        "splash/metadata":                              "dev-master",
         "splash/sonata-admin":                          "dev-master",
 
         "splash/faker":                                 "dev-master",

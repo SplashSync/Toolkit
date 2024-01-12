@@ -23,5 +23,6 @@ return array(
     Splash\Console\ConsoleBundle::class => Kernel::BUNDLE_ALL,
     Splash\Admin\SplashAdminBundle::class => Kernel::BUNDLE_ALL,
     Splash\Widgets\SplashWidgetsBundle::class => Kernel::BUNDLE_ALL,
+    Splash\Metadata\SplashMetadataBundle::class => Kernel::BUNDLE_ALL,
     Splash\OpenApi\Bundle\SplashOpenApiBundle::class => Kernel::BUNDLE_ALL,
 );
