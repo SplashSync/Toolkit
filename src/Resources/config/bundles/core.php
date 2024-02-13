@@ -41,6 +41,7 @@ return array(
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => Kernel::BUNDLE_ALL,
 
     Burgov\Bundle\KeyValueFormBundle\BurgovKeyValueFormBundle::class => Kernel::BUNDLE_ALL,
+    KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
     // Symfony Debug Bundles
     Symfony\Bundle\DebugBundle\DebugBundle::class => Kernel::BUNDLE_DEBUG,
