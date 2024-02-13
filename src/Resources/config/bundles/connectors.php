@@ -47,8 +47,6 @@ return array(
     // E-Commerce Connectors
     /** @phpstan-ignore-next-line  */
     Splash\Connectors\Shopify\ShopifyBundle::class => Kernel::BUNDLE_ALL,
-    /** @phpstan-ignore-next-line  */
-    KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
     // Others Connectors
     /** @phpstan-ignore-next-line  */
