@@ -35,6 +35,7 @@
         "splash/console":                               "dev-master",
         "splash/openapi":                               "dev-master",
         "splash/metadata":                              "dev-master",
+        "splash/oauth2":                                "dev-main",
         "splash/sonata-admin":                          "dev-master",
 
         "splash/faker":                                 "dev-master",

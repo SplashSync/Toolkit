@@ -24,5 +24,6 @@ return array(
     Splash\Admin\SplashAdminBundle::class => Kernel::BUNDLE_ALL,
     Splash\Widgets\SplashWidgetsBundle::class => Kernel::BUNDLE_ALL,
     Splash\Metadata\SplashMetadataBundle::class => Kernel::BUNDLE_ALL,
+    Splash\Security\Oauth2\SplashOauth2Bundle::class => Kernel::BUNDLE_ALL,
     Splash\OpenApi\Bundle\SplashOpenApiBundle::class => Kernel::BUNDLE_ALL,
 );
