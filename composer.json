@@ -28,6 +28,7 @@
         "symfony/yaml":                                 "*",
 
         "sonata-project/user-bundle":                   ">=4.0",
+        "doctrine/annotations":                         "^2.0",
 
         "burgov/key-value-form-bundle":                 "@stable",
 
