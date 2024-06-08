@@ -8,6 +8,7 @@ framework:
     form:               ~
     property_access:    ~
     assets:             ~
+    annotations:        ~
     default_locale:     '%locale%'
     translator:
         default_path:   '%kernel.project_dir%/translations'
