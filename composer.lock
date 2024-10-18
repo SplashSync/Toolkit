@@ -6339,16 +6339,16 @@
         },
         {
             "name": "splash/phpcore",
-            "version": "2.3.4",
+            "version": "2.3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SplashSync/Php-Core.git",
-                "reference": "1a9bca0dcf78fb13ff13fd4fa7a5571d7d319fb4"
+                "reference": "4b83c5c17c3ef507bed727348eb815383d8eaa3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/1a9bca0dcf78fb13ff13fd4fa7a5571d7d319fb4",
-                "reference": "1a9bca0dcf78fb13ff13fd4fa7a5571d7d319fb4",
+                "url": "https://api.github.com/repos/SplashSync/Php-Core/zipball/4b83c5c17c3ef507bed727348eb815383d8eaa3a",
+                "reference": "4b83c5c17c3ef507bed727348eb815383d8eaa3a",
                 "shasum": ""
             },
             "require": {
@@ -6372,7 +6372,8 @@
                 ],
                 "psr-4": {
                     "Splash\\": "",
-                    "Splash\\Local\\": "../../../Resources"
+                    "Splash\\Local\\": "../../../Resources",
+                    "Splash\\Models\\": "src/Models/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6392,9 +6393,9 @@
             "description": "Splash Foundation Module for All Php Applications",
             "support": {
                 "issues": "https://github.com/SplashSync/Php-Core/issues",
-                "source": "https://github.com/SplashSync/Php-Core/tree/2.3.4"
+                "source": "https://github.com/SplashSync/Php-Core/tree/2.3.9"
             },
-            "time": "2024-01-31T21:38:19+00:00"
+            "time": "2024-08-21T16:17:08+00:00"
         },
         {
             "name": "splash/soap",

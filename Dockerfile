@@ -99,4 +99,4 @@ ENTRYPOINT ["docker-entrypoint"]
 ################################################################################
 # Start Symfony WebServer
 EXPOSE 80
-CMD ["/usr/local/bin/symfony", "serve", "--no-tls", "--port=80"]
+CMD ["/usr/local/bin/symfony", "serve", "--no-tls", "--port=80", "--allow-all-ip"]
