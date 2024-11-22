@@ -33,7 +33,8 @@ RUN apk add --no-cache acl file gettext git bash nano sqlite
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps $PHPIZE_DEPS icu-dev libzip-dev sqlite-dev zlib-dev libxml2-dev; \
 	docker-php-ext-configure zip; \
-	docker-php-ext-install -j$(nproc) intl pdo_sqlite zip soap; \
+	docker-php-ext-install -j$(nproc) intl zip soap; \
+	docker-php-ext-install mysqli pdo pdo_sqlite pdo_mysql; \
 	pecl install apcu-${APCU_VERSION}; \
 	pecl clear-cache; \
 	docker-php-ext-enable apcu opcache; \
