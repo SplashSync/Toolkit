@@ -25,15 +25,16 @@
 #
 ################################################################################
 
+name: Splash Toolkit
+
 services:
     
     ################################################################################
     # Php Alpine Server Container
-    app:
+    toolkit:
         build:
             context: ./
             dockerfile: Dockerfile
-        container_name: toolkit
         volumes:
             # Use Local Sources
             - ./config:/app/config
@@ -41,7 +42,7 @@ services:
             # - /mnt/data/WebDesign/GitHub/Splash/Php-SonataAdminSplashBundle:/app/vendor/splash/sonata-admin-splash-bundle:ro
             # Specify Local Configuration File
             - ./config/packages/splash.yaml:/app/config/packages/splash.yaml:ro
-        hostname: toolkit.splashsync.local
+        hostname:           toolkit.splashsync.local
         networks:
             toolkit:        { ipv4_address: 172.169.0.10 }
             splashsync:     { aliases: [ toolkit.splashsync.local ] }
