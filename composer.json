@@ -87,11 +87,5 @@
         "post-update-cmd": [
             "@auto-scripts"
         ]
-    },
-
-    "extra": {
-        "branch-alias": {
-            "3.0.x-dev": "dev-master"
-        }
     }
 }
