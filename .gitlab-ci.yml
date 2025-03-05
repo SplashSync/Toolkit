@@ -96,7 +96,7 @@ docker-hub:
         - echo "Build & Upload Docker Image"
         ################################################################
         # Connect Docker to DockerHub
-        - echo "$DOCKER_HUB_TOKEN" | docker login -u splashsync --password-stdin
+        - docker login -u splashsync -p "$DOCKER_HUB_TOKEN"
         ################################################################
         # Build Docker Image
         - docker buildx create --use
