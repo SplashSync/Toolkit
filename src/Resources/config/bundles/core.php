@@ -24,6 +24,12 @@ return array(
     Symfony\Bundle\MonologBundle\MonologBundle::class => Kernel::BUNDLE_ALL,
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
+    // SYMFONY UX BUNDLES
+    Symfony\UX\TwigComponent\TwigComponentBundle::class => Kernel::BUNDLE_ALL,
+    Symfony\UX\LiveComponent\LiveComponentBundle::class => Kernel::BUNDLE_ALL,
+    Symfony\UX\StimulusBundle\StimulusBundle::class => Kernel::BUNDLE_ALL,
+    Symfony\UX\Chartjs\ChartjsBundle::class => Kernel::BUNDLE_ALL,
+    //==============================================================================
     // Doctrine ORM
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
@@ -36,12 +42,15 @@ return array(
     Sonata\Twig\Bridge\Symfony\SonataTwigBundle::class => Kernel::BUNDLE_ALL,
     Sonata\Form\Bridge\Symfony\SonataFormBundle::class => Kernel::BUNDLE_ALL,
     //==============================================================================
+    // BadPixxel Bundles
+    BadPixxel\Widgets\BadpixxelWidgetsBundle::class => Kernel::BUNDLE_ALL,
+    //==============================================================================
     // Various Bundles
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => Kernel::BUNDLE_ALL,
     Knp\Bundle\TimeBundle\KnpTimeBundle::class => Kernel::BUNDLE_ALL,
-
     Burgov\Bundle\KeyValueFormBundle\BurgovKeyValueFormBundle::class => Kernel::BUNDLE_ALL,
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => Kernel::BUNDLE_ALL,
+
     //==============================================================================
     // Symfony Debug Bundles
     Symfony\Bundle\DebugBundle\DebugBundle::class => Kernel::BUNDLE_DEBUG,
