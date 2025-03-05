@@ -3,15 +3,11 @@
 # Connect Docker to GitLab
 docker login https://registry.gitlab.com -u BadPixxel
 ########################################################
+# Build Splash Toolkit Latest Docker Image
+docker build ./ -t registry.gitlab.com/splashsync/toolkit:latest    --push --no-cache
+########################################################
 # Build Splash Toolkit Alpine Docker Image
-docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:3.0  ./
+docker build ./ -t registry.gitlab.com/splashsync/toolkit:alpine    --push
 ########################################################
-# Upload Docker Alpine Image to GitLab
-docker push registry.gitlab.com/splashsync/toolkit:3.0
-
-########################################################
-# Build Splash Toolkit Docker Image
-docker build --no-cache -t registry.gitlab.com/splashsync/toolkit:latest  ./
-########################################################
-# Upload Docker Image to GitLab
-docker push registry.gitlab.com/splashsync/toolkit:latest
+# Build Splash Toolkit V3.0 Docker Image
+docker build ./ -t registry.gitlab.com/splashsync/toolkit:3.0       --push
