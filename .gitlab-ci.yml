@@ -98,6 +98,9 @@ docker-gitlab:
       - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       ################################################################
       # Build & Push Docker Image
-      - docker build ./ --no-cache -t registry.gitlab.com/splashsync/toolkit:2.0 --push
+      - docker build ./ --no-cache -t registry.gitlab.com/splashsync/toolkit:2.0
+      ################################################################
+      # Push to GitLab Registry
+      - docker push registry.gitlab.com/splashsync/toolkit:2.0
     except:
       - schedules
