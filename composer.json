@@ -36,7 +36,7 @@
         "splash/openapi":                               "dev-master",
         "splash/metadata":                              "dev-master",
         "splash/oauth2":                                "dev-main",
-        "splash/sonata-admin":                          "3.0.x-dev",
+        "splash/sonata-admin":                          "2.5.x-dev",
 
         "splash/faker":                                 "dev-master",
         "splash/soap":                                  "dev-master",
