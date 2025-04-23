@@ -78,7 +78,7 @@ docker-hub:
         - docker buildx create --use
         - docker buildx build ./ -t splashsync/toolkit:latest --platform linux/amd64,linux/arm64 --push
         - docker buildx build ./ -t splashsync/toolkit:alpine --platform linux/amd64,linux/arm64 --push
-        - docker buildx build ./ -t splashsync/toolkit:3.0    --platform linux/amd64,linux/arm64 --push
+        - docker buildx build ./ -t splashsync/toolkit:2.5    --platform linux/amd64,linux/arm64 --push
     except:
         - schedules
 
@@ -102,11 +102,11 @@ docker-gitlab:
       # Build & Push Docker Image
       - docker build ./ -t registry.gitlab.com/splashsync/toolkit:latest  --no-cache
       - docker build ./ -t registry.gitlab.com/splashsync/toolkit:alpine
-      - docker build ./ -t registry.gitlab.com/splashsync/toolkit:3.0
+      - docker build ./ -t registry.gitlab.com/splashsync/toolkit:2.5
       ################################################################
       # Push to GitLab Registry
       - docker push registry.gitlab.com/splashsync/toolkit:latest
       - docker push registry.gitlab.com/splashsync/toolkit:alpine
-      - docker push registry.gitlab.com/splashsync/toolkit:3.0
+      - docker push registry.gitlab.com/splashsync/toolkit:2.5
     except:
       - schedules

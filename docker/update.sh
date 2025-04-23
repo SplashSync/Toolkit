@@ -10,4 +10,4 @@ docker build ./ -t registry.gitlab.com/splashsync/toolkit:latest    --push --no-
 docker build ./ -t registry.gitlab.com/splashsync/toolkit:alpine    --push
 ########################################################
 # Build Splash Toolkit V3.0 Docker Image
-docker build ./ -t registry.gitlab.com/splashsync/toolkit:3.0       --push
+docker build ./ -t registry.gitlab.com/splashsync/toolkit:2.5       --push
